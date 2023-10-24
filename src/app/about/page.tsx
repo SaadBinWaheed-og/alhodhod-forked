@@ -1,5 +1,5 @@
 import React from "react";
 
-export const About: React.FC = () => {
-  return <div>blog</div>;
-};
+export default function About() {
+  return <div>About</div>;
+}
