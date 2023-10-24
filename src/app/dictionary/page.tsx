@@ -1,5 +1,7 @@
+"use client";
+
 import React from "react";
 
-export const DictionaryOfDreams: React.FC = () => {
+export default function Dictionary() {
   return <div>DOD</div>;
-};
+}
