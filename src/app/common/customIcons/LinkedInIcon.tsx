@@ -3,7 +3,7 @@ import React from "react";
 
 import { IconProps } from "./types";
 
-const CaretDownIconSvg = () => (
+const LinkedInIconSvg = () => (
   <svg
     width="12"
     height="8"
@@ -19,6 +19,6 @@ const CaretDownIconSvg = () => (
   </svg>
 );
 
-export const CaretDownIcon: React.FC<IconProps> = (props) => {
-  return <Icon component={CaretDownIconSvg} {...props} />;
+export const LinkedInIcon: React.FC<IconProps> = (props) => {
+  return <Icon component={LinkedInIconSvg} {...props} />;
 };
