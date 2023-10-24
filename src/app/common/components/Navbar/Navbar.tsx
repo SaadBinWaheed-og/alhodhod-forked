@@ -5,10 +5,10 @@ import Link from "next/link";
 import type { MenuProps } from "antd";
 import { ConfigProvider } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
-import { useDevice } from "../hooks";
+import { useDevice } from "../../hooks";
 import * as Styled from "./Navbar.styled";
 import { MobileNavbar } from "./MobileNavbar/MobileNavbar";
-import { CaretDownIcon } from "../customIcons";
+import { CaretDownIcon } from "../../customIcons";
 
 export const Navbar: React.FC = () => {
   const device = useDevice();

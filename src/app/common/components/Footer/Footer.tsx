@@ -4,7 +4,7 @@ import React from "react";
 import * as Styled from "./Footer.styled";
 import { Row, Col, Space, Divider } from "antd";
 import Image from "next/image";
-import logo from "../../../../public/images/logo.png";
+import logo from "../../../../../public/images/logo.png";
 import {
   FacebookFilled,
   TwitterCircleFilled,
@@ -14,7 +14,7 @@ import {
 // import { FacebookIcon } from "../customIcons/facebookIcon";
 //icons to be replaces from customIcons once Khubaib provides the icons
 
-export default function Footer() {
+export const Footer: React.FC = () => {
   return (
     <>
       <Styled.FooterWrapper>
@@ -70,4 +70,4 @@ export default function Footer() {
       </Styled.FooterWrapper>
     </>
   );
-}
+};
