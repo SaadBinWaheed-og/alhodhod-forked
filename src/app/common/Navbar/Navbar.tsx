@@ -1,49 +1,50 @@
+"use client";
+
 import React, { useState } from "react";
 import Link from "next/link";
 import type { MenuProps } from "antd";
-import { Menu } from "antd";
+import { ConfigProvider } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
+import { useDevice } from "../hooks";
+import * as Styled from "./Navbar.styled";
+import { MobileNavbar } from "./MobileNavbar/MobileNavbar";
+import { CaretDownIcon } from "../customIcons";
 
 export const Navbar: React.FC = () => {
+  const device = useDevice();
   const items: MenuProps["items"] = [
     {
       label: <Link href={"/"}>Home</Link>,
       key: "home",
     },
     {
-      label: <Link href="/dictionaryOfDreams">Dictionary of Dreams</Link>,
+      label: <Link href="/dictionary">Dictionary of Dreams</Link>,
       key: "dod",
     },
     {
-      label: <Link href="/blog">Blog</Link>,
+      label: (
+        <Styled.LinkContainer>
+          <Link href="/blog" style={{ color: "#fff" }}>
+            Blog
+          </Link>
+        </Styled.LinkContainer>
+      ),
       key: "blog",
+      icon: <CaretDownIcon style={{ paddingLeft: "9px" }} />,
+      // onTitleClick: () => console.log("clicked"),
+      theme: "dark",
       children: [
         {
-          type: "group",
-          label: "Item 1",
-          children: [
-            {
-              label: "Option 1",
-              key: "setting:1",
-            },
-            {
-              label: "Option 2",
-              key: "setting:2",
-            },
-          ],
+          label: <Styled.Option>Option</Styled.Option>,
+          key: "setting:1",
         },
         {
-          type: "group",
-          label: "Item 2",
-          children: [
-            {
-              label: "Option 3",
-              key: "setting:3",
-            },
-            {
-              label: "Option 4",
-              key: "setting:4",
-            },
-          ],
+          type: "divider",
+          key: "divider",
+        },
+        {
+          label: <Styled.Option>Option</Styled.Option>,
+          key: "setting:2",
         },
       ],
     },
@@ -58,25 +59,43 @@ export const Navbar: React.FC = () => {
   ];
   const [current, setCurrent] = useState("mail");
 
-  const onClick: MenuProps["onClick"] = (e) => {
+  const handleClick: MenuProps["onClick"] = (e) => {
     console.log("click ", e);
     setCurrent(e.key);
   };
   return (
-    <Menu
-      onClick={onClick}
-      selectedKeys={[current]}
-      mode="horizontal"
-      items={items}
-    />
+    <>
+      <ConfigProvider
+        theme={{
+          components: {
+            Menu: {
+              dropdownWidth: 346,
+              itemSelectedColor: "#c1ff0b",
+              darkItemColor: "#272727",
+              darkItemHoverColor: "#c1ff0b",
+              darkItemSelectedColor: "#c1ff0b",
+              darkSubMenuItemBg: "#fff",
+              darkItemSelectedBg: "#fff",
+              darkItemHoverBg: "#fff",
+              darkItemBg: "#fff",
+            },
+          },
+        }}
+      >
+        {device?.isBreakpoint("LG") ? (
+          <>
+            <Styled.Navbar
+              onClick={handleClick}
+              selectedKeys={[current]}
+              mode="horizontal"
+              items={items}
+              overflowedIndicator={<MenuOutlined />}
+            />
+          </>
+        ) : (
+          <MobileNavbar items={items} onClick={handleClick} current={current} />
+        )}
+      </ConfigProvider>
+    </>
   );
-
-  // return (
-  //   <div>
-  //     <Link href={"/"}>Home</Link>
-  //     <Link href="/dictionaryOfDreams">Dictionary of Dreams</Link>
-  //     <Link href="/blog">Blog</Link>
-  //     <Link href="videos">Videos</Link>
-  //   </div>
-  // );
 };
