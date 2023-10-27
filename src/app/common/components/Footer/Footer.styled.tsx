@@ -11,6 +11,7 @@ export const FooterContainer = styled.div`
 `;
 
 export const UiLink = styled(Link)`
+  font-family: var(--font-montserrat);
   color: #fff;
   font-size: 27px;
   font-weight: 400;
@@ -22,6 +23,7 @@ export const LogoContainer = styled.div`
 `;
 
 export const WebsiteAddress = styled.div`
+  font-family: var(--font-montserrat);
   font-size: 19px;
   font-weight: 800;
   color: white;
@@ -29,6 +31,7 @@ export const WebsiteAddress = styled.div`
 `;
 
 export const WebsiteSince = styled.div`
+  font-family: var(--font-montserrat);
   color: white;
   font-size: 20px;
   font-weight: 500;
@@ -36,6 +39,7 @@ export const WebsiteSince = styled.div`
 `;
 
 export const CopyRight = styled.div`
+  font-family: var(--font-montserrat);
   color: #bec2cf;
   text-align: center;
   font-size: 18px;
