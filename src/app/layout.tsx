@@ -4,7 +4,12 @@ import { Montserrat } from "next/font/google";
 
 import { Header, Footer } from "./common/components";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-montserrat",
+});
 
 export const metadata: Metadata = {
   title: "Al-Hodhod",
