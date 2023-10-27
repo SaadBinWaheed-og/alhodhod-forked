@@ -1,14 +1,14 @@
-import { SectionHeader, ChooseTheFirstLetter, LetterSelection, LetterCircle, LetterRow, LineBetweenLetters, AdvertisementRectangle, AdvertisementImageTag, AdvertisementText, ListOfSymbolsForLetterSection, LettersList, SelectedLetterSection, LettersListItem, LetterListItemCircle, LettersListItemTextGroup, LettersListItemTextOne, LettersListItemTextTwo, LettersListItemArrowIcon, BackToLettersButton, SelectedLetterMedal } from "./page.styled";
-import Image from 'next/image';
+import * as Styled from "./page.styled";
+import Image from "next/image";
 import GreenVector from "../../../public/images/green-vector.svg";
 import AdvertisementImage from "../../../public/images/advertisement.svg";
-import ArrowIcon from "../../../public/images/arrow-vector.svg"
+import ArrowIcon from "../../../public/images/arrow-vector.svg";
 
 export default function Home() {
-  const firstRowAlphabets = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
-  const secondRowAlphabets = ['H', 'I', 'J', 'K', 'L', 'M'];
-  const thirdRowAlphabets = ['N', 'O', 'P', 'Q', 'R', 'S', 'T'];
-  const fourthRowAlphabets = ['U', 'V', 'W', 'X', 'Y', 'Z'];
+  const firstRowAlphabets = ["A", "B", "C", "D", "E", "F", "G"];
+  const secondRowAlphabets = ["H", "I", "J", "K", "L", "M"];
+  const thirdRowAlphabets = ["N", "O", "P", "Q", "R", "S", "T"];
+  const fourthRowAlphabets = ["U", "V", "W", "X", "Y", "Z"];
 
   const renderLettersListItems = () => {
     const itemsToRender = 22;
@@ -16,14 +16,18 @@ export default function Home() {
 
     for (let i = 0; i < itemsToRender; i++) {
       items.push(
-        <LettersListItem key={i}>
-          <LetterListItemCircle>{i + 1}</LetterListItemCircle>
-          <LettersListItemTextGroup>
-            <LettersListItemTextOne>Lorem ipsum</LettersListItemTextOne>
-            <LettersListItemTextTwo>21 Dreams found</LettersListItemTextTwo>
-          </LettersListItemTextGroup>
-          <LettersListItemArrowIcon src={ArrowIcon} alt="< >" />
-        </LettersListItem>
+        <Styled.LettersListItem key={i}>
+          <Styled.LetterListItemCircle>{i + 1}</Styled.LetterListItemCircle>
+          <Styled.LettersListItemTextGroup>
+            <Styled.LettersListItemTextOne>
+              Lorem ipsum
+            </Styled.LettersListItemTextOne>
+            <Styled.LettersListItemTextTwo>
+              21 Dreams found
+            </Styled.LettersListItemTextTwo>
+          </Styled.LettersListItemTextGroup>
+          <Styled.LettersListItemArrowIcon src={ArrowIcon} alt="< >" />
+        </Styled.LettersListItem>
       );
     }
 
@@ -32,72 +36,60 @@ export default function Home() {
 
   return (
     <div className="dictionaryOfDreams">
-      <ChooseTheFirstLetter>
-        <SectionHeader>
-          Choose the first letter
-        </SectionHeader>
+      <Styled.ChooseTheFirstLetter>
+        <Styled.SectionHeader>Choose the first letter</Styled.SectionHeader>
         <Image src={GreenVector} alt="Green Vector" />
-        <LetterSelection>
-          <LetterRow>
+        <Styled.LetterSelection>
+          <Styled.LetterRow>
             {firstRowAlphabets.map((letter, index) => (
-              <LetterCircle key={index}>
-                {letter}
-              </LetterCircle>
+              <Styled.LetterCircle key={index}>{letter}</Styled.LetterCircle>
             ))}
-          </LetterRow>
-          <LineBetweenLetters/>
-          <LetterRow>
+          </Styled.LetterRow>
+          <Styled.LineBetweenLetters />
+          <Styled.LetterRow>
             {secondRowAlphabets.map((letter, index) => (
-              <LetterCircle key={index}>
-                {letter}
-              </LetterCircle>
+              <Styled.LetterCircle key={index}>{letter}</Styled.LetterCircle>
             ))}
-          </LetterRow>
-          <LineBetweenLetters/>
-          <LetterRow>
+          </Styled.LetterRow>
+          <Styled.LineBetweenLetters />
+          <Styled.LetterRow>
             {thirdRowAlphabets.map((letter, index) => (
-              <LetterCircle key={index}>
-                {letter}
-              </LetterCircle>
+              <Styled.LetterCircle key={index}>{letter}</Styled.LetterCircle>
             ))}
-          </LetterRow>
-          <LineBetweenLetters/>
-          <LetterRow>
+          </Styled.LetterRow>
+          <Styled.LineBetweenLetters />
+          <Styled.LetterRow>
             {fourthRowAlphabets.map((letter, index) => (
-              <LetterCircle key={index}>
-                {letter}
-              </LetterCircle>
+              <Styled.LetterCircle key={index}>{letter}</Styled.LetterCircle>
             ))}
-          </LetterRow>
-        </LetterSelection>
-        <AdvertisementRectangle>
-          <AdvertisementText>
-            Advertisement
-          </AdvertisementText>
-          <AdvertisementImageTag src={AdvertisementImage} layout="fill" alt="Advertisement" />
-        </AdvertisementRectangle>
-      </ChooseTheFirstLetter>
-      <ListOfSymbolsForLetterSection>
-        <SectionHeader>
-          List of Symbols for Letter
-        </SectionHeader>
-        <SelectedLetterSection>
-          <SelectedLetterMedal>
-            R 
-          </SelectedLetterMedal>
-          <LineBetweenLetters/>
-        </SelectedLetterSection>
-        <LettersList>
-          {renderLettersListItems()}
-        </LettersList>
-        <BackToLettersButton>Back To Letters</BackToLettersButton>
-        <AdvertisementRectangle>
-          <AdvertisementText>
-            Advertisement
-          </AdvertisementText>
-          <AdvertisementImageTag src={AdvertisementImage} layout="fill" alt="Advertisement" />
-        </AdvertisementRectangle>
-      </ListOfSymbolsForLetterSection>
+          </Styled.LetterRow>
+        </Styled.LetterSelection>
+        <Styled.AdvertisementRectangle>
+          <Styled.AdvertisementText>Advertisement</Styled.AdvertisementText>
+          <Styled.AdvertisementImageTag
+            src={AdvertisementImage}
+            layout="fill"
+            alt="Advertisement"
+          />
+        </Styled.AdvertisementRectangle>
+      </Styled.ChooseTheFirstLetter>
+      <Styled.ListOfSymbolsForLetterSection>
+        <Styled.SectionHeader>List of Symbols for Letter</Styled.SectionHeader>
+        <Styled.SelectedLetterSection>
+          <Styled.SelectedLetterMedal>R</Styled.SelectedLetterMedal>
+          <Styled.LineBetweenLetters />
+        </Styled.SelectedLetterSection>
+        <Styled.LettersList>{renderLettersListItems()}</Styled.LettersList>
+        <Styled.BackToLettersButton>Back To Letters</Styled.BackToLettersButton>
+        <Styled.AdvertisementRectangle>
+          <Styled.AdvertisementText>Advertisement</Styled.AdvertisementText>
+          <Styled.AdvertisementImageTag
+            src={AdvertisementImage}
+            layout="fill"
+            alt="Advertisement"
+          />
+        </Styled.AdvertisementRectangle>
+      </Styled.ListOfSymbolsForLetterSection>
     </div>
-  )
+  );
 }
