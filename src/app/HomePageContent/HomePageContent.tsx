@@ -179,11 +179,11 @@ export const HomePageContent: React.FC = () => {
               />
             </Col>
             <Col span={12}>
-              <YouTubePlaylist
+              {/* <YouTubePlaylist
                 apiKey="AIzaSyAb5SJv_rw-pDFFKqcBofymvQX923Lrc6k"
                 playlistId="PL5ABPDOGW6TOkCrsy20yOWqVJdTIZH4Me"
                 uniqueName="odhod-playlist"
-              />
+              /> */}
             </Col>
           </Styled.VideoSection>
 
