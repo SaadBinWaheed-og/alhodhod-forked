@@ -11,6 +11,7 @@ export const Navbar = styled(Menu)`
   padding-top: 68px !important;
   padding-right: 98px !important;
   background-color: transparent !important;
+  font-family: var(--font-montserrat);
 
   .ant-menu-item {
     color: #fff;
@@ -58,6 +59,7 @@ export const Navbar = styled(Menu)`
     color: #fff;
     background: #fff;
     font-size: 22px;
+    font-family: var(--font-montserrat);
     font-weight: 600;
     line-height: 24px;
     border-bottom: none !important;

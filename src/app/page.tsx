@@ -1,3 +1,9 @@
+import React from "react";
+import { HomePageContent } from "./HomePageContent";
 export default function Home() {
-  return <main></main>;
+  return (
+    <>
+      <HomePageContent />
+    </>
+  );
 }

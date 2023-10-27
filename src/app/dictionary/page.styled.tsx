@@ -1,7 +1,7 @@
-"use client"
-import styled from 'styled-components';
-import Image from 'next/image';
-import { createGlobalStyle } from 'styled-components';
+"use client";
+import styled from "styled-components";
+import Image from "next/image";
+import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
   body {
@@ -15,7 +15,7 @@ export const SectionHeader = styled.p`
   font-weight: 600;
   font-size: 44.47px;
   line-height: 54px;
-  color: #23262F;
+  color: #23262f;
 `;
 
 export const ChooseTheFirstLetter = styled.div`
@@ -27,10 +27,10 @@ export const ChooseTheFirstLetter = styled.div`
 
 export const LetterSelection = styled.div`
   width: 78.125vw;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 21.3906px;
   padding: 2.96vh 0;
-`
+`;
 export const LetterRow = styled.div`
   display: flex;
   flex-direction: row;
@@ -45,8 +45,8 @@ export const LetterCircle = styled.div`
   height: 71.3px;
   border-radius: 50%;
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   margin: 0 5.5vh;
   font-size: 28px;
   font-weight: 700;
@@ -54,36 +54,13 @@ export const LetterCircle = styled.div`
   letter-spacing: 0em;
   text-align: center;
   border: 0.891274px solid #979797;
-`
+`;
 
 export const LineBetweenLetters = styled.div`
   width: 70.93vw;
   height: 0px;
   margin: 23px auto;
-  border: 0.891274px solid #E6E6E6;
-`;
-
-export const AdvertisementRectangle = styled.div`
-  display: flex;
-  margin-top: 8vh;
-  flex-direction: column;
-  justify-content: center; /* Horizontally center the content */
-  align-items: center; /* Vertically center the content */
-  width: 78.125vw;
-  border-radius: 30px;
-`;
-
-export const AdvertisementText = styled.div`
-  font-size: 31px;
-  font-weight: 600;
-  line-height: 40px;
-  letter-spacing: 0em;
-  text-align: center;
-`;
-
-export const AdvertisementImageTag = styled(Image)`
-  position: relative !important;
-  border-radius: 20px;
+  border: 0.891274px solid #e6e6e6;
 `;
 
 export const ListOfSymbolsForLetterSection = styled.div`
@@ -111,7 +88,7 @@ export const SelectedLetterSection = styled.div`
 `;
 
 export const SelectedLetterMedal = styled.div`
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   width: 174.81px;
   height: 230.1px;
   top: 2183.12px;
@@ -127,7 +104,7 @@ export const SelectedLetterMedal = styled.div`
 export const LettersListItem = styled.div`
   width: 35.35vw;
   border-radius: 17.84px;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   margin: 0 auto;
   margin-top: 32px;
   display: flex;
@@ -138,7 +115,7 @@ export const LetterListItemCircle = styled.div`
   height: 80.27px;
   margin: 12px 24px;
   border-radius: 50%;
-  background: linear-gradient(93.5deg, #A2DA00 26.2%, #93C600 99.21%);
+  background: linear-gradient(93.5deg, #a2da00 26.2%, #93c600 99.21%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -162,6 +139,15 @@ export const LettersListItemTextOne = styled.div`
 `;
 
 export const LettersListItemTextTwo = styled.div`
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 38px;
+  letter-spacing: 0em;
+  text-align: left;
+`;
+
+export const test = styled.div`
+  font-family: var(--font-montserrat);
   font-size: 17px;
   font-weight: 400;
   line-height: 38px;
