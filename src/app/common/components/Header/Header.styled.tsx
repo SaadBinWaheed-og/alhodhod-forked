@@ -41,6 +41,7 @@ export const WebsiteAddress = styled.div`
   font-weight: 800;
   color: white;
   text-align: center;
+  font-family: var(--font-montserrat);
 `;
 
 export const WebsiteSince = styled.div`
@@ -48,6 +49,7 @@ export const WebsiteSince = styled.div`
   font-size: 20px;
   font-weight: 500;
   text-align: center;
+  font-family: var(--font-montserrat);
 `;
 
 export const HeaderTextContainer = styled.div<{
@@ -60,12 +62,14 @@ export const HeaderTextContainer = styled.div<{
   padding-top: ${({ $isHomePage }) => ($isHomePage ? "calc(30vh)" : "199px")};
   padding-bottom: ${({ $isHomePage }) => ($isHomePage ? "0px" : "163px")};
   text-align: center;
+  font-family: var(--font-montserrat);
 `;
 
 export const HeaderText = styled.div`
   color: white;
   font-size: 34px;
   font-weight: 400;
+  font-family: var(--font-montserrat);
 `;
 
 export const HeaderDescription = styled.div`
@@ -74,19 +78,23 @@ export const HeaderDescription = styled.div`
   font-weight: 400;
   line-height: normal;
   width: 1053px;
+  font-family: var(--font-montserrat);
 `;
 
 export const HeaderSubText = styled.div`
   color: white;
   font-size: 79px;
   font-weight: 700;
+  font-family: var(--font-montserrat);
 `;
 
 export const HeaderButton = styled(Button)`
+  font-family: var(--font-montserrat);
   margin-top: 38px;
   text-align: center;
   height: 83px;
   width: 365px;
+  box-shadow: none;
   background: linear-gradient(94deg, #a2da00 26.2%, #93c600 99.21%);
   border: 1px solid #a2da00;
   .ant-btn-primary:hover {

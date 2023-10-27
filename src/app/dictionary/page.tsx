@@ -25,6 +25,7 @@ export default function Home() {
             <Styled.LettersListItemTextTwo>
               21 Dreams found
             </Styled.LettersListItemTextTwo>
+            <Styled.test> 21 Dreams found</Styled.test>
           </Styled.LettersListItemTextGroup>
           <Styled.LettersListItemArrowIcon src={ArrowIcon} alt="< >" />
         </Styled.LettersListItem>
@@ -76,7 +77,9 @@ export default function Home() {
         <Styled.LettersList>{renderLettersListItems()}</Styled.LettersList>
         <Styled.BackToLettersButton>Back To Letters</Styled.BackToLettersButton>
 
-        <Advertisement />
+        <div style={{ marginBottom: "76px" }}>
+          <Advertisement />
+        </div>
       </Styled.ListOfSymbolsForLetterSection>
     </div>
   );

@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import Image from "next/image";
+import { breakpoint } from "../../ui";
 
 export const AdvertisementContainer = styled.div`
   display: flex;
@@ -7,8 +8,17 @@ export const AdvertisementContainer = styled.div`
   flex-direction: column;
   justify-content: center; /* Horizontally center the content */
   align-items: center; /* Vertically center the content */
-  width: 78.125vw;
   border-radius: 30px;
+  ${breakpoint.md} {
+    width: 100%;
+  }
+  ${breakpoint.lg} {
+    width: 100%;
+  }
+  ${breakpoint.custom(1400)} {
+    width: 1350px;
+    padding: 0;
+  }
 `;
 
 export const AdvertisementText = styled.div`

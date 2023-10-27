@@ -146,6 +146,15 @@ export const LettersListItemTextTwo = styled.div`
   text-align: left;
 `;
 
+export const test = styled.div`
+  font-family: var(--font-montserrat);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 38px;
+  letter-spacing: 0em;
+  text-align: left;
+`;
+
 export const LettersListItemArrowIcon = styled(Image)`
   margin: auto 0;
   margin-left: auto;
