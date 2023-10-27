@@ -2,6 +2,7 @@
 import { Row, Col } from "antd";
 import { ArabesqueIcon } from "../common/customIcons";
 import * as Styled from "./HomePageContent.styled";
+import { Advertisement } from "../common/components/Advertisement";
 export const HomePageContent: React.FC = () => {
   return (
     <>
@@ -13,10 +14,7 @@ export const HomePageContent: React.FC = () => {
         }}
       >
         <Styled.HomePageContainer>
-          <Row
-            justify={"center"}
-            style={{ paddingTop: "120px", paddingBottom: "120px" }}
-          >
+          <Row justify={"center"} style={{ paddingTop: "120px" }}>
             <Styled.ArabesqueContainer span={24}>
               <ArabesqueIcon />
             </Styled.ArabesqueContainer>
@@ -31,6 +29,11 @@ export const HomePageContent: React.FC = () => {
                   are conflicts of daily living or past events"`}
                 </Styled.HadeesSectionDescription>
               </Styled.HadeesSection>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Advertisement />
             </Col>
           </Row>
         </Styled.HomePageContainer>

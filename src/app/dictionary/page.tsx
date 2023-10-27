@@ -1,8 +1,8 @@
 import * as Styled from "./page.styled";
 import Image from "next/image";
 import GreenVector from "../../../public/images/green-vector.svg";
-import AdvertisementImage from "../../../public/images/advertisement.svg";
 import ArrowIcon from "../../../public/images/arrow-vector.svg";
+import { Advertisement } from "../common/components/Advertisement";
 
 export default function Home() {
   const firstRowAlphabets = ["A", "B", "C", "D", "E", "F", "G"];
@@ -64,14 +64,8 @@ export default function Home() {
             ))}
           </Styled.LetterRow>
         </Styled.LetterSelection>
-        <Styled.AdvertisementRectangle>
-          <Styled.AdvertisementText>Advertisement</Styled.AdvertisementText>
-          <Styled.AdvertisementImageTag
-            src={AdvertisementImage}
-            layout="fill"
-            alt="Advertisement"
-          />
-        </Styled.AdvertisementRectangle>
+
+        <Advertisement />
       </Styled.ChooseTheFirstLetter>
       <Styled.ListOfSymbolsForLetterSection>
         <Styled.SectionHeader>List of Symbols for Letter</Styled.SectionHeader>
@@ -81,14 +75,8 @@ export default function Home() {
         </Styled.SelectedLetterSection>
         <Styled.LettersList>{renderLettersListItems()}</Styled.LettersList>
         <Styled.BackToLettersButton>Back To Letters</Styled.BackToLettersButton>
-        <Styled.AdvertisementRectangle>
-          <Styled.AdvertisementText>Advertisement</Styled.AdvertisementText>
-          <Styled.AdvertisementImageTag
-            src={AdvertisementImage}
-            layout="fill"
-            alt="Advertisement"
-          />
-        </Styled.AdvertisementRectangle>
+
+        <Advertisement />
       </Styled.ListOfSymbolsForLetterSection>
     </div>
   );
