@@ -12,12 +12,11 @@ import head from "../../../public/images/head.png";
 import Image from "next/image";
 import Blog from "../blog/page";
 import { BlogCard } from "../common/components/BlogCard";
-import blogIcon from "../../../public/images/blogIcon.svg";
+// import blogIcon from "../../../public/images/blogIcon.svg";
 export const HomePageContent: React.FC = () => {
   const blogs = [
     {
       id: 1,
-      icon: blogIcon,
       title: "Dreams",
       description:
         "Lorem ipsum dolor sit amet consectetur. Ultricies at lacus vivamus lectus lobortis elementum........",
@@ -25,7 +24,6 @@ export const HomePageContent: React.FC = () => {
     },
     {
       id: 2,
-      icon: blogIcon,
       title: "Dreams",
       description:
         "Lorem ipsum dolor sit amet consectetur. Ultricies at lacus vivamus lectus lobortis elementum........",
@@ -33,7 +31,6 @@ export const HomePageContent: React.FC = () => {
     },
     {
       id: 3,
-      icon: blogIcon,
       title: "Dreams",
       description:
         "Lorem ipsum dolor sit amet consectetur. Ultricies at lacus vivamus lectus lobortis elementum........",
@@ -152,14 +149,14 @@ export const HomePageContent: React.FC = () => {
                       key={blog.id}
                       style={{ display: "flex", justifyContent: "center" }}
                     >
-                      <BlogCard
+                      {/* <BlogCard
                         width={400}
                         height={534.542}
                         icon={blog.icon}
                         title={blog.title}
                         description={blog.description}
                         link={blog.link}
-                      />
+                      /> */}
                     </Col>
                   );
                 })}
