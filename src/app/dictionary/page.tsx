@@ -7,10 +7,10 @@ import { useState, useRef, useEffect } from 'react';
 
 export default function Dictionary() {
   const listOfSymbolsRef = useRef<HTMLDivElement | null>(null);
-  const firstRowAlphabets = ["A", "B", "C", "D", "E", "F", "G"];
-  const secondRowAlphabets = ["H", "I", "J", "K", "L", "M"];
-  const thirdRowAlphabets = ["N", "O", "P", "Q", "R", "S", "T"];
-  const fourthRowAlphabets = ["U", "V", "W", "X", "Y", "Z"];
+  const firstRowAlphabets = ["A", "B", "C", "D", "E", "F", "G", "H"];
+  const secondRowAlphabets = ["I", "J", "K", "L", "M", "N", "O"];
+  const thirdRowAlphabets = ["P", "Q", "R", "S", "T", "U", "V", "W"];
+  const fourthRowAlphabets = ["X", "Y", "Z"];
   const [showListOfSymbols, setShowListOfSymbols] = useState(false);
   const [selectedLetter, setSelectedLetter] = useState('');
 

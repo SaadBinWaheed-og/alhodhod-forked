@@ -18,7 +18,7 @@ export const ChooseTheFirstLetter = styled.div`
 `;
 
 export const LetterSelection = styled.div`
-  width: 78.125vw;
+  width: 1350px;
   background: #ffffff;
   border-radius: 21.3906px;
   padding: 2.96vh 0;
@@ -28,7 +28,7 @@ export const LetterRow = styled.div`
   flex-direction: row;
   justify-content: center;
   margin: 0 auto;
-  width: 70.93vw;
+  width: 1300px;
 `;
 
 export const LetterCircle = styled.div`
@@ -39,7 +39,7 @@ export const LetterCircle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 5.5vh;
+  margin: 0 6.5vh;
   font-size: 28px;
   font-weight: 700;
   line-height: 35px;
@@ -50,7 +50,7 @@ export const LetterCircle = styled.div`
 `;
 
 export const LineBetweenLetters = styled.div`
-  width: 70.93vw;
+  width: 1250px;
   height: 0px;
   margin: 23px auto;
   border: 0.891274px solid #e6e6e6;

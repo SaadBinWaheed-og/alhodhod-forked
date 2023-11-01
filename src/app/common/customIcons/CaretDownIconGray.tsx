@@ -3,11 +3,11 @@ import React from "react";
 
 import { IconProps } from "./types";
 
-const CaretDownIconLargeSvg = () => (
+const CaretDownIconGraySvg = () => (
   <svg
-    width="32.4"
-    height="21.6"
-    viewBox="0 0 32.4 21.6"
+    width="12"
+    height="8"
+    viewBox="0 0 12 8"
     fill="#616161"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -19,6 +19,6 @@ const CaretDownIconLargeSvg = () => (
   </svg>
 );
 
-export const CaretDownIconLarge: React.FC<IconProps> = (props) => {
-  return <Icon component={CaretDownIconLargeSvg} {...props} />;
+export const CaretDownIconGray: React.FC<IconProps> = (props) => {
+  return <Icon component={CaretDownIconGraySvg} {...props} />;
 };
