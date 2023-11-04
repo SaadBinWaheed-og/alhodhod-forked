@@ -76,7 +76,7 @@ export const DreamItemCircle = styled.div`
   border: 0.891274px solid #979797;
   cursor: pointer;
   background-color: #23262F;
-  margin: 25px 31.8px;
+  margin: 25px 50px;
 `;
 
 export const DreamItemText = styled.div`
@@ -150,7 +150,7 @@ export const DreamInterpretationSubText = styled.div`
   text-align: center;
 `;
 
-export const BackToLettersButton = styled.div`
+export const BackToLettersButton = styled.a`
   margin: 0 auto;
   margin-top: 60px;
   width: 276px;
@@ -166,4 +166,6 @@ export const BackToLettersButton = styled.div`
   line-height: 37px;
   letter-spacing: 0em;
   text-align: center;
+  color: inherit;
+  text-decoration: none;
 `;

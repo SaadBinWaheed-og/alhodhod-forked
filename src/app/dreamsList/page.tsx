@@ -1,11 +1,14 @@
 "use client";
 import * as Styled from './page.styled';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArabesqueIcon, CaretDownIconGray } from "../common/customIcons";
 import { AdvertisementContained } from "../common/components/Advertisement";
 
-export default function dreamsList(symbol: string) {
-  const [isInterpretationVisible, setInterpretationVisible] = useState(0);
+export default function dreamsList() {
+  const query = new URLSearchParams(window.location.search);
+  const symbol = query.get('symbol');
+  const [isInterpretationVisible, setInterpretationVisible] = useState();
+  const [csvData, setCsvData] = useState([]);
 
   const handleItemClick = (index: number) => {
     if (index == isInterpretationVisible) {
@@ -16,30 +19,59 @@ export default function dreamsList(symbol: string) {
     }
   };
 
+  useEffect(() => {
+    fetchData().then((data) => {
+      setCsvData(data);
+    });
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('/api/read-csv?attribute=mot');
+      if (response.ok) {
+        const data = await response.json();
+        const nameSortedData = data['data'];
+        return nameSortedData;
+      } else {
+        console.error('Failed to fetch data');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const displayDreamItems = () => {
-    const itemsToRender = 9;
+    const itemsToRender = csvData[`${symbol} `] || [];
     const items = [];
 
-    for (let i = 2; i < itemsToRender; i++) {
+    for (let i = 0; i < itemsToRender.length; i++) {
       items.push(
         <div key={i} className="DreamItemContainer">
-          <Styled.DreamItem onClick={() => handleItemClick(i)}>
-            <Styled.DreamItemCircle>
-              {i}
-            </Styled.DreamItemCircle>
-            <Styled.DreamItemText>
-              Seeing oneself in a dream riding a donkey 
-            </Styled.DreamItemText>
+          <Styled.DreamItem>
             <div style={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
               flexDirection: "row",
             }}>
+              <Styled.DreamItemCircle>
+                {i + 1}
+              </Styled.DreamItemCircle>
+            </div>
+            <Styled.DreamItemText>
+              {itemsToRender[i].enonce}
+            </Styled.DreamItemText>
+            <div style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+              marginLeft: "18px",
+            }}>
               <Styled.MeaningText>
                 Meaning
               </Styled.MeaningText>
-              <Styled.DropDownCircle>
+              <Styled.DropDownCircle onClick={() => handleItemClick(i)}>
                 <CaretDownIconGray/>
               </Styled.DropDownCircle>
             </div>
@@ -51,7 +83,7 @@ export default function dreamsList(symbol: string) {
               </Styled.DreamInterpretationHeader>
               <Styled.DreamInterpretationLine/>
               <Styled.DreamInterpretationSubText>
-                announces that it could mean a good outcome for the sick.
+                {itemsToRender[i].interp}
               </Styled.DreamInterpretationSubText>
               <AdvertisementContained/>
             </Styled.DreamInterpretationDiv>
@@ -66,17 +98,17 @@ export default function dreamsList(symbol: string) {
   return (
     <div className="dreamsList">
         <Styled.ListOfDreamsForSymbol>
-          <Styled.SectionHeader>List of dreams for symbol Riding a donkey</Styled.SectionHeader>
+          <Styled.SectionHeader>List of dreams for symbol {symbol}</Styled.SectionHeader>
             <ArabesqueIcon />
           <Styled.DreamsListDiv>
             <Styled.RightSideText>
-              07 Dreams Found
+              {csvData[`${symbol} `]?.length || 0} Dreams Found
             </Styled.RightSideText>
             <Styled.DreamList>
               {displayDreamItems()}
             </Styled.DreamList>
           </Styled.DreamsListDiv>
-          <Styled.BackToLettersButton>Back To Letters</Styled.BackToLettersButton>
+          <Styled.BackToLettersButton href={`/dictionary`}>Back To Letters</Styled.BackToLettersButton>
         </Styled.ListOfDreamsForSymbol>
     </div>
   );

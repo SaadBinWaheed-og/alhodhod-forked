@@ -159,7 +159,7 @@ export const LettersListItemArrowIcon = styled(Image)`
   height: 1.98vh;
 `;
 
-export const BackToLettersButton = styled.div`
+export const BackToLettersButton = styled.a`
   margin-top: 20px;
   width: 276px;
   height: 83px;
@@ -174,4 +174,7 @@ export const BackToLettersButton = styled.div`
   line-height: 37px;
   letter-spacing: 0em;
   text-align: center;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 `;

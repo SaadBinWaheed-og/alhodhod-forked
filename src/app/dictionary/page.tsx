@@ -4,15 +4,39 @@ import { ArabesqueIcon } from "../common/customIcons";
 import ArrowIcon from "../../../public/images/arrow-vector.svg";
 import { Advertisement } from "../common/components/Advertisement";
 import { useState, useRef, useEffect } from 'react';
+import { CsvRow } from "../../../pages/api/read-csv";
 
 export default function Dictionary() {
   const listOfSymbolsRef = useRef<HTMLDivElement | null>(null);
+  const targetSectionRef = useRef<HTMLDivElement | null>(null);
   const firstRowAlphabets = ["A", "B", "C", "D", "E", "F", "G", "H"];
   const secondRowAlphabets = ["I", "J", "K", "L", "M", "N", "O"];
   const thirdRowAlphabets = ["P", "Q", "R", "S", "T", "U", "V", "W"];
   const fourthRowAlphabets = ["X", "Y", "Z"];
   const [showListOfSymbols, setShowListOfSymbols] = useState(false);
   const [selectedLetter, setSelectedLetter] = useState('');
+  const [csvData, setCsvData] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('/api/read-csv?attribute=lettre');
+      if (response.ok) {
+        const data = await response.json();
+        const nameSortedData = data['data'];
+        return nameSortedData;
+      } else {
+        console.error('Failed to fetch data');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData().then((data) => {
+      setCsvData(data);
+    });
+  }, []);
 
   const handleButtonClick = (letter: string) => {
     setSelectedLetter(letter);
@@ -22,6 +46,12 @@ export default function Dictionary() {
     }
   };
 
+  const handleBackToLettersButtonClick = () => {
+    if (targetSectionRef.current) {
+      targetSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   useEffect(() => {
     if (showListOfSymbols && listOfSymbolsRef.current) {
       listOfSymbolsRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -29,33 +59,42 @@ export default function Dictionary() {
   }, [showListOfSymbols]);
 
   const renderLettersListSymbols = () => {
-    const itemsToRender = 22;
+    const itemsToRender = csvData[selectedLetter];
     const items = [];
+    const groupedData: { [key: string]: CsvRow[] } = {};
+    itemsToRender.forEach((row) => {
+      const value = row['mot'];
+      if (!groupedData[value]) {
+        groupedData[value] = [];
+      }
+      groupedData[value].push(row);
+    });
 
-    for (let i = 0; i < itemsToRender; i++) {
+    const symbolSortedData = Object.keys(groupedData);
+
+    for (let i = 0; i < symbolSortedData.length; i++) {
       items.push(
-        <Styled.LettersListItem href="/dreamsList" key={i}>
+        <Styled.LettersListItem href={`/dreamsList?symbol=${symbolSortedData[i]}`} key={i}>
           <Styled.LetterListItemCircle>{i + 1}</Styled.LetterListItemCircle>
           <Styled.LettersListItemTextGroup>
             <Styled.LettersListItemTextOne>
-              Lorem ipsum
+              {symbolSortedData[i]}
             </Styled.LettersListItemTextOne>
             <Styled.LettersListItemTextTwo>
-              21 Dreams found
+              {groupedData[symbolSortedData[i]].length} Dream(s) found
             </Styled.LettersListItemTextTwo>
           </Styled.LettersListItemTextGroup>
           <Styled.LettersListItemArrowIcon src={ArrowIcon} alt="< >" />
         </Styled.LettersListItem>
       );
     }
-
     return items;
   };
 
   return (
     <div className="dictionaryOfDreams">
       <Styled.ChooseTheFirstLetter>
-        <Styled.SectionHeader>Choose the first letter</Styled.SectionHeader>
+        <Styled.SectionHeader ref={targetSectionRef}>Choose the first letter</Styled.SectionHeader>
         <ArabesqueIcon />
         <Styled.LetterSelection>
           <Styled.LetterRow>
@@ -95,7 +134,7 @@ export default function Dictionary() {
             <Styled.LineBetweenLetters />
           </Styled.SelectedLetterSection>
           <Styled.LettersList>{renderLettersListSymbols()}</Styled.LettersList>
-          <Styled.BackToLettersButton>Back To Letters</Styled.BackToLettersButton>
+          <Styled.BackToLettersButton onClick={handleBackToLettersButtonClick}>Back To Letters</Styled.BackToLettersButton>
 
           <div style={{ marginBottom: "76px" }}>
             <Advertisement />
