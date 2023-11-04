@@ -26,7 +26,7 @@ export const BlogCard: React.FC<Props> = ({
   return (
     <Styled.BlogCard
       hoverable
-      cover={<Image alt="example" src={icon} height={300} />}
+      cover={<Image alt="example" src={icon} height={300} width={100} />}
       $width={width}
       $height={height}
       actions={[

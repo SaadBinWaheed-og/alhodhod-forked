@@ -1,0 +1,115 @@
+"use client";
+import * as Styled from './page.styled';
+import { useState, useEffect } from "react";
+import { ArabesqueIcon, CaretDownIconGray } from "../common/customIcons";
+import { AdvertisementContained } from "../common/components/Advertisement";
+
+export default function dreamsList() {
+  const query = new URLSearchParams(window.location.search);
+  const symbol = query.get('symbol');
+  const [isInterpretationVisible, setInterpretationVisible] = useState();
+  const [csvData, setCsvData] = useState([]);
+
+  const handleItemClick = (index: number) => {
+    if (index == isInterpretationVisible) {
+      setInterpretationVisible(-1);
+    }
+    else {
+      setInterpretationVisible(index);
+    }
+  };
+
+  useEffect(() => {
+    fetchData().then((data) => {
+      setCsvData(data);
+    });
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('/api/read-csv?attribute=mot');
+      if (response.ok) {
+        const data = await response.json();
+        const nameSortedData = data['data'];
+        return nameSortedData;
+      } else {
+        console.error('Failed to fetch data');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const displayDreamItems = () => {
+    const itemsToRender = csvData[`${symbol} `] || [];
+    const items = [];
+
+    for (let i = 0; i < itemsToRender.length; i++) {
+      items.push(
+        <div key={i} className="DreamItemContainer">
+          <Styled.DreamItem>
+            <div style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+            }}>
+              <Styled.DreamItemCircle>
+                {i + 1}
+              </Styled.DreamItemCircle>
+            </div>
+            <Styled.DreamItemText>
+              {itemsToRender[i].enonce}
+            </Styled.DreamItemText>
+            <div style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+              marginLeft: "18px",
+            }}>
+              <Styled.MeaningText>
+                Meaning
+              </Styled.MeaningText>
+              <Styled.DropDownCircle onClick={() => handleItemClick(i)}>
+                <CaretDownIconGray/>
+              </Styled.DropDownCircle>
+            </div>
+          </Styled.DreamItem>
+          {isInterpretationVisible === i && (
+            <Styled.DreamInterpretationDiv>
+              <Styled.DreamInterpretationHeader>
+                Dream Interpretation
+              </Styled.DreamInterpretationHeader>
+              <Styled.DreamInterpretationLine/>
+              <Styled.DreamInterpretationSubText>
+                {itemsToRender[i].interp}
+              </Styled.DreamInterpretationSubText>
+              <AdvertisementContained/>
+            </Styled.DreamInterpretationDiv>
+          )}
+        </div>
+      );
+    }
+
+    return items;
+  };
+
+  return (
+    <div className="dreamsList">
+        <Styled.ListOfDreamsForSymbol>
+          <Styled.SectionHeader>List of dreams for symbol {symbol}</Styled.SectionHeader>
+            <ArabesqueIcon />
+          <Styled.DreamsListDiv>
+            <Styled.RightSideText>
+              {csvData[`${symbol} `]?.length || 0} Dreams Found
+            </Styled.RightSideText>
+            <Styled.DreamList>
+              {displayDreamItems()}
+            </Styled.DreamList>
+          </Styled.DreamsListDiv>
+          <Styled.BackToLettersButton href={`/dictionary`}>Back To Letters</Styled.BackToLettersButton>
+        </Styled.ListOfDreamsForSymbol>
+    </div>
+  );
+}
