@@ -21,6 +21,25 @@ export const AdvertisementContainer = styled.div`
   }
 `;
 
+export const AdvertisementContainedContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  border-radius: 30px;
+  margin: 8vh auto 3vh auto;
+  ${breakpoint.md} {
+    width: 100%;
+  }
+  ${breakpoint.lg} {
+    width: 100%;
+  }
+  ${breakpoint.custom(1400)} {
+    width: 1170px;
+    padding: 0;
+  }
+`;
+
 export const AdvertisementText = styled.div`
   font-size: 31px;
   font-weight: 600;

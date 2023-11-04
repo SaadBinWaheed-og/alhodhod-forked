@@ -27,6 +27,7 @@ export const Header: React.FC = () => {
         </>
       )}
       {path === "/dictionary" && <>Choose the first letter of the</>}
+      {path === "/dreamsList" && <>Choose the relevant dream</>}
     </>
   );
 
@@ -44,6 +45,13 @@ export const Header: React.FC = () => {
           Main <span style={{ color: "#C1FF0B" }}>Symbol</span>
           <br />
           in your <span style={{ color: "#C1FF0B" }}>Dream</span>{" "}
+        </>
+      )}
+      {path === "/dreamsList" && (
+        <>
+          List of <span style={{ color: "#C1FF0B" }}>Dreams</span> for
+          <br />
+          <span style={{ color: "#C1FF0B" }}>Symbol</span>{" "}
         </>
       )}
       {path === "/videos" && (

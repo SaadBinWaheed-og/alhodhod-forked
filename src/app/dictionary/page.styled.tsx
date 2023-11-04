@@ -1,14 +1,6 @@
 "use client";
-import styled from "styled-components";
+import { styled } from "styled-components";
 import Image from "next/image";
-import { createGlobalStyle } from "styled-components";
-export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
-  body {
-    background-color: #F9F9F9;
-  }
-`;
-
 // Component for section headers
 export const SectionHeader = styled.p`
   font-style: normal;
@@ -26,7 +18,7 @@ export const ChooseTheFirstLetter = styled.div`
 `;
 
 export const LetterSelection = styled.div`
-  width: 78.125vw;
+  width: 1350px;
   background: #ffffff;
   border-radius: 21.3906px;
   padding: 2.96vh 0;
@@ -36,7 +28,7 @@ export const LetterRow = styled.div`
   flex-direction: row;
   justify-content: center;
   margin: 0 auto;
-  width: 70.93vw;
+  width: 1300px;
 `;
 
 export const LetterCircle = styled.div`
@@ -47,17 +39,18 @@ export const LetterCircle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 5.5vh;
+  margin: 0 6.5vh;
   font-size: 28px;
   font-weight: 700;
   line-height: 35px;
   letter-spacing: 0em;
   text-align: center;
   border: 0.891274px solid #979797;
+  cursor: pointer;
 `;
 
 export const LineBetweenLetters = styled.div`
-  width: 70.93vw;
+  width: 1250px;
   height: 0px;
   margin: 23px auto;
   border: 0.891274px solid #e6e6e6;
@@ -85,6 +78,7 @@ export const SelectedLetterSection = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  border-radius: 13px;
 `;
 
 export const SelectedLetterMedal = styled.div`
@@ -101,13 +95,15 @@ export const SelectedLetterMedal = styled.div`
   text-align: center;
 `;
 
-export const LettersListItem = styled.div`
+export const LettersListItem = styled.a`
   width: 35.35vw;
   border-radius: 17.84px;
   background-color: #f9f9f9;
   margin: 0 auto;
   margin-top: 32px;
   display: flex;
+  color: inherit;
+  text-decoration: none;
 `;
 
 export const LetterListItemCircle = styled.div`
@@ -163,7 +159,7 @@ export const LettersListItemArrowIcon = styled(Image)`
   height: 1.98vh;
 `;
 
-export const BackToLettersButton = styled.div`
+export const BackToLettersButton = styled.a`
   margin-top: 20px;
   width: 276px;
   height: 83px;
@@ -178,4 +174,7 @@ export const BackToLettersButton = styled.div`
   line-height: 37px;
   letter-spacing: 0em;
   text-align: center;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 `;

@@ -1,86 +1,146 @@
+"use client";
 import * as Styled from "./page.styled";
-import Image from "next/image";
-import GreenVector from "../../../public/images/green-vector.svg";
+import { ArabesqueIcon } from "../common/customIcons";
 import ArrowIcon from "../../../public/images/arrow-vector.svg";
 import { Advertisement } from "../common/components/Advertisement";
+import { useState, useRef, useEffect } from 'react';
+import { CsvRow } from "../../../pages/api/read-csv";
 
-export default function Home() {
-  const firstRowAlphabets = ["A", "B", "C", "D", "E", "F", "G"];
-  const secondRowAlphabets = ["H", "I", "J", "K", "L", "M"];
-  const thirdRowAlphabets = ["N", "O", "P", "Q", "R", "S", "T"];
-  const fourthRowAlphabets = ["U", "V", "W", "X", "Y", "Z"];
+export default function Dictionary() {
+  const listOfSymbolsRef = useRef<HTMLDivElement | null>(null);
+  const targetSectionRef = useRef<HTMLDivElement | null>(null);
+  const firstRowAlphabets = ["A", "B", "C", "D", "E", "F", "G", "H"];
+  const secondRowAlphabets = ["I", "J", "K", "L", "M", "N", "O"];
+  const thirdRowAlphabets = ["P", "Q", "R", "S", "T", "U", "V", "W"];
+  const fourthRowAlphabets = ["X", "Y", "Z"];
+  const [showListOfSymbols, setShowListOfSymbols] = useState(false);
+  const [selectedLetter, setSelectedLetter] = useState('');
+  const [csvData, setCsvData] = useState([]);
 
-  const renderLettersListItems = () => {
-    const itemsToRender = 22;
+  const fetchData = async () => {
+    try {
+      const response = await fetch('/api/read-csv?attribute=lettre');
+      if (response.ok) {
+        const data = await response.json();
+        const nameSortedData = data['data'];
+        return nameSortedData;
+      } else {
+        console.error('Failed to fetch data');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData().then((data) => {
+      setCsvData(data);
+    });
+  }, []);
+
+  const handleButtonClick = (letter: string) => {
+    setSelectedLetter(letter);
+    setShowListOfSymbols(true);
+    if (listOfSymbolsRef.current) {
+      listOfSymbolsRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleBackToLettersButtonClick = () => {
+    if (targetSectionRef.current) {
+      targetSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  useEffect(() => {
+    if (showListOfSymbols && listOfSymbolsRef.current) {
+      listOfSymbolsRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [showListOfSymbols]);
+
+  const renderLettersListSymbols = () => {
+    const itemsToRender = csvData[selectedLetter];
     const items = [];
+    const groupedData: { [key: string]: CsvRow[] } = {};
+    itemsToRender.forEach((row) => {
+      const value = row['mot'];
+      if (!groupedData[value]) {
+        groupedData[value] = [];
+      }
+      groupedData[value].push(row);
+    });
 
-    for (let i = 0; i < itemsToRender; i++) {
+    const symbolSortedData = Object.keys(groupedData);
+
+    for (let i = 0; i < symbolSortedData.length; i++) {
       items.push(
-        <Styled.LettersListItem key={i}>
+        <Styled.LettersListItem href={`/dreamsList?symbol=${symbolSortedData[i]}`} key={i}>
           <Styled.LetterListItemCircle>{i + 1}</Styled.LetterListItemCircle>
           <Styled.LettersListItemTextGroup>
             <Styled.LettersListItemTextOne>
-              Lorem ipsum
+              {symbolSortedData[i]}
             </Styled.LettersListItemTextOne>
             <Styled.LettersListItemTextTwo>
-              21 Dreams found
+              {groupedData[symbolSortedData[i]].length} Dream(s) found
             </Styled.LettersListItemTextTwo>
-            <Styled.test> 21 Dreams found</Styled.test>
           </Styled.LettersListItemTextGroup>
           <Styled.LettersListItemArrowIcon src={ArrowIcon} alt="< >" />
         </Styled.LettersListItem>
       );
     }
-
     return items;
   };
 
   return (
     <div className="dictionaryOfDreams">
       <Styled.ChooseTheFirstLetter>
-        <Styled.SectionHeader>Choose the first letter</Styled.SectionHeader>
-        <Image src={GreenVector} alt="Green Vector" />
+        <Styled.SectionHeader ref={targetSectionRef}>Choose the first letter</Styled.SectionHeader>
+        <ArabesqueIcon />
         <Styled.LetterSelection>
           <Styled.LetterRow>
             {firstRowAlphabets.map((letter, index) => (
-              <Styled.LetterCircle key={index}>{letter}</Styled.LetterCircle>
+              <Styled.LetterCircle onClick={() => handleButtonClick(letter)} key={index}>{letter}</Styled.LetterCircle>
             ))}
           </Styled.LetterRow>
           <Styled.LineBetweenLetters />
           <Styled.LetterRow>
             {secondRowAlphabets.map((letter, index) => (
-              <Styled.LetterCircle key={index}>{letter}</Styled.LetterCircle>
+              <Styled.LetterCircle onClick={() => handleButtonClick(letter)} key={index}>{letter}</Styled.LetterCircle>
             ))}
           </Styled.LetterRow>
           <Styled.LineBetweenLetters />
           <Styled.LetterRow>
             {thirdRowAlphabets.map((letter, index) => (
-              <Styled.LetterCircle key={index}>{letter}</Styled.LetterCircle>
+              <Styled.LetterCircle onClick={() => handleButtonClick(letter)} key={index}>{letter}</Styled.LetterCircle>
             ))}
           </Styled.LetterRow>
           <Styled.LineBetweenLetters />
           <Styled.LetterRow>
             {fourthRowAlphabets.map((letter, index) => (
-              <Styled.LetterCircle key={index}>{letter}</Styled.LetterCircle>
+              <Styled.LetterCircle onClick={() => handleButtonClick(letter)} key={index}>{letter}</Styled.LetterCircle>
             ))}
           </Styled.LetterRow>
         </Styled.LetterSelection>
 
-        <Advertisement />
-      </Styled.ChooseTheFirstLetter>
-      <Styled.ListOfSymbolsForLetterSection>
-        <Styled.SectionHeader>List of Symbols for Letter</Styled.SectionHeader>
-        <Styled.SelectedLetterSection>
-          <Styled.SelectedLetterMedal>R</Styled.SelectedLetterMedal>
-          <Styled.LineBetweenLetters />
-        </Styled.SelectedLetterSection>
-        <Styled.LettersList>{renderLettersListItems()}</Styled.LettersList>
-        <Styled.BackToLettersButton>Back To Letters</Styled.BackToLettersButton>
-
         <div style={{ marginBottom: "76px" }}>
           <Advertisement />
         </div>
-      </Styled.ListOfSymbolsForLetterSection>
+      </Styled.ChooseTheFirstLetter>
+      {showListOfSymbols && (
+        <Styled.ListOfSymbolsForLetterSection ref={listOfSymbolsRef}>
+          <Styled.SectionHeader>List of Symbols for Letter</Styled.SectionHeader>
+          <Styled.SelectedLetterSection>
+            <Styled.SelectedLetterMedal>{selectedLetter}</Styled.SelectedLetterMedal>
+            <Styled.LineBetweenLetters />
+          </Styled.SelectedLetterSection>
+          <Styled.LettersList>{renderLettersListSymbols()}</Styled.LettersList>
+          <Styled.BackToLettersButton onClick={handleBackToLettersButtonClick}>Back To Letters</Styled.BackToLettersButton>
+
+          <div style={{ marginBottom: "76px" }}>
+            <Advertisement />
+          </div>
+        </Styled.ListOfSymbolsForLetterSection>
+      )}
     </div>
   );
 }
