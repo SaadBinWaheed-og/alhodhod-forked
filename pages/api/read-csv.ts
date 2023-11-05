@@ -25,7 +25,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         csvData.push(row);
       })
       .on('end', () => {
-        const groupedData = groupDataByAttribute(csvData, attribute);
+        const groupedData = groupDataByAttribute(csvData, attribute as keyof CsvRow);
 
         res.status(200).json({ data: groupedData });
       });
@@ -35,7 +35,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-function groupDataByAttribute(data: CsvRow[], attribute: string) {
+function groupDataByAttribute(data: CsvRow[], attribute: keyof CsvRow) {
   const groupedData: { [key: string]: CsvRow[] } = {};
 
   data.forEach((row) => {
