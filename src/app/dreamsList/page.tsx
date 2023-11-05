@@ -6,7 +6,7 @@ import { AdvertisementContained } from "../common/components/Advertisement";
 import { CsvRow } from '../../../pages/api/read-csv';
 
 export default function DreamsList() {
-  const query = new URLSearchParams(window.location.search);
+  const query = window ? new URLSearchParams(window.location.search) : new URLSearchParams();
   const [isInterpretationVisible, setInterpretationVisible] = useState(9999);
   const [csvData, setCsvData] = useState<CsvRow[]>([]);
   const [symbol, setSymbol] = useState(query.get('symbol') || '');
