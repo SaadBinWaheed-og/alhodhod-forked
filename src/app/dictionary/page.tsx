@@ -75,7 +75,14 @@ export default function Dictionary() {
     for (let i = 0; i < symbolSortedData.length; i++) {
       items.push(
         <Styled.LettersListItem href={`/dreamsList?symbol=${symbolSortedData[i]}`} key={i}>
-          <Styled.LetterListItemCircle>{i + 1}</Styled.LetterListItemCircle>
+          <div style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+            }}>              
+            <Styled.LetterListItemCircle>{i + 1}</Styled.LetterListItemCircle>
+          </div>
           <Styled.LettersListItemTextGroup>
             <Styled.LettersListItemTextOne>
               {symbolSortedData[i]}
