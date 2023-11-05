@@ -13,8 +13,10 @@ export const Header: React.FC = () => {
   const [path, setPath] = useState<string>("/");
 
   useEffect(() => {
-    setPath(pathName);
-  }, [path, pathName]);
+    if (pathName) {
+      setPath(pathName);
+    }
+  }, [pathName]);
 
   const isHomePage = path === "/";
 
