@@ -13,8 +13,10 @@ export const Header: React.FC = () => {
   const [path, setPath] = useState<string>("/");
 
   useEffect(() => {
-    setPath(pathName);
-  }, [path, pathName]);
+    if (pathName) {
+      setPath(pathName);
+    }
+  }, [pathName]);
 
   const isHomePage = path === "/";
 
@@ -27,7 +29,7 @@ export const Header: React.FC = () => {
         </>
       )}
       {path === "/dictionary" && <>Choose the first letter of the</>}
-      {path === "/dreamsList" && <>Choose the relevant dream</>}
+      {path === "/DreamsList" && <>Choose the relevant dream</>}
     </>
   );
 
@@ -47,7 +49,7 @@ export const Header: React.FC = () => {
           in your <span style={{ color: "#C1FF0B" }}>Dream</span>{" "}
         </>
       )}
-      {path === "/dreamsList" && (
+      {path === "/DreamsList" && (
         <>
           List of <span style={{ color: "#C1FF0B" }}>Dreams</span> for
           <br />
