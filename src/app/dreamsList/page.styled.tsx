@@ -142,7 +142,7 @@ export const DreamInterpretationLine = styled.div`
 `;
 
 export const DreamInterpretationSubText = styled.div`
-  margin: 5vh auto 0 auto;
+  margin: 5vh 35px 0 35px;
   font-size: 29px;
   font-weight: 400;
   line-height: 38px;

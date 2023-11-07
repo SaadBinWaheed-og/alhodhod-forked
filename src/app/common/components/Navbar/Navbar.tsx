@@ -5,13 +5,11 @@ import Link from "next/link";
 import type { MenuProps } from "antd";
 import { ConfigProvider } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
-import { useDevice } from "../../hooks";
 import * as Styled from "./Navbar.styled";
 import { MobileNavbar } from "./MobileNavbar/MobileNavbar";
 import { CaretDownIcon } from "../../customIcons";
 
 export const Navbar: React.FC = () => {
-  const device = useDevice();
   const items: MenuProps["items"] = [
     {
       label: <Link href={"/"}>Home</Link>,
@@ -82,19 +80,16 @@ export const Navbar: React.FC = () => {
           },
         }}
       >
-        {device?.isBreakpoint("LG") ? (
-          <>
-            <Styled.Navbar
-              onClick={handleClick}
-              selectedKeys={[current]}
-              mode="horizontal"
-              items={items}
-              overflowedIndicator={<MenuOutlined />}
-            />
-          </>
-        ) : (
-          <MobileNavbar items={items} onClick={handleClick} current={current} />
-        )}
+        <>
+          <Styled.Navbar
+            onClick={handleClick}
+            selectedKeys={[current]}
+            mode="horizontal"
+            items={items}
+            overflowedIndicator={<MenuOutlined />}
+          />
+        </>
+        {/* <MobileNavbar items={items} onClick={handleClick} current={current} /> */}
       </ConfigProvider>
     </>
   );

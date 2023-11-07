@@ -15,7 +15,7 @@ export default function Dictionary() {
   const fourthRowAlphabets = ["X", "Y", "Z"];
   const [showListOfSymbols, setShowListOfSymbols] = useState(false);
   const [selectedLetter, setSelectedLetter] = useState('');
-  const [csvData, setCsvData] = useState([]);
+  const [csvData, setCsvData] = useState<CsvRow[]>([]);
 
   const fetchData = async () => {
     try {
@@ -59,23 +59,32 @@ export default function Dictionary() {
   }, [showListOfSymbols]);
 
   const renderLettersListSymbols = () => {
-    const itemsToRender = csvData[selectedLetter];
+    const itemsToRender = csvData[selectedLetter as any] || [];
     const items = [];
     const groupedData: { [key: string]: CsvRow[] } = {};
-    itemsToRender.forEach((row) => {
-      const value = row['mot'];
-      if (!groupedData[value]) {
-        groupedData[value] = [];
-      }
-      groupedData[value].push(row);
-    });
+    if (Array.isArray(itemsToRender)){
+      itemsToRender.forEach((row) => {
+        const value = row['mot'];
+        if (!groupedData[value]) {
+          groupedData[value] = [];
+        }
+        groupedData[value].push(row);
+      });
+    }
 
     const symbolSortedData = Object.keys(groupedData);
 
     for (let i = 0; i < symbolSortedData.length; i++) {
       items.push(
-        <Styled.LettersListItem href={`/dreamsList?symbol=${symbolSortedData[i]}`} key={i}>
-          <Styled.LetterListItemCircle>{i + 1}</Styled.LetterListItemCircle>
+        <Styled.LettersListItem href={`/DreamsList?symbol=${symbolSortedData[i]}`} key={i}>
+          <div style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+            }}>              
+            <Styled.LetterListItemCircle>{i + 1}</Styled.LetterListItemCircle>
+          </div>
           <Styled.LettersListItemTextGroup>
             <Styled.LettersListItemTextOne>
               {symbolSortedData[i]}
