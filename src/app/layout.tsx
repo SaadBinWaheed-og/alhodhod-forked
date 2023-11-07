@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import StyledComponentsRegistry from "./lib/registry";
 
 import { Header, Footer } from "./common/components";
 
@@ -24,9 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.variable}>
-        <Header />
-        {children}
-        <Footer />
+        <StyledComponentsRegistry>
+          <Header />
+          {children}
+          <Footer />
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
