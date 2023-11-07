@@ -6,10 +6,9 @@ import { AdvertisementContained } from "../common/components/Advertisement";
 import { CsvRow } from '../../../pages/api/read-csv';
 
 export default function DreamsList() {
-  const query = (typeof window !== "undefined") ? new URLSearchParams(window.location.search) : new URLSearchParams();
   const [isInterpretationVisible, setInterpretationVisible] = useState(9999);
   const [csvData, setCsvData] = useState<CsvRow[]>([]);
-  const [symbol, setSymbol] = useState(query.get('symbol') || '');
+  const [symbol, setSymbol] = useState<string>();
 
   const handleItemClick = (index: number) => {
     if (index == isInterpretationVisible) {
@@ -21,6 +20,9 @@ export default function DreamsList() {
   };
 
   useEffect(() => {
+    if (localStorage){
+      setSymbol(localStorage.getItem('selectedSymbol') || '');
+    }
     fetchData().then((data) => {
       setCsvData(data);
     });
@@ -42,7 +44,7 @@ export default function DreamsList() {
   };
 
   const getItemsCount = () => {
-    const totalItems = csvData[`${symbol} ` as any] || [];
+    const totalItems = csvData[`${symbol}` as any] || [];
     if (Array.isArray(totalItems)){
       return totalItems.length;
     }
@@ -52,13 +54,13 @@ export default function DreamsList() {
   }
 
   const displayDreamItems = () => {
-    const itemsToRender = csvData[`${symbol} ` as any] || [];
+    const itemsToRender = csvData[`${symbol}` as any] || [];
     const items = [];
 
     if (Array.isArray(itemsToRender)){
       for (let i = 0; i < itemsToRender.length; i++) {
         items.push(
-          <div key={i} className="DreamItemContainer">
+          <div key={i}>
             <Styled.DreamItem>
               <div style={{
                 display: "flex",
@@ -109,7 +111,7 @@ export default function DreamsList() {
   };
 
   return (
-    <div className="DreamsList">
+    <div>
         <Styled.ListOfDreamsForSymbol>
           <Styled.SectionHeader>List of dreams for symbol {symbol}</Styled.SectionHeader>
             <ArabesqueIcon />

@@ -76,7 +76,7 @@ export default function Dictionary() {
 
     for (let i = 0; i < symbolSortedData.length; i++) {
       items.push(
-        <Styled.LettersListItem href={`/DreamsList?symbol=${symbolSortedData[i]}`} key={i}>
+        <Styled.LettersListItem onClick={() => localStorage.setItem('selectedSymbol', `${symbolSortedData[i]}`)} href={`/DreamsList?symbol=${symbolSortedData[i]}`} key={i}>
           <div style={{
               display: "flex",
               justifyContent: "center",
@@ -101,7 +101,7 @@ export default function Dictionary() {
   };
 
   return (
-    <div className="dictionaryOfDreams">
+    <div>
       <Styled.ChooseTheFirstLetter>
         <Styled.SectionHeader ref={targetSectionRef}>Choose the first letter</Styled.SectionHeader>
         <ArabesqueIcon />
