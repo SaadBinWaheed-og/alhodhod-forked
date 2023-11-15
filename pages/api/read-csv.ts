@@ -12,7 +12,7 @@ export interface CsvRow {
   regle: string;
 }
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+const handler = (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { attribute } = req.query;
     const filePath = path.resolve('public/csvs/glir_db_eng.csv');
@@ -48,3 +48,5 @@ function groupDataByAttribute(data: CsvRow[], attribute: keyof CsvRow) {
 
   return groupedData;
 }
+
+export default handler;
