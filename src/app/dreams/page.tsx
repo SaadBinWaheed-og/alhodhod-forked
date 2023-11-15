@@ -5,7 +5,7 @@ import { ArabesqueIcon, CaretDownIconGray } from "../common/customIcons";
 import { AdvertisementContained } from "../common/components/Advertisement";
 import { CsvRow } from '../../../pages/api/read-csv';
 
-export default function DreamsList() {
+export default function Dreams() {
   const [isInterpretationVisible, setInterpretationVisible] = useState(9999);
   const [csvData, setCsvData] = useState<CsvRow[]>([]);
   const [symbol, setSymbol] = useState<string>();
