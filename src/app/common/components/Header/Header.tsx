@@ -29,7 +29,7 @@ export const Header: React.FC = () => {
         </>
       )}
       {path === "/dictionary" && <>Choose the first letter of the</>}
-      {path === "/DreamsList" && <>Choose the relevant dream</>}
+      {path === "/dreams" && <>Choose the relevant dream</>}
     </>
   );
 
@@ -49,7 +49,7 @@ export const Header: React.FC = () => {
           in your <span style={{ color: "#C1FF0B" }}>Dream</span>{" "}
         </>
       )}
-      {path === "/DreamsList" && (
+      {path === "/dreams" && (
         <>
           List of <span style={{ color: "#C1FF0B" }}>Dreams</span> for
           <br />
