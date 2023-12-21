@@ -3,7 +3,6 @@ import { Row, Col, Space } from "antd";
 import { ArabesqueIcon } from "../common/customIcons";
 import * as Styled from "./HomePageContent.styled";
 import { Advertisement } from "../common/components/Advertisement";
-import YouTubePlaylist from "@codesweetly/react-youtube-playlist";
 
 import fdree from "../../../public/images/fdree.jpg";
 import head from "../../../public/images/head.png";
