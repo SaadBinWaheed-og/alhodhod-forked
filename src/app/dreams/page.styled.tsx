@@ -55,6 +55,7 @@ export const RightSideText = styled.div`
   letter-spacing: 0em;
   text-align: right;
   color: #5e5e5e;
+  margin: 0 8.25vw 0 0;
   ${breakpoint.md} {
     font-size: 28px;
     font-weight: 400;
@@ -143,6 +144,7 @@ export const DreamItemText = styled.div`
 export const MeaningText = styled.div`
   display: none;
   ${breakpoint.md} {
+    display: block;
     font-size: 28px;
     font-weight: 400;
     line-height: 35px;
