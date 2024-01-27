@@ -1,20 +1,31 @@
 "use client";
 import { styled } from "styled-components";
 import Image from "next/image";
+import { breakpoint } from "../common/ui";
 // Component for section headers
 export const SectionHeader = styled.p`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 44.47px;
-  line-height: 54px;
-  color: #23262f;
+  display: none;
+  ${breakpoint.md} {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 44.47px;
+    line-height: 54px;
+    color: #23262f;
+  }
+`;
+
+export const LetterFilterMobile = styled.div`
+  padding: 0px 20px;
 `;
 
 export const ChooseTheFirstLetter = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 0 4.58vw;
+  display: none;
+  ${breakpoint.md} {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 4.58vw;
+  }
 `;
 
 export const LetterSelection = styled.div`
@@ -64,21 +75,30 @@ export const ListOfSymbolsForLetterSection = styled.div`
 `;
 
 export const LettersList = styled.div`
-  width: 78.125vw;
-  background-color: white;
+  ${breakpoint.md} {
+    width: 78.125vw;
+    background-color: white;
+    padding: 0px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  width: 96%;
+  padding: 20px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   padding-bottom: 32px;
 `;
 
 export const SelectedLetterSection = styled.div`
-  width: 78.125vw;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 13px;
+  display: none;
+  ${breakpoint.md} {
+    width: 78.125vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 13px;
+  }
 `;
 
 export const SelectedLetterMedal = styled.div`
@@ -96,19 +116,27 @@ export const SelectedLetterMedal = styled.div`
 `;
 
 export const LettersListItem = styled.a`
-  width: 35.35vw;
+  width: 100%;
   border-radius: 17.84px;
-  background-color: #f9f9f9;
-  margin: 0 auto;
   margin-top: 32px;
   display: flex;
+  background-color: white;
   color: inherit;
   text-decoration: none;
+  ${breakpoint.md} {
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    width: 35.35vw;
+  }
 `;
 
 export const LetterListItemCircle = styled.div`
-  width: 80.27px;
-  height: 80.27px;
+  width: 50px;
+  height: 50px;
+  ${breakpoint.md} {
+    width: 80.27px;
+    height: 80.27px;
+  }
   margin: 12px 24px;
   border-radius: 50%;
   background: linear-gradient(93.5deg, #a2da00 26.2%, #93c600 99.21%);
@@ -127,15 +155,21 @@ export const LettersListItemTextGroup = styled.div`
 `;
 
 export const LettersListItemTextOne = styled.div`
-  font-size: 29px;
+  ${breakpoint.md} {
+    font-size: 29px;
+    line-height: 38px;
+  }
+  font-size: large;
   font-weight: 600;
-  line-height: 38px;
   letter-spacing: 0em;
   text-align: left;
 `;
 
 export const LettersListItemTextTwo = styled.div`
-  font-size: 17px;
+  ${breakpoint.md} {
+    font-size: 17px;
+  }
+  font-size: medium;
   font-weight: 400;
   line-height: 38px;
   letter-spacing: 0em;
@@ -155,8 +189,12 @@ export const LettersListItemArrowIcon = styled(Image)`
   margin: auto 0;
   margin-left: auto;
   margin-right: 25px;
-  width: 1.67vw;
-  height: 1.98vh;
+  height: 4vh;
+  width: 5vw;
+  ${breakpoint.md} {
+    height: 1.98vh;
+    width: 1.67vw;
+  }
 `;
 
 export const BackToLettersButton = styled.a`
