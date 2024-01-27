@@ -6,6 +6,7 @@ import { breakpoint } from "../common/ui";
 export const SectionHeader = styled.p`
   display: none;
   ${breakpoint.md} {
+    display: block;
     font-style: normal;
     font-weight: 600;
     font-size: 44.47px;
@@ -21,6 +22,7 @@ export const LetterFilterMobile = styled.div`
 export const ChooseTheFirstLetter = styled.div`
   display: none;
   ${breakpoint.md} {
+    display: block;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -91,6 +93,7 @@ export const LettersList = styled.div`
 export const SelectedLetterSection = styled.div`
   display: none;
   ${breakpoint.md} {
+    display: block;
     width: 78.125vw;
     background-color: white;
     display: flex;
@@ -124,7 +127,7 @@ export const LettersListItem = styled.a`
   color: inherit;
   text-decoration: none;
   ${breakpoint.md} {
-    margin: 0 auto;
+    margin: 16px auto;
     background-color: #f9f9f9;
     width: 35.35vw;
   }
@@ -198,21 +201,24 @@ export const LettersListItemArrowIcon = styled(Image)`
 `;
 
 export const BackToLettersButton = styled.a`
-  margin-top: 20px;
-  width: 276px;
-  height: 83px;
-  border: 1px solid;
-  border-color: #878787;
-  border-radius: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 37px;
-  letter-spacing: 0em;
-  text-align: center;
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
+  display: none;
+  ${breakpoint.md} {
+    margin-top: 20px;
+    width: 276px;
+    height: 83px;
+    border: 1px solid;
+    border-color: #878787;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 37px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
 `;

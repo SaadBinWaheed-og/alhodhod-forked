@@ -10,6 +10,7 @@ import DictionaryFilter from "../common/components/DictionaryFilter/DictionaryFi
 export default function Dictionary() {
   const listOfSymbolsRef = useRef<HTMLDivElement | null>(null);
   const targetSectionRef = useRef<HTMLDivElement | null>(null);
+  const targetSectionRefDesktop = useRef<HTMLDivElement | null>(null);
   const firstRowAlphabets = ["A", "B", "C", "D", "E", "F", "G", "H"];
   const secondRowAlphabets = ["I", "J", "K", "L", "M", "N", "O"];
   const thirdRowAlphabets = ["P", "Q", "R", "S", "T", "U", "V", "W"];
@@ -56,6 +57,9 @@ export default function Dictionary() {
   const handleBackToLettersButtonClick = () => {
     if (targetSectionRef.current) {
       targetSectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+    if (targetSectionRefDesktop.current) {
+      targetSectionRefDesktop.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -118,7 +122,7 @@ export default function Dictionary() {
   return (
     <div>
       <Styled.ChooseTheFirstLetter>
-        <Styled.SectionHeader ref={targetSectionRef}>
+        <Styled.SectionHeader ref={targetSectionRefDesktop}>
           Choose the first letter
         </Styled.SectionHeader>
         <ArabesqueIcon />
@@ -172,7 +176,7 @@ export default function Dictionary() {
           <Advertisement />
         </div>
       </Styled.ChooseTheFirstLetter>
-      <DictionaryFilter alphabets={alphabets} selectedCharacter={selectedLetter} handleButtonClick={handleButtonClick}/>
+      <DictionaryFilter alphabets={alphabets} selectedCharacter={selectedLetter} handleButtonClick={handleButtonClick} ref={targetSectionRef}/>
       {showListOfSymbols && (
         <Styled.ListOfSymbolsForLetterSection ref={listOfSymbolsRef}>
           <Styled.SectionHeader>
