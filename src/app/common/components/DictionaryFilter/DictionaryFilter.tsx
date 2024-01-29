@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState, forwardRef, ForwardedRef } from "react";
+import React, { useMemo, useState } from "react";
 import * as Styled from "./DictionaryFilter.styled";
 import { CaretDownIconGray } from "../../customIcons";
 import { sliceInChunks } from "../../utils/utility";
@@ -9,7 +9,7 @@ type Props = {
   handleButtonClick: Function;
 };
 
-const DictionaryFilter = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement | null>) => {
+const DictionaryFilter = (props: Props) => {
   const { alphabets, selectedCharacter, handleButtonClick } = props;
   const slicedAlphabets = useMemo(
     () => sliceInChunks(alphabets, 9),
@@ -22,7 +22,7 @@ const DictionaryFilter = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElem
   };
 
   return (
-    <Styled.Container ref={ref}>
+    <Styled.Container>
       <Styled.Header>
         {!!selectedCharacter ? (
           <Styled.SelectedCharacter>
@@ -68,6 +68,6 @@ const DictionaryFilter = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElem
       )}
     </Styled.Container>
   );
-});
+};
 
 export default DictionaryFilter;

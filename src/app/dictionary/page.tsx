@@ -176,7 +176,7 @@ export default function Dictionary() {
           <Advertisement />
         </div>
       </Styled.ChooseTheFirstLetter>
-      <DictionaryFilter alphabets={alphabets} selectedCharacter={selectedLetter} handleButtonClick={handleButtonClick} ref={targetSectionRef}/>
+      <DictionaryFilter alphabets={alphabets} selectedCharacter={selectedLetter} handleButtonClick={handleButtonClick}/>
       {showListOfSymbols && (
         <Styled.ListOfSymbolsForLetterSection ref={listOfSymbolsRef}>
           <Styled.SectionHeader>
