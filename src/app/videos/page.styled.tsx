@@ -48,7 +48,7 @@ export const VideoWrapper = styled.div`
 
 export const Video = styled.iframe`
   border-radius: 17.1px;
-  width: 352px;
+  width: 100%;
   height: 198px;
   border: none;
 
@@ -74,6 +74,14 @@ export const VideoTitle = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 348px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 14.042px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    white-space: pre-line;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -95,4 +103,7 @@ export const Alhodhod = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
