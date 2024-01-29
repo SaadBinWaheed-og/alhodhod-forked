@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { breakpoint } from "../../ui";
 
 export const Container = styled.div`
+  position: relative;
+  z-index: 10;
   padding: 20px 40px;
   ${breakpoint.md} {
     display: none;
