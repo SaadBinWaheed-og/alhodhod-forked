@@ -10,7 +10,7 @@ export const Advertisement: React.FC = () => {
       <Styled.AdvertisementText>Advertisement</Styled.AdvertisementText>
       <Styled.AdvertisementImageTag
         src={AdvertisementImage}
-        layout="fill"
+        fill={true}
         alt="Advertisement"
       />
     </Styled.AdvertisementContainer>

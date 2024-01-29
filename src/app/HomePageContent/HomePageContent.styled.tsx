@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { breakpoint } from "../common/ui";
 import { Row, Col, Button } from "antd";
-
+import Image from "next/image";
 export const HomePageContainer = styled(Row)`
   justify-content: center;
   align-items: center;
@@ -19,12 +19,22 @@ export const HomePageContainer = styled(Row)`
     padding: 0;
   }
 `;
+
+export const FirstSection = styled(Row)`
+  padding-top: 120px;
+  @media screen and (max-width: 768px) {
+    padding-top: 34px;
+  }
+`;
 export const HadeesSection = styled.div`
   padding: 68px 109px;
   border-radius: 20px;
   background-color: #fff;
   text-align: center;
   font-family: var(--font-montserrat);
+  @media screen and (max-width: 768px) {
+    padding: 16px 26px;
+  }
 `;
 
 export const ArabesqueContainer = styled(Col)`
@@ -33,12 +43,30 @@ export const ArabesqueContainer = styled(Col)`
   z-index: 1;
 `;
 
+export const ArabesqueDesktop = styled.div`
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`;
+
+export const ArabesqueMobile = styled.div`
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`;
+
 export const HadeesSectionTitle = styled.div`
   color: #23262f;
   font-family: var(--font-montserrat);
   font-size: 28px;
   font-weight: 500 !important;
   line-height: 36px;
+  @media screen and (max-width: 768px) {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 36.096px;
+  }
 `;
 export const HadeesSectionDescription = styled.div`
   padding-top: 24px;
@@ -46,6 +74,13 @@ export const HadeesSectionDescription = styled.div`
   font-size: 28px;
   font-weight: 400;
   line-height: 36.096px;
+  @media screen and (max-width: 768px) {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15.6px;
+    padding-top: 0px;
+  }
 `;
 
 export const DreamTitle = styled.div`
@@ -55,6 +90,15 @@ export const DreamTitle = styled.div`
   font-size: 52px;
   font-weight: 700;
   line-height: 73.178px;
+  padding-top: 16px;
+  @media screen and (max-width: 768px) {
+    font-size: 11.5px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-top: 0px;
+    text-align: left;
+  }
 `;
 
 export const DreamsDescription = styled.div`
@@ -64,6 +108,22 @@ export const DreamsDescription = styled.div`
   font-weight: 400;
   line-height: 38.036px;
   text-align: justify;
+  @media screen and (max-width: 768px) {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15.6px;
+    text-align: left;
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  @media screen and (max-width: 768px) {
+    justify-content: start;
+  }
 `;
 
 export const DreamsButton = styled(Button)`
@@ -88,6 +148,29 @@ export const DreamsButton = styled(Button)`
     font-weight: 500;
     background-color: #fff;
   }
+
+  @media screen and (max-width: 768px) {
+    display: inline-flex;
+    padding: 8px 11px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 110px;
+    height: 27px;
+    border-radius: 4.294px;
+    border: 0.33px solid #94c801;
+    background: linear-gradient(94deg, #a2da00 26.2%, #93c600 99.21%),
+      linear-gradient(90deg, #97cb01 0%, rgba(151, 203, 1, 0) 100%);
+    font-style: normal;
+    line-height: normal;
+    > span {
+      color: #23262f;
+      font-size: 8.714px;
+      font-weight: 500;
+      background: linear-gradient(94deg, #a2da00 26.2%, #93c600 99.21%),
+        linear-gradient(90deg, #97cb01 0%, rgba(151, 203, 1, 0) 100%);
+    }
+  }
 `;
 
 export const SecondSection = styled(Row)`
@@ -95,18 +178,25 @@ export const SecondSection = styled(Row)`
   background-color: #fff;
   width: 100%;
   border-radius: 20px;
+  @media screen and (max-width: 768px) {
+    margin-top: 34px;
+  }
 `;
 
 export const SecondSectionContainer = styled(Col)`
-  padding-left: 58px;
-  padding-top: 68px;
-  padding-bottom: 68px;
+  padding: 68px 58px;
+  @media screen and (max-width: 768px) {
+    padding: 16px 26px;
+  }
 `;
 
 export const BlogSection = styled(Row)`
   margin-top: 76px;
   width: 100%;
   border-radius: 20px;
+  @media screen and (max-width: 768px) {
+    margin-top: 34px;
+  }
 `;
 
 export const BlogSectionTitle = styled.div`
@@ -115,10 +205,82 @@ export const BlogSectionTitle = styled.div`
   font-size: 52.427px;
   font-weight: 700;
   font-family: var(--font-montserrat);
+
+  @media screen and (max-width: 768px) {
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+  }
 `;
 
 export const VideoSection = styled(Row)`
   margin-top: 76px;
   width: 100%;
   border-radius: 20px;
+  @media screen and (max-width: 768px) {
+    margin-top: 34px;
+  }
+`;
+
+export const ImageDesignCol = styled(Col)`
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const ImageDesignContainer = styled.div`
+  width: 100%;
+  position: relative;
+  height: 546px;
+  @media screen and (max-width: 768px) {
+    height: 237px;
+  }
+`;
+export const GreenBox = styled.div`
+  position: absolute;
+  bottom: 0px;
+  right: 120px;
+  width: 240px;
+  height: 320px;
+  border-radius: 24px;
+  background: #aed932;
+  z-index: 2;
+  @media screen and (max-width: 768px) {
+    right: 135px;
+    width: 75px;
+    height: 143px;
+  }
+`;
+
+export const DreamImageBgMobile = styled(Image)`
+  border-radius: 20px;
+  @media screen and (min-width: 769px) {
+    display: none;
+  }
+`;
+export const DreamImageBgDesktop = styled(Image)`
+  border-radius: 20px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const HeadImageMobile = styled(Image)`
+  border-radius: 20px;
+  @media screen and (min-width: 769px) {
+    display: none;
+  }
+`;
+export const HeadImageDesktop = styled(Image)`
+  border-radius: 20px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;

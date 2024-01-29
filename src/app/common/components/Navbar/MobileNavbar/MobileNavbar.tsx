@@ -1,42 +1,129 @@
 import React, { useState } from "react";
-import { Button, Drawer } from "antd";
 import type { MenuProps } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
+import {
+  MenuOutlined,
+  CloseOutlined,
+  HomeOutlined,
+  HomeFilled,
+  QuestionCircleOutlined,
+  QuestionCircleFilled,
+} from "@ant-design/icons";
+import Link from "next/link";
+import { Space } from "antd";
+import Image from "next/image";
 
 import * as Styled from "./MobileNavbar.styled";
 
 type Props = {
-  items: MenuProps["items"];
-  current: string;
-  onClick: (e: any) => void;
+  path: string;
 };
 
-export const MobileNavbar: React.FC<Props> = ({ items, current, onClick }) => {
+export const MobileNavbar: React.FC<Props> = ({ path }) => {
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
+  const closeDrawer = () => {
+    setOpen(false);
+  };
   return (
-    <>
-      <Button type="primary" onClick={toggleDrawer}>
-        Open
-      </Button>
-      <Drawer
-        title="Basic Drawer"
+    <Styled.MobileNavbar>
+      <div onClick={toggleDrawer}>
+        {!open ? (
+          <MenuOutlined style={{ fontSize: "20px", color: "white" }} />
+        ) : (
+          <CloseOutlined />
+        )}
+      </div>
+      <Styled.Drawer
+        title="Alhodhod"
         placement="right"
         onClose={toggleDrawer}
         open={open}
+        closeIcon={false}
+        extra={<CloseOutlined onClick={toggleDrawer} />}
       >
-        <Styled.Navbar
-          onClick={onClick}
-          selectedKeys={[current]}
-          mode="vertical"
-          items={items}
-          style={{ backgroundColor: "blue" }}
-          overflowedIndicator={<MenuOutlined />}
-        />
-      </Drawer>
-    </>
+        <Styled.NavBarList>
+          <Styled.NavbarListItem $active={path === "/"}>
+            <Link href={"/"} onClick={closeDrawer}>
+              <Space size={12}>
+                {path === "/" ? (
+                  <HomeFilled style={{ fontSize: "16px", color: "#CBCBCB" }} />
+                ) : (
+                  <HomeOutlined
+                    style={{ fontSize: "16px", color: "#CBCBCB" }}
+                  />
+                )}
+                <span>Home</span>
+              </Space>
+            </Link>
+          </Styled.NavbarListItem>
+
+          <Styled.NavbarListItem $active={path === "/dictionary"}>
+            <Link href="/dictionary" onClick={closeDrawer}>
+              <Space size={12}>
+                <Image
+                  src={"/images/dictionarylogo.svg"}
+                  alt="Al-hodhod logo"
+                  quality={100}
+                  width={18.4}
+                  height={13.38}
+                  style={{ paddingTop: "5px" }}
+                />
+                <span>Dictionary of Dreams</span>
+              </Space>
+            </Link>
+          </Styled.NavbarListItem>
+          <Styled.NavbarListItem $active={path === "/blog"}>
+            <Link href="/blog" onClick={closeDrawer}>
+              <Space size={12}>
+                <Image
+                  src={"/images/blogLogo.svg"}
+                  alt="Al-hodhod logo"
+                  quality={100}
+                  width={18.4}
+                  height={18.4}
+                  style={{ paddingTop: "5px", color: "black" }}
+                />
+                <span>Blogs</span>
+              </Space>
+            </Link>
+          </Styled.NavbarListItem>
+          <Styled.NavbarListItem $active={path === "/videos"}>
+            <Link href="/videos" onClick={closeDrawer}>
+              <Space size={12}>
+                <Image
+                  src={"/images/videoLogo.svg"}
+                  alt="Al-hodhod logo"
+                  quality={100}
+                  width={18.4}
+                  height={18.4}
+                  style={{ paddingTop: "5px", color: "black" }}
+                />
+                <span>Videos</span>
+              </Space>
+            </Link>
+          </Styled.NavbarListItem>
+          <Styled.NavbarListItem $active={path === "/about"}>
+            <Link href="/about" onClick={closeDrawer}>
+              <Space size={12}>
+                {path === "/about" ? (
+                  <QuestionCircleFilled
+                    style={{ fontSize: "16px", color: "#CBCBCB" }}
+                  />
+                ) : (
+                  <QuestionCircleOutlined
+                    style={{ fontSize: "16px", color: "#CBCBCB" }}
+                  />
+                )}
+                <span>About</span>
+              </Space>
+            </Link>
+          </Styled.NavbarListItem>
+        </Styled.NavBarList>
+      </Styled.Drawer>
+    </Styled.MobileNavbar>
   );
 };

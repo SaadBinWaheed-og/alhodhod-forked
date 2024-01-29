@@ -21,35 +21,38 @@ export const Footer: React.FC = () => {
         <Styled.FooterContainer>
           <Row justify="space-between">
             <Col>
-              <Space size={24} direction="vertical">
+              <Styled.UiList>
                 <Styled.UiLink href="/">Home</Styled.UiLink>
                 <Styled.UiLink href="/services">Services</Styled.UiLink>
                 <Styled.UiLink href="/products">Products</Styled.UiLink>
                 <Styled.UiLink href="/contact">Contact Us</Styled.UiLink>
                 <Styled.UiLink href="/about">About Us</Styled.UiLink>
-              </Space>
+              </Styled.UiList>
             </Col>
             <Col>
               <Styled.LogoContainer>
-                <Image src={logo} alt="Al-hodhod logo" quality={100} />
+                <Styled.DesignImageDesktop
+                  src={logo}
+                  alt="Al-hodhod logo"
+                  quality={100}
+                />
+                <Styled.DesignImageMobile
+                  src={"/images/footerDesign.svg"}
+                  alt="Al-hodhod logo"
+                  width={90}
+                  height={130}
+                  quality={100}
+                />
                 <Styled.WebsiteAddress>Alhodhod.com</Styled.WebsiteAddress>
                 <Styled.WebsiteSince>EST 2001</Styled.WebsiteSince>
               </Styled.LogoContainer>
             </Col>
           </Row>
-          <Divider style={{ marginTop: "65px", backgroundColor: "#545D79" }} />
+          <Styled.Divider style={{ backgroundColor: "#545D79" }} />
           <Row justify="space-between">
             <Col>
               <Space size={4}>
-                <div
-                  style={{
-                    width: "16px",
-                    height: "16px",
-                    color: "#BEC2CF",
-                  }}
-                >
-                  ©
-                </div>
+                <Styled.CRIcon>©</Styled.CRIcon>
                 <Styled.CopyRight>
                   Copyright Alhodhod 2023. All Right reserved
                 </Styled.CopyRight>
@@ -57,12 +60,18 @@ export const Footer: React.FC = () => {
             </Col>
             <Col>
               <Space>
-                <FacebookFilled style={{ fontSize: "20px", color: "white" }} />
-                <TwitterCircleFilled
-                  style={{ fontSize: "20px", color: "white" }}
-                />
-                <LinkedinFilled style={{ fontSize: "20px", color: "white" }} />
-                <InstagramFilled style={{ fontSize: "20px", color: "white" }} />
+                <Styled.IconContainer>
+                  <FacebookFilled />
+                </Styled.IconContainer>
+                <Styled.IconContainer>
+                  <TwitterCircleFilled />
+                </Styled.IconContainer>
+                <Styled.IconContainer>
+                  <LinkedinFilled />
+                </Styled.IconContainer>
+                <Styled.IconContainer>
+                  <InstagramFilled />
+                </Styled.IconContainer>
               </Space>
             </Col>
           </Row>
