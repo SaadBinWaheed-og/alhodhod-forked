@@ -47,10 +47,10 @@ export const VideoWrapper = styled.div`
 `;
 
 export const Video = styled.iframe`
-  border-radius: 17.1px;
   width: 100%;
   height: 198px;
   border: none;
+  border-radius: 6.724px;
 
   ${breakpoint.md} {
     width: 432px;
@@ -58,6 +58,7 @@ export const Video = styled.iframe`
   }
 
   ${breakpoint.lg} {
+    border-radius: 17.1px;
     width: 432px;
     height: 243px;
   }
