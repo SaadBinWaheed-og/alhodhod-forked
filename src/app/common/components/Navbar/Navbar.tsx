@@ -1,96 +1,46 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import type { MenuProps } from "antd";
-import { ConfigProvider } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
 import * as Styled from "./Navbar.styled";
 import { MobileNavbar } from "./MobileNavbar/MobileNavbar";
-import { CaretDownIcon } from "../../customIcons";
 
-export const Navbar: React.FC = () => {
-  const items: MenuProps["items"] = [
-    {
-      label: <Link href={"/"}>Home</Link>,
-      key: "home",
-    },
-    {
-      label: <Link href="/dictionary">Dictionary of Dreams</Link>,
-      key: "dod",
-    },
-    {
-      label: (
-        <Styled.LinkContainer>
+type Props = {
+  path: string;
+};
+
+export const Navbar: React.FC<Props> = ({ path }) => {
+  return (
+    <>
+      <Styled.NavBarList>
+        <Styled.NavbarListItem $active={path === "/"}>
+          <Link href={"/"}>Home</Link>{" "}
+        </Styled.NavbarListItem>
+        <Styled.NavbarListItem $active={path === "/dictionary"}>
+          <Link href="/dictionary">Dictionary of Dreams</Link>
+        </Styled.NavbarListItem>
+        <Styled.NavbarListItem $active={path === "/blog"}>
           <Link href="/blog" style={{ color: "#fff" }}>
             Blog
           </Link>
-        </Styled.LinkContainer>
-      ),
-      key: "blog",
-      icon: <CaretDownIcon style={{ paddingLeft: "9px" }} />,
-      // onTitleClick: () => console.log("clicked"),
-      theme: "dark",
-      children: [
-        {
-          label: <Styled.Option>Option</Styled.Option>,
-          key: "setting:1",
-        },
-        {
-          type: "divider",
-          key: "divider",
-        },
-        {
-          label: <Styled.Option>Option</Styled.Option>,
-          key: "setting:2",
-        },
-      ],
-    },
-    {
-      label: <Link href="videos">Videos</Link>,
-      key: "videos",
-    },
-    {
-      label: <Link href="about">About</Link>,
-      key: "about",
-    },
-  ];
-  const [current, setCurrent] = useState("mail");
+        </Styled.NavbarListItem>
+        <Styled.NavbarListItem $active={path === "/videos"}>
+          <Link href="/videos">Videos</Link>
+        </Styled.NavbarListItem>
+        <Styled.NavbarListItem $active={path === "/about"}>
+          <Link href="about">About</Link>
+        </Styled.NavbarListItem>
+      </Styled.NavBarList>
 
-  const handleClick: MenuProps["onClick"] = (e) => {
-    console.log("click ", e);
-    setCurrent(e.key);
-  };
-  return (
-    <>
-      <ConfigProvider
-        theme={{
-          components: {
-            Menu: {
-              dropdownWidth: 346,
-              itemSelectedColor: "#c1ff0b",
-              darkItemColor: "#272727",
-              darkItemHoverColor: "#c1ff0b",
-              darkItemSelectedColor: "#c1ff0b",
-              darkSubMenuItemBg: "#fff",
-              darkItemSelectedBg: "#fff",
-              darkItemHoverBg: "#fff",
-              darkItemBg: "#fff",
-            },
-          },
+      <div
+        style={{
+          position: "absolute",
+          top: "30px",
+          right: "24px",
         }}
       >
-        <>
-          <Styled.Navbar
-            onClick={handleClick}
-            selectedKeys={[current]}
-            mode="horizontal"
-            items={items}
-            overflowedIndicator={<MenuOutlined />}
-          />
-        </>
-        {/* <MobileNavbar items={items} onClick={handleClick} current={current} /> */}
-      </ConfigProvider>
+        <MobileNavbar path={path} />
+      </div>
     </>
   );
 };

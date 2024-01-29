@@ -38,8 +38,8 @@ export const Header: React.FC = () => {
       {path === "/" && (
         <>
           BECAUSE YOUR <span style={{ color: "#C1FF0B" }}>DREAMS</span>
-          <br />
-          ARE <span style={{ color: "#C1FF0B" }}>MEANINGFUL!</span>{" "}
+          <Styled.BreakTag />
+          {" ARE"} <span style={{ color: "#C1FF0B" }}>MEANINGFUL!</span>{" "}
         </>
       )}
       {path === "/dictionary" && (
@@ -85,7 +85,18 @@ export const Header: React.FC = () => {
   return (
     <Styled.HeaderContainer>
       <Styled.LogoContainer>
-        <Image src={logo} alt="Al-hodhod logo" quality={100} />
+        <Styled.DesktopLogoImage
+          src={logo}
+          alt="Al-hodhod logo"
+          quality={100}
+        />
+        <Styled.MobileLogoImage
+          src={logo}
+          // src={"/images/mbLogo.png"}
+          alt="Al-hodhod logo"
+          quality={100}
+        />
+        <Styled.Title>Alhodhod</Styled.Title>
         <Styled.WebsiteAddress>Alhodhod.com</Styled.WebsiteAddress>
         <Styled.WebsiteSince>EST 2001</Styled.WebsiteSince>
       </Styled.LogoContainer>
@@ -94,17 +105,19 @@ export const Header: React.FC = () => {
           <Image
             priority
             src={home}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
+            fill={true}
             alt="home page background"
-            style={{ borderRadius: "11px" }}
+            style={{
+              borderRadius: "11px",
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
           />
         </Styled.ImageWrapper>
 
         <Styled.HeroContent>
           <Styled.NavBarContainer>
-            <Navbar />
+            <Navbar path={path} />
           </Styled.NavBarContainer>
           <Styled.HeaderTextContainer $isHomePage={isHomePage}>
             <Styled.HeaderText>{headerTextContent}</Styled.HeaderText>
@@ -112,11 +125,13 @@ export const Header: React.FC = () => {
             <Styled.HeaderDescription>
               {headerDescriptionContent}
             </Styled.HeaderDescription>
-            {isHomePage && (
-              <Styled.HeaderButton href="/dictionary" type="primary">
-                Dictionary of Dreams
-              </Styled.HeaderButton>
-            )}
+            <Styled.ButtonWrapper>
+              {isHomePage && (
+                <Styled.HeaderButton href="/dictionary" type="primary">
+                  Dictionary of Dreams
+                </Styled.HeaderButton>
+              )}
+            </Styled.ButtonWrapper>
           </Styled.HeaderTextContainer>
         </Styled.HeroContent>
       </Styled.HeroWrapper>
