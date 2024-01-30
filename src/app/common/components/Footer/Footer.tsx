@@ -2,14 +2,14 @@
 
 import React from "react";
 import * as Styled from "./Footer.styled";
-import { Row, Col, Space, Divider } from "antd";
-import Image from "next/image";
+import { Row, Col, Space } from "antd";
 import logo from "../../../../../public/images/logo.png";
 import {
   FacebookFilled,
   TwitterCircleFilled,
   LinkedinFilled,
   InstagramFilled,
+  YoutubeOutlined,
 } from "@ant-design/icons";
 // import { FacebookIcon } from "../customIcons/facebookIcon";
 //icons to be replaces from customIcons once Khubaib provides the icons
@@ -65,6 +65,14 @@ export const Footer: React.FC = () => {
                 </Styled.IconContainer>
                 <Styled.IconContainer>
                   <TwitterCircleFilled />
+                </Styled.IconContainer>
+                <Styled.IconContainer>
+                  <a
+                    href="https://www.youtube.com/@user-rl9rs7hi4y"
+                    target="_blank"
+                  >
+                    <YoutubeOutlined />
+                  </a>
                 </Styled.IconContainer>
                 <Styled.IconContainer>
                   <LinkedinFilled />

@@ -9,7 +9,7 @@ export const AboutPageContainer = styled(Row)`
   row-gap: 46px;
   align-items: center;
   flex-wrap: wrap;
-  padding: 130px 20px 130px;
+  padding: 34px 20px 34px;
   justify-content: center;
   ${breakpoint.md} {
     padding: 130px 20px 130px;

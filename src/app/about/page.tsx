@@ -2,8 +2,6 @@
 import React from "react";
 import { Row, Col } from "antd";
 import * as Styled from "./page.styled";
-import Image from "next/image";
-
 export default function About() {
   return (
     <Styled.AboutPageContainer>
@@ -135,18 +133,23 @@ export default function About() {
             xs={{ span: 24, order: 8 }}
           >
             <Styled.ImageContainer>
-              <Styled.UiImageDesktop
-                src={"images/subscribe.svg"}
-                alt="image for about page"
-                width={418}
-                height={397}
-              />
-              <Styled.UiImageMobile
-                src={"images/subscribe.svg"}
-                alt="image for about page"
-                width={190}
-                height={181}
-              />
+              <a
+                href="https://www.youtube.com/@user-rl9rs7hi4y"
+                target="_blank"
+              >
+                <Styled.UiImageDesktop
+                  src={"images/subscribe.svg"}
+                  alt="image for about page"
+                  width={418}
+                  height={397}
+                />
+                <Styled.UiImageMobile
+                  src={"images/subscribe.svg"}
+                  alt="image for about page"
+                  width={190}
+                  height={181}
+                />
+              </a>
             </Styled.ImageContainer>
           </Col>
         </Row>
