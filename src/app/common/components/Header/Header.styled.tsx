@@ -84,8 +84,9 @@ export const HeaderTextContainer = styled.div<{
   font-family: var(--font-montserrat);
   @media screen and (max-width: 768px) {
     text-align: left !important;
-    padding-top: ${({ $isHomePage }) => ($isHomePage ? "96px" : "199px")};
+    padding-top: ${({ $isHomePage }) => ($isHomePage ? "96px" : "calc(18vh)")};
     padding-left: 24px;
+    padding-bottom: 0px;
   }
 `;
 
@@ -109,6 +110,18 @@ export const HeaderDescription = styled.div`
   line-height: normal;
   width: 1053px;
   font-family: var(--font-montserrat);
+  @media screen and (min-width: 768px) and (max-width: 1200px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    color: #f5f5f5;
+    font-family: var(--font-montserrat);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 `;
 
 export const HeaderSubText = styled.div`
@@ -119,6 +132,8 @@ export const HeaderSubText = styled.div`
   @media screen and (max-width: 768px) {
     font-size: 31px;
     font-weight: 700;
+    text-align: left;
+    width: -webkit-fill-available;
   }
 `;
 

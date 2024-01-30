@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Space } from "antd";
 import Image from "next/image";
 import * as Styled from "./page.styled";
-import { set } from "lodash";
 
 type Props = {
   id: string;
@@ -29,34 +28,32 @@ export const Video: React.FC<Props> = ({ id }) => {
       });
   }, [id, url]);
   return (
-    <>
-      <a
-        href={`https://www.youtube.com/watch?v=${id}`}
-        style={{ textDecoration: "none" }}
-        target="_blank"
-      >
-        <Styled.Video
-          id={id}
-          src={`https://www.youtube.com/embed/${id}`}
-          allowFullScreen
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        ></Styled.Video>
-        <Space style={{ paddingTop: "17px" }} size={18}>
-          <Styled.ImageWrapper>
-            <Image
-              src="/images/videoIcon.png"
-              alt="play"
-              width={29.6}
-              height={42.0}
-            />
-          </Styled.ImageWrapper>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <Styled.VideoTitle>{videoTitle}</Styled.VideoTitle>
-            <Styled.Alhodhod>AL-hodhod</Styled.Alhodhod>
-          </div>
-        </Space>
-      </a>
-    </>
+    <a
+      href={`https://www.youtube.com/watch?v=${id}`}
+      style={{ textDecoration: "none" }}
+      target="_blank"
+    >
+      <Styled.Video
+        id={id}
+        src={`https://www.youtube.com/embed/${id}`}
+        allowFullScreen
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      ></Styled.Video>
+      <Space style={{ paddingTop: "17px" }} size={18}>
+        <Styled.ImageWrapper>
+          <Image
+            src="/images/videoIcon.png"
+            alt="play"
+            width={29.6}
+            height={42.0}
+          />
+        </Styled.ImageWrapper>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <Styled.VideoTitle>{videoTitle}</Styled.VideoTitle>
+          <Styled.Alhodhod>AL-hodhod</Styled.Alhodhod>
+        </div>
+      </Space>
+    </a>
   );
 };

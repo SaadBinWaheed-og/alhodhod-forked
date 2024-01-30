@@ -103,8 +103,13 @@ export const Divider = styled(UiDivider)`
 `;
 
 export const IconContainer = styled.div`
+  cursor: pointer;
   font-size: 20px;
   color: #fff;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
   @media screen and (max-width: 768px) {
     font-size: 8px;
   }
