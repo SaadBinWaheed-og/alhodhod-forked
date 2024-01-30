@@ -110,6 +110,9 @@ export const HeaderDescription = styled.div`
   line-height: normal;
   width: 1053px;
   font-family: var(--font-montserrat);
+  @media screen and (min-width: 768px) and (max-width: 1200px) {
+    width: 100%;
+  }
   @media screen and (max-width: 768px) {
     width: 100%;
     color: #f5f5f5;
