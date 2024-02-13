@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import StyledComponentsRegistry from "./lib/registry";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { Header, Footer } from "./common/components";
 
@@ -28,6 +29,7 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <Header />
           {children}
+          <SpeedInsights />
           <Footer />
         </StyledComponentsRegistry>
       </body>
