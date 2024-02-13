@@ -5,7 +5,7 @@ import * as Styled from "./HomePageContent.styled";
 import { Advertisement } from "../common/components/Advertisement";
 
 import fdree from "../../../public/images/fdree.jpg";
-import head from "../../../public/images/head.png";
+import head from "../../../public/images/head.webp";
 import Image from "next/image";
 import { BlogCard } from "../common/components/BlogCard";
 import { Video } from "../videos/Video";

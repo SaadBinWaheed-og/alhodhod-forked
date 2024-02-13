@@ -2,7 +2,7 @@
 import React from "react";
 import * as Styled from "./Advertisement.styled";
 
-import AdvertisementImage from "../../../../../public/images/advertisement.svg";
+import AdvertisementImage from "../../../../../public/images/advertisement.webp";
 
 export const Advertisement: React.FC = () => {
   return (

@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Navbar } from "../Navbar/Navbar";
-import home from "../../../../../public/images/home.svg";
+import home from "../../../../../public/images/homeBg.webp";
 import logo from "../../../../../public/images/logo.png";
 
 import * as Styled from "./Header.styled";
