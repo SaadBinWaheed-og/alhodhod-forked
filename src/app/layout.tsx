@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import StyledComponentsRegistry from "./lib/registry";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 import { Header, Footer } from "./common/components";
 
@@ -30,6 +31,7 @@ export default function RootLayout({
           <Header />
           {children}
           <SpeedInsights />
+          <Analytics />
           <Footer />
         </StyledComponentsRegistry>
       </body>
