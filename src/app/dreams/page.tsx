@@ -5,11 +5,13 @@ import { ArabesqueIcon, CaretDownIconGray } from "../common/customIcons";
 import { AdvertisementContained } from "../common/components/Advertisement";
 import { CsvRow } from '../../../pages/api/read-csv';
 import Arabesque from "public/images/arabesque.svg";
+import LoadingSpinner from "../common/components/LoadingSpinner/LoadingSpinner";
 
 export default function Dreams() {
   const [isInterpretationVisible, setInterpretationVisible] = useState(9999);
   const [csvData, setCsvData] = useState<CsvRow[]>([]);
   const [symbol, setSymbol] = useState<string>();
+  const [loading, setLoading] = useState(true);
 
   const handleItemClick = (index: number) => {
     if (index == isInterpretationVisible) {
@@ -24,6 +26,7 @@ export default function Dreams() {
       setSymbol(localStorage.getItem("selectedSymbol") || "");
     }
     fetchData().then((data) => {
+      setLoading(false);
       setCsvData(data);
     });
   }, []);
@@ -111,7 +114,7 @@ export default function Dreams() {
     return items;
   };
 
-  return (
+  return ( loading ? <LoadingSpinner/> : 
     <div>
       <Styled.ListOfDreamsForSymbol>
         <Styled.ArabesqueIcon src={Arabesque} alt="arabesque" />
