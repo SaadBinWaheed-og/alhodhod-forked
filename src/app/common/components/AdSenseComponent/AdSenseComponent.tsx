@@ -6,7 +6,7 @@ type Props = {
   adFormat: string;
 };
 
-const AdsComponent = ({ adClient, adSlot, adFormat }: Props) => {
+export const AdSenseComponent = ({ adClient, adSlot, adFormat }: Props) => {
   useEffect(() => {
     ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
   }, []);
@@ -18,8 +18,8 @@ const AdsComponent = ({ adClient, adSlot, adFormat }: Props) => {
       data-ad-client={adClient}
       data-ad-slot={adSlot}
       data-ad-format={adFormat}
+      data-full-width-responsive="true"
     ></ins>
   );
 };
 
-export default AdsComponent;
