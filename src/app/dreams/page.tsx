@@ -103,7 +103,8 @@ export default function Dreams() {
                 <Styled.DreamInterpretationSubText>
                   {itemsToRender[i].interp}
                 </Styled.DreamInterpretationSubText>
-                <AdvertisementContained />
+                {/* <AdvertisementContained /> */}
+                <div className="temp" style={{marginTop: "55px"}}/>
               </Styled.DreamInterpretationDiv>
             )}
           </div>

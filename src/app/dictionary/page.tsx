@@ -172,9 +172,9 @@ export default function Dictionary() {
           </Styled.LetterRow>
         </Styled.LetterSelection>
 
-        <div style={{ marginBottom: "76px" }}>
+        {/* <div style={{ marginBottom: "76px" }}>
           <Advertisement />
-        </div>
+        </div> */}
       </Styled.ChooseTheFirstLetter>
       <DictionaryFilter alphabets={alphabets} selectedCharacter={selectedLetter} handleButtonClick={handleButtonClick}/>
       {showListOfSymbols && (
@@ -193,9 +193,9 @@ export default function Dictionary() {
             Back To Letters
           </Styled.BackToLettersButton>
 
-          <div style={{ marginBottom: "76px" }}>
+          {/* <div style={{ marginBottom: "76px" }}>
             <Advertisement />
-          </div>
+          </div> */}
         </Styled.ListOfSymbolsForLetterSection>
       )}
     </div>
