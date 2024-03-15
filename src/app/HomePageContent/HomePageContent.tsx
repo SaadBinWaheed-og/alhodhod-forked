@@ -9,6 +9,8 @@ import head from "../../../public/images/head.webp";
 import Image from "next/image";
 import { BlogCard } from "../common/components/BlogCard";
 import { Video } from "../videos/Video";
+import { I18nextProvider } from "react-i18next";
+import i18n from "@/i18n";
 
 export const HomePageContent: React.FC = () => {
   let blogIconSrc = "/images/blogIcon.svg";
@@ -52,180 +54,182 @@ export const HomePageContent: React.FC = () => {
     },
   ];
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Styled.HomePageContainer>
-        <Styled.FirstSection justify={"center"}>
-          <Styled.ArabesqueContainer span={24}>
-            <Styled.ArabesqueDesktop>
-              <ArabesqueIcon />
-            </Styled.ArabesqueDesktop>
-            <Styled.ArabesqueMobile>
-              <Image
-                src={"/images/arabArtMobile.svg"}
-                alt="art"
-                quality={100}
-                width={184}
-                height={19}
-                style={{ paddingTop: "5px" }}
-              />
-            </Styled.ArabesqueMobile>
-          </Styled.ArabesqueContainer>
-          <Col span={24}>
-            <Styled.HadeesSection>
-              <Styled.HadeesSectionTitle>
-                The Prophet of Islam (peace be upon him) says:
-              </Styled.HadeesSectionTitle>
-              <Styled.HadeesSectionDescription>
-                {` “Dream are three fold, sometimes is divine guidance and glory
-                from God, sometimes is sorrow from the devil, and sometimes
-                are conflicts of daily living or past events"`}
-              </Styled.HadeesSectionDescription>
-            </Styled.HadeesSection>
-          </Col>
-        </Styled.FirstSection>
+    <I18nextProvider i18n={i18n}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Styled.HomePageContainer>
+          <Styled.FirstSection justify={"center"}>
+            <Styled.ArabesqueContainer span={24}>
+              <Styled.ArabesqueDesktop>
+                <ArabesqueIcon />
+              </Styled.ArabesqueDesktop>
+              <Styled.ArabesqueMobile>
+                <Image
+                  src={"/images/arabArtMobile.svg"}
+                  alt="art"
+                  quality={100}
+                  width={184}
+                  height={19}
+                  style={{ paddingTop: "5px" }}
+                />
+              </Styled.ArabesqueMobile>
+            </Styled.ArabesqueContainer>
+            <Col span={24}>
+              <Styled.HadeesSection>
+                <Styled.HadeesSectionTitle>
+                  The Prophet of Islam (peace be upon him) says:
+                </Styled.HadeesSectionTitle>
+                <Styled.HadeesSectionDescription>
+                  {` “Dream are three fold, sometimes is divine guidance and glory
+                  from God, sometimes is sorrow from the devil, and sometimes
+                  are conflicts of daily living or past events"`}
+                </Styled.HadeesSectionDescription>
+              </Styled.HadeesSection>
+            </Col>
+          </Styled.FirstSection>
 
-        <Row>
-          <Col>
-            <Advertisement />
-          </Col>
-        </Row>
+          <Row>
+            <Col>
+              <Advertisement />
+            </Col>
+          </Row>
 
-        <Styled.SecondSection>
-          <Styled.SecondSectionContainer
-            xs={{ order: 2, span: 24 }}
-            sm={24}
-            md={{ order: 1, span: 24 }}
-            lg={12}
-            xl={12}
-            xxl={12}
-          >
-            <Space direction="vertical" size={4}>
-              <Space direction="vertical" size={8}>
-                <Styled.DreamTitle> What are Dreams?</Styled.DreamTitle>
-                <Styled.DreamsDescription>
-                  Dreams are a series of images, events, sensations, and ideas
-                  that come into mind when one is asleep. Different kinds of
-                  dreams come to people when they are in different stages and
-                  levels of sleep.
-                </Styled.DreamsDescription>
+          <Styled.SecondSection>
+            <Styled.SecondSectionContainer
+              xs={{ order: 2, span: 24 }}
+              sm={24}
+              md={{ order: 1, span: 24 }}
+              lg={12}
+              xl={12}
+              xxl={12}
+            >
+              <Space direction="vertical" size={4}>
+                <Space direction="vertical" size={8}>
+                  <Styled.DreamTitle> What are Dreams?</Styled.DreamTitle>
+                  <Styled.DreamsDescription>
+                    Dreams are a series of images, events, sensations, and ideas
+                    that come into mind when one is asleep. Different kinds of
+                    dreams come to people when they are in different stages and
+                    levels of sleep.
+                  </Styled.DreamsDescription>
+                </Space>
+                <Styled.ButtonContainer>
+                  <Styled.DreamsButton>Interpret My Dream</Styled.DreamsButton>
+                </Styled.ButtonContainer>
               </Space>
-              <Styled.ButtonContainer>
-                <Styled.DreamsButton>Interpret My Dream</Styled.DreamsButton>
-              </Styled.ButtonContainer>
-            </Space>
-          </Styled.SecondSectionContainer>
-          <Styled.ImageDesignCol
-            xs={{ order: 1, span: 24 }}
-            sm={24}
-            md={{ order: 2, span: 24 }}
-            lg={12}
-            xl={12}
-            xxl={12}
-          >
-            <Styled.ImageDesignContainer>
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "-3px",
-                  right: "0px",
-                  borderRadius: "20px",
-                  zIndex: 1,
-                }}
-              >
-                <Styled.DreamImageBgMobile
-                  src={"/images/mobileBgDreams.png"}
-                  alt={"bg"}
-                  width={180}
-                  height={229}
-                />
-                <Styled.DreamImageBgDesktop
-                  src={fdree}
-                  alt={"bg"}
-                  width={370}
-                />
+            </Styled.SecondSectionContainer>
+            <Styled.ImageDesignCol
+              xs={{ order: 1, span: 24 }}
+              sm={24}
+              md={{ order: 2, span: 24 }}
+              lg={12}
+              xl={12}
+              xxl={12}
+            >
+              <Styled.ImageDesignContainer>
                 <div
                   style={{
                     position: "absolute",
                     bottom: "-3px",
-                    zIndex: 3,
-                    right: "140px",
+                    right: "0px",
+                    borderRadius: "20px",
+                    zIndex: 1,
                   }}
                 >
-                  <Styled.HeadImageMobile
-                    src={head}
-                    alt={"head"}
-                    height={143}
+                  <Styled.DreamImageBgMobile
+                    src={"/images/mobileBgDreams.png"}
+                    alt={"bg"}
+                    width={180}
+                    height={229}
                   />
-                  <Styled.HeadImageDesktop
-                    src={head}
-                    alt={"head"}
-                    height={300}
-                    style={{ borderRadius: "20px" }}
+                  <Styled.DreamImageBgDesktop
+                    src={fdree}
+                    alt={"bg"}
+                    width={370}
                   />
-                </div>
-                <Styled.GreenBox></Styled.GreenBox>
-              </div>
-            </Styled.ImageDesignContainer>
-          </Styled.ImageDesignCol>
-        </Styled.SecondSection>
-
-        <Styled.BlogSection>
-          <Col span={24}>
-            <Styled.BlogSectionTitle>Blogs</Styled.BlogSectionTitle>
-          </Col>
-          <Col span={24} style={{ paddingTop: "18px" }}>
-            <Row justify="center" gutter={[47, 16]}>
-              {blogs.map((blog) => {
-                return (
-                  <Col
-                    xs={24}
-                    sm={24}
-                    lg={12}
-                    xl={8}
-                    key={blog.id}
-                    style={{ display: "flex", justifyContent: "center" }}
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "-3px",
+                      zIndex: 3,
+                      right: "140px",
+                    }}
                   >
-                    <BlogCard
-                      width={400}
-                      height={534.542}
-                      icon={blog.icon}
-                      title={blog.title}
-                      description={blog.description}
-                      link={blog.link}
+                    <Styled.HeadImageMobile
+                      src={head}
+                      alt={"head"}
+                      height={143}
                     />
-                  </Col>
-                );
-              })}
-            </Row>
-          </Col>
-        </Styled.BlogSection>
+                    <Styled.HeadImageDesktop
+                      src={head}
+                      alt={"head"}
+                      height={300}
+                      style={{ borderRadius: "20px" }}
+                    />
+                  </div>
+                  <Styled.GreenBox></Styled.GreenBox>
+                </div>
+              </Styled.ImageDesignContainer>
+            </Styled.ImageDesignCol>
+          </Styled.SecondSection>
 
-        <Styled.VideoSection justify={"center"} gutter={[16, 16]}>
-          <Col span={24}>
-            <Styled.BlogSectionTitle>Videos</Styled.BlogSectionTitle>
-          </Col>
-          {videos.map((video) => {
-            return (
-              <Col key={video.id} sm={24} md={24} lg={8}>
-                <Video id={video.id} />
-              </Col>
-            );
-          })}
-        </Styled.VideoSection>
+          <Styled.BlogSection>
+            <Col span={24}>
+              <Styled.BlogSectionTitle>Blogs</Styled.BlogSectionTitle>
+            </Col>
+            <Col span={24} style={{ paddingTop: "18px" }}>
+              <Row justify="center" gutter={[47, 16]}>
+                {blogs.map((blog) => {
+                  return (
+                    <Col
+                      xs={24}
+                      sm={24}
+                      lg={12}
+                      xl={8}
+                      key={blog.id}
+                      style={{ display: "flex", justifyContent: "center" }}
+                    >
+                      <BlogCard
+                        width={400}
+                        height={534.542}
+                        icon={blog.icon}
+                        title={blog.title}
+                        description={blog.description}
+                        link={blog.link}
+                      />
+                    </Col>
+                  );
+                })}
+              </Row>
+            </Col>
+          </Styled.BlogSection>
 
-        <Row style={{ marginBottom: "76px" }}>
-          <Col>
-            <Advertisement />
-          </Col>
-        </Row>
-      </Styled.HomePageContainer>
-    </div>
+          <Styled.VideoSection justify={"center"} gutter={[16, 16]}>
+            <Col span={24}>
+              <Styled.BlogSectionTitle>Videos</Styled.BlogSectionTitle>
+            </Col>
+            {videos.map((video) => {
+              return (
+                <Col key={video.id} sm={24} md={24} lg={8}>
+                  <Video id={video.id} />
+                </Col>
+              );
+            })}
+          </Styled.VideoSection>
+
+          <Row style={{ marginBottom: "76px" }}>
+            <Col>
+              <Advertisement />
+            </Col>
+          </Row>
+        </Styled.HomePageContainer>
+      </div>
+    </I18nextProvider>
   );
 };
 

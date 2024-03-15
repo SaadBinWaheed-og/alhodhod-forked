@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import * as Styled from "./Navbar.styled";
 import { MobileNavbar } from "./MobileNavbar/MobileNavbar";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 type Props = {
   path: string;
@@ -30,6 +31,9 @@ export const Navbar: React.FC<Props> = ({ path }) => {
         <Styled.NavbarListItem $active={path === "/about"}>
           <Link href="about">About</Link>
         </Styled.NavbarListItem>
+        <Styled.LanguageSwitcherContainer>
+          <LanguageSwitcher />
+        </Styled.LanguageSwitcherContainer>
       </Styled.NavBarList>
 
       <div

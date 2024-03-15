@@ -27,7 +27,12 @@ export default function Dictionary() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("/api/read-csv?attribute=lettre");
+      const url = new URL("/api/read-csv", window.location.origin);
+      url.searchParams.append('attribute', 'lettre');
+      url.searchParams.append('lang', localStorage.getItem('lang') || 'us');
+
+      const response = await fetch(url.toString());
+      // const response = await fetch("/api/read-csv?attribute=lettre");
       if (response.ok) {
         const data = await response.json();
         const nameSortedData = data["data"];

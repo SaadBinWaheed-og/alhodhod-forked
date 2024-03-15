@@ -5,6 +5,7 @@ import {
   CloseOutlined,
   HomeOutlined,
   HomeFilled,
+  GlobalOutlined,
   QuestionCircleOutlined,
   QuestionCircleFilled,
 } from "@ant-design/icons";
@@ -13,6 +14,7 @@ import { Space } from "antd";
 import Image from "next/image";
 
 import * as Styled from "./MobileNavbar.styled";
+import LanguageSwitcher from "../../LanguageSwitcher/LanguageSwitcher";
 
 type Props = {
   path: string;
@@ -121,6 +123,15 @@ export const MobileNavbar: React.FC<Props> = ({ path }) => {
                 <span>About</span>
               </Space>
             </Link>
+          </Styled.NavbarListItem>
+          <Styled.NavbarListItem $active={false}>
+            <Space size={12}>
+              <GlobalOutlined
+                style={{ fontSize: "16px", color: "#CBCBCB" }}
+              />
+              <span>Language</span>
+              <LanguageSwitcher />
+            </Space>
           </Styled.NavbarListItem>
         </Styled.NavBarList>
       </Styled.Drawer>
