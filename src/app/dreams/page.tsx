@@ -6,8 +6,7 @@ import { AdvertisementContained } from "../common/components/Advertisement";
 import { CsvRow } from '../../../pages/api/read-csv';
 import Arabesque from "public/images/arabesque.svg";
 import LoadingSpinner from "../common/components/LoadingSpinner/LoadingSpinner";
-import { I18nextProvider, useTranslation } from "react-i18next";
-import i18n from "@/i18n";
+import { useTranslation } from "react-i18next";
 
 export default function Dreams() {
   const { t } = useTranslation();
@@ -124,24 +123,22 @@ export default function Dreams() {
   };
 
   return ( loading ? <LoadingSpinner/> : 
-    <I18nextProvider i18n={i18n}>
-      <div>
-        <Styled.ListOfDreamsForSymbol>
-          <Styled.ArabesqueIcon src={Arabesque} alt="arabesque" />
-          <Styled.SectionHeader>
-            {t("List of dreams for symbol")} {symbol}
-          </Styled.SectionHeader>
-          <Styled.DreamsListDiv>
-            <Styled.RightSideText>
-              {getItemsCount()} {t("Dream")}(s) {t("found")}
-            </Styled.RightSideText>
-            <Styled.DreamList>{displayDreamItems()}</Styled.DreamList>
-          </Styled.DreamsListDiv>
-          <Styled.BackToLettersButton href={`/dictionary`}>
-            {t("Back To Letters")}
-          </Styled.BackToLettersButton>
-        </Styled.ListOfDreamsForSymbol>
-      </div>
-    </I18nextProvider>
+    <div>
+      <Styled.ListOfDreamsForSymbol>
+        <Styled.ArabesqueIcon src={Arabesque} alt="arabesque" />
+        <Styled.SectionHeader>
+          {t("List of dreams for symbol")} {symbol}
+        </Styled.SectionHeader>
+        <Styled.DreamsListDiv>
+          <Styled.RightSideText>
+            {getItemsCount()} {t("Dream")}(s) {t("found")}
+          </Styled.RightSideText>
+          <Styled.DreamList>{displayDreamItems()}</Styled.DreamList>
+        </Styled.DreamsListDiv>
+        <Styled.BackToLettersButton href={`/dictionary`}>
+          {t("Back To Letters")}
+        </Styled.BackToLettersButton>
+      </Styled.ListOfDreamsForSymbol>
+    </div>
   );
 }
