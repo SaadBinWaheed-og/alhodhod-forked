@@ -5,7 +5,7 @@ import ReactFlagsSelect from "react-flags-select";
 import { useEffect, useState } from "react";
 
 const LanguageSwitcher = () => {
-  const [language, setLanguage] = useState(localStorage.getItem('lang') ? localStorage.getItem('lang')?.toUpperCase() : "US");
+  const [language, setLanguage] = useState("US");
   const { i18n } = useTranslation();
 
   const changeLanguage = (language: string) => {
@@ -18,7 +18,9 @@ const LanguageSwitcher = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem('lang', language?.toLowerCase() || 'us');
+    if (localStorage) {
+      localStorage.setItem('lang', language?.toLowerCase() || 'us');
+    }
   }, [language]);
 
   return (

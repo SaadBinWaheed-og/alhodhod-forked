@@ -29,7 +29,7 @@ export default function Dictionary() {
     try {
       const url = new URL("/api/read-csv", window.location.origin);
       url.searchParams.append('attribute', 'lettre');
-      url.searchParams.append('lang', localStorage.getItem('lang') || 'us');
+      url.searchParams.append('lang', localStorage?.getItem?.('lang') || 'us');
 
       const response = await fetch(url.toString());
       // const response = await fetch("/api/read-csv?attribute=lettre");

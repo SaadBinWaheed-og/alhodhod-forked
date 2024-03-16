@@ -1,16 +1,17 @@
 "use client";
 import React from "react";
 import * as Styled from "./Advertisement.styled";
-import { AdSenseComponent } from "../AdSenseComponent";
+
+import AdvertisementImage from "../../../../../public/images/advertisement.webp";
 
 export const Advertisement: React.FC = () => {
   return (
     <Styled.AdvertisementContainer>
       <Styled.AdvertisementText>Advertisement</Styled.AdvertisementText>
-      <AdSenseComponent
-        adClient="ca-pub-4511775489420895"
-        adFormat="auto"
-        adSlot="4162141056"
+      <Styled.AdvertisementImageTag
+        src={AdvertisementImage}
+        fill={true}
+        alt="Advertisement"
       />
     </Styled.AdvertisementContainer>
   );
