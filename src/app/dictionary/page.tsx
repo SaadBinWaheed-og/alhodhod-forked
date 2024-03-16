@@ -6,10 +6,11 @@ import { Advertisement } from "../common/components/Advertisement";
 import { useState, useRef, useEffect } from "react";
 import { CsvRow } from "../../../pages/api/read-csv";
 import DictionaryFilter from "../common/components/DictionaryFilter/DictionaryFilter";
-import { I18nextProvider } from "react-i18next";
+import { I18nextProvider, useTranslation } from "react-i18next";
 import i18n from "@/i18n";
 
 export default function Dictionary() {
+  const { t } = useTranslation();
   const listOfSymbolsRef = useRef<HTMLDivElement | null>(null);
   const targetSectionRef = useRef<HTMLDivElement | null>(null);
   const targetSectionRefDesktop = useRef<HTMLDivElement | null>(null);
@@ -116,7 +117,7 @@ export default function Dictionary() {
               {symbolSortedData[i]}
             </Styled.LettersListItemTextOne>
             <Styled.LettersListItemTextTwo>
-              {groupedData[symbolSortedData[i]].length} Dream(s) found
+              {groupedData[symbolSortedData[i]].length} {t("Dream")}(s) {t("found")}
             </Styled.LettersListItemTextTwo>
           </Styled.LettersListItemTextGroup>
           <Styled.LettersListItemArrowIcon src={ArrowIcon} alt="< >" />
@@ -131,7 +132,7 @@ export default function Dictionary() {
       <div>
         <Styled.ChooseTheFirstLetter>
           <Styled.SectionHeader ref={targetSectionRefDesktop}>
-            Choose the first letter
+          {t("ChooseTheFirstLetter")}
           </Styled.SectionHeader>
           <ArabesqueIcon />
           <Styled.LetterSelection>
@@ -188,7 +189,7 @@ export default function Dictionary() {
         {showListOfSymbols && (
           <Styled.ListOfSymbolsForLetterSection ref={listOfSymbolsRef}>
             <Styled.SectionHeader>
-              List of Symbols for Letter
+              {t("List of Symbols for Letter")}
             </Styled.SectionHeader>
             <Styled.SelectedLetterSection>
               <Styled.SelectedLetterMedal>
@@ -198,7 +199,7 @@ export default function Dictionary() {
             </Styled.SelectedLetterSection>
             <Styled.LettersList>{renderLettersListSymbols()}</Styled.LettersList>
             <Styled.BackToLettersButton onClick={handleBackToLettersButtonClick}>
-              Back To Letters
+              {t("Back To Letters")}
             </Styled.BackToLettersButton>
 
             {/* <div style={{ marginBottom: "76px" }}>

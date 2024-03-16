@@ -9,10 +9,11 @@ import head from "../../../public/images/head.webp";
 import Image from "next/image";
 import { BlogCard } from "../common/components/BlogCard";
 import { Video } from "../videos/Video";
-import { I18nextProvider } from "react-i18next";
+import { I18nextProvider, useTranslation } from "react-i18next";
 import i18n from "@/i18n";
 
 export const HomePageContent: React.FC = () => {
+  const { t } = useTranslation();
   let blogIconSrc = "/images/blogIcon.svg";
 
   const videos = [
@@ -82,12 +83,10 @@ export const HomePageContent: React.FC = () => {
             <Col span={24}>
               <Styled.HadeesSection>
                 <Styled.HadeesSectionTitle>
-                  The Prophet of Islam (peace be upon him) says:
+                {t("HadeesTitle")}
                 </Styled.HadeesSectionTitle>
                 <Styled.HadeesSectionDescription>
-                  {` “Dream are three fold, sometimes is divine guidance and glory
-                  from God, sometimes is sorrow from the devil, and sometimes
-                  are conflicts of daily living or past events"`}
+                  {t("HadeesDescription")}
                 </Styled.HadeesSectionDescription>
               </Styled.HadeesSection>
             </Col>
@@ -110,16 +109,13 @@ export const HomePageContent: React.FC = () => {
             >
               <Space direction="vertical" size={4}>
                 <Space direction="vertical" size={8}>
-                  <Styled.DreamTitle> What are Dreams?</Styled.DreamTitle>
+                  <Styled.DreamTitle> {t("What are Dreams?")}</Styled.DreamTitle>
                   <Styled.DreamsDescription>
-                    Dreams are a series of images, events, sensations, and ideas
-                    that come into mind when one is asleep. Different kinds of
-                    dreams come to people when they are in different stages and
-                    levels of sleep.
+                    {t("DreamsDescription")}
                   </Styled.DreamsDescription>
                 </Space>
                 <Styled.ButtonContainer>
-                  <Styled.DreamsButton>Interpret My Dream</Styled.DreamsButton>
+                  <Styled.DreamsButton>{t("Interpret My Dream")}</Styled.DreamsButton>
                 </Styled.ButtonContainer>
               </Space>
             </Styled.SecondSectionContainer>
@@ -180,7 +176,7 @@ export const HomePageContent: React.FC = () => {
 
           <Styled.BlogSection>
             <Col span={24}>
-              <Styled.BlogSectionTitle>Blogs</Styled.BlogSectionTitle>
+              <Styled.BlogSectionTitle>{t("Blogs")}</Styled.BlogSectionTitle>
             </Col>
             <Col span={24} style={{ paddingTop: "18px" }}>
               <Row justify="center" gutter={[47, 16]}>
@@ -211,7 +207,7 @@ export const HomePageContent: React.FC = () => {
 
           <Styled.VideoSection justify={"center"} gutter={[16, 16]}>
             <Col span={24}>
-              <Styled.BlogSectionTitle>Videos</Styled.BlogSectionTitle>
+              <Styled.BlogSectionTitle>{t("Videos")}</Styled.BlogSectionTitle>
             </Col>
             {videos.map((video) => {
               return (

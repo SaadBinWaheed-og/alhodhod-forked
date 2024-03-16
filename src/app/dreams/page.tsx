@@ -6,8 +6,11 @@ import { AdvertisementContained } from "../common/components/Advertisement";
 import { CsvRow } from '../../../pages/api/read-csv';
 import Arabesque from "public/images/arabesque.svg";
 import LoadingSpinner from "../common/components/LoadingSpinner/LoadingSpinner";
+import { I18nextProvider, useTranslation } from "react-i18next";
+import i18n from "@/i18n";
 
 export default function Dreams() {
+  const { t } = useTranslation();
   const [isInterpretationVisible, setInterpretationVisible] = useState(9999);
   const [csvData, setCsvData] = useState<CsvRow[]>([]);
   const [symbol, setSymbol] = useState<string>();
@@ -93,7 +96,7 @@ export default function Dreams() {
                   marginLeft: "18px",
                 }}
               >
-                <Styled.MeaningText>Meaning</Styled.MeaningText>
+                <Styled.MeaningText>{t("Meaning")}</Styled.MeaningText>
                 <Styled.DropDownCircle onClick={() => handleItemClick(i)}>
                   <CaretDownIconGray />
                 </Styled.DropDownCircle>
@@ -102,7 +105,7 @@ export default function Dreams() {
             {isInterpretationVisible === i && (
               <Styled.DreamInterpretationDiv>
                 <Styled.DreamInterpretationHeader>
-                  Dream Interpretation
+                  {t("Dream Interpretation")}
                 </Styled.DreamInterpretationHeader>
                 <Styled.DreamInterpretationLine />
                 <Styled.DreamInterpretationSubText>
@@ -121,22 +124,24 @@ export default function Dreams() {
   };
 
   return ( loading ? <LoadingSpinner/> : 
-    <div>
-      <Styled.ListOfDreamsForSymbol>
-        <Styled.ArabesqueIcon src={Arabesque} alt="arabesque" />
-        <Styled.SectionHeader>
-          List of dreams for symbol {symbol}
-        </Styled.SectionHeader>
-        <Styled.DreamsListDiv>
-          <Styled.RightSideText>
-            {getItemsCount()} Dreams Found
-          </Styled.RightSideText>
-          <Styled.DreamList>{displayDreamItems()}</Styled.DreamList>
-        </Styled.DreamsListDiv>
-        <Styled.BackToLettersButton href={`/dictionary`}>
-          Back To Letters
-        </Styled.BackToLettersButton>
-      </Styled.ListOfDreamsForSymbol>
-    </div>
+    <I18nextProvider i18n={i18n}>
+      <div>
+        <Styled.ListOfDreamsForSymbol>
+          <Styled.ArabesqueIcon src={Arabesque} alt="arabesque" />
+          <Styled.SectionHeader>
+            {t("List of dreams for symbol")} {symbol}
+          </Styled.SectionHeader>
+          <Styled.DreamsListDiv>
+            <Styled.RightSideText>
+              {getItemsCount()} {t("Dream")}(s) {t("found")}
+            </Styled.RightSideText>
+            <Styled.DreamList>{displayDreamItems()}</Styled.DreamList>
+          </Styled.DreamsListDiv>
+          <Styled.BackToLettersButton href={`/dictionary`}>
+            {t("Back To Letters")}
+          </Styled.BackToLettersButton>
+        </Styled.ListOfDreamsForSymbol>
+      </div>
+    </I18nextProvider>
   );
 }

@@ -205,6 +205,7 @@ export const BackToLettersButton = styled.a`
   display: none;
   ${breakpoint.md} {
     margin-top: 20px;
+    margin-bottom: 20px;
     width: 276px;
     height: 83px;
     border: 1px solid;
