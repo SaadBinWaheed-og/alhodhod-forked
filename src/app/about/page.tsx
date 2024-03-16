@@ -5,6 +5,7 @@ import * as Styled from "./page.styled";
 import { I18nextProvider, useTranslation } from "react-i18next";
 import i18n from "@/i18n";
 export default function About() {
+  const { t } = useTranslation();
   return (
     <I18nextProvider i18n={i18n}>
       <Styled.AboutPageContainer>
@@ -37,13 +38,10 @@ export default function About() {
               md={{ span: 24, order: 2 }}
               lg={12}
             >
-              <Styled.Title>Dreams Analyzed</Styled.Title>
+              <Styled.Title>{t("Dreams Analyzed")}</Styled.Title>
               <Styled.Description>
-                Alhodhod Islamic Dictionary of Dreams contains more than 20,000
-                dreams deeply analyse and commented by famous Muslim scholars like
-                Ibn Sirine, Nabulsi, Ibn Shahin and others.
-                <br></br> The website will go further and present everything that
-                relates to dreams in the islamic culture.
+                {t("DreamsAnalyzedDescription")}
+                <br></br> {t("DreamsAnalyzedSubDescription")}
               </Styled.Description>
             </Col>
             <Col
@@ -53,12 +51,10 @@ export default function About() {
               lg={12}
             >
               <Styled.Title>
-                New <span style={{ color: "#93C600" }}>Technologies</span>
+                {t("New")} <span style={{ color: "#93C600" }}>{t("Technologies")}</span>
               </Styled.Title>
               <Styled.Description>
-                We worked hard for a few weeks to rebuilt the website using new
-                technologies and tools ( cloud, vps, updating scripts…) to make
-                responsive and friendly.
+                {t("NewTechnologiesDescription")}
               </Styled.Description>
             </Col>
             <Col
@@ -109,12 +105,9 @@ export default function About() {
               md={{ span: 24, order: 6 }}
               lg={12}
             >
-              <Styled.Title style={{ color: "#93C600" }}>Membership</Styled.Title>
+              <Styled.Title style={{ color: "#93C600" }}>{t("Membership")}</Styled.Title>
               <Styled.Description>
-                Shortly, incha Allah Taala, we will offer membership so you can
-                get a private account where you can record your personal dreams
-                and ask help from admin or other members willing to help you
-                understanding the meaning of your dreams.
+                {t("MembershipDescription")}
               </Styled.Description>
             </Col>
             <Col
@@ -125,8 +118,7 @@ export default function About() {
             >
               <Styled.Title>YouTube Channel </Styled.Title>
               <Styled.Description>
-                In addition, we have established a YouTube channel to elevate your
-                experience even further.
+                {t("YouTubeChannelDescription")}
               </Styled.Description>
             </Col>
             <Col
