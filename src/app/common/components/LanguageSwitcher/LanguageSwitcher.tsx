@@ -18,18 +18,18 @@ const LanguageSwitcher = () => {
   };
 
   useEffect(() => {
-    if (localStorage) {
-      localStorage.setItem('lang', language?.toLowerCase() || 'US');
+    if (localStorage && language) {
+      localStorage.setItem('lang', language?.toLowerCase());
     }
   }, [language]);
 
   useEffect(() => {
     if (!language){
       if (localStorage) {
-        setLanguage(localStorage.getItem('lang') || 'US');
+        handleLanguageChange(localStorage.getItem('lang')?.toLocaleUpperCase() || 'US');
       }
       else {
-        setLanguage('US');
+        handleLanguageChange('US');
       }
     }
   }, []);
