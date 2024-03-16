@@ -35,7 +35,7 @@ export default function Dreams() {
     try {
       const url = new URL("/api/read-csv", window.location.origin);
       url.searchParams.append('attribute', 'mot');
-      url.searchParams.append('lang', localStorage.getItem('lang') || 'us');
+      url.searchParams.append('lang', localStorage.getItem('lang') || 'US');
 
       const response = await fetch(url.toString());
       // const response = await fetch("/api/read-csv?attribute=mot");

@@ -7,6 +7,7 @@ import home from "../../../../../public/images/homeBg.webp";
 import logo from "../../../../../public/images/logo.png";
 
 import * as Styled from "./Header.styled";
+import Link from "next/link";
 
 export const Header: React.FC = () => {
   const pathName = usePathname();
@@ -127,9 +128,11 @@ export const Header: React.FC = () => {
             </Styled.HeaderDescription>
             <Styled.ButtonWrapper>
               {isHomePage && (
-                <Styled.HeaderButton href="/dictionary" type="primary">
-                  Dictionary of Dreams
-                </Styled.HeaderButton>
+                <Link href="/dictionary">
+                  <Styled.HeaderButton type="primary">
+                    Dictionary of Dreams
+                  </Styled.HeaderButton>
+                </Link>
               )}
             </Styled.ButtonWrapper>
           </Styled.HeaderTextContainer>

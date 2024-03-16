@@ -6,6 +6,8 @@ import { Advertisement } from "../common/components/Advertisement";
 import { useState, useRef, useEffect } from "react";
 import { CsvRow } from "../../../pages/api/read-csv";
 import DictionaryFilter from "../common/components/DictionaryFilter/DictionaryFilter";
+import { I18nextProvider } from "react-i18next";
+import i18n from "@/i18n";
 
 export default function Dictionary() {
   const listOfSymbolsRef = useRef<HTMLDivElement | null>(null);
@@ -29,7 +31,7 @@ export default function Dictionary() {
     try {
       const url = new URL("/api/read-csv", window.location.origin);
       url.searchParams.append('attribute', 'lettre');
-      url.searchParams.append('lang', localStorage?.getItem?.('lang') || 'us');
+      url.searchParams.append('lang', localStorage?.getItem?.('lang') || 'US');
 
       const response = await fetch(url.toString());
       // const response = await fetch("/api/read-csv?attribute=lettre");
@@ -125,84 +127,86 @@ export default function Dictionary() {
   };
 
   return (
-    <div>
-      <Styled.ChooseTheFirstLetter>
-        <Styled.SectionHeader ref={targetSectionRefDesktop}>
-          Choose the first letter
-        </Styled.SectionHeader>
-        <ArabesqueIcon />
-        <Styled.LetterSelection>
-          <Styled.LetterRow>
-            {firstRowAlphabets.map((letter, index) => (
-              <Styled.LetterCircle
-                onClick={() => handleButtonClick(letter)}
-                key={index}
-              >
-                {letter}
-              </Styled.LetterCircle>
-            ))}
-          </Styled.LetterRow>
-          <Styled.LineBetweenLetters />
-          <Styled.LetterRow>
-            {secondRowAlphabets.map((letter, index) => (
-              <Styled.LetterCircle
-                onClick={() => handleButtonClick(letter)}
-                key={index}
-              >
-                {letter}
-              </Styled.LetterCircle>
-            ))}
-          </Styled.LetterRow>
-          <Styled.LineBetweenLetters />
-          <Styled.LetterRow>
-            {thirdRowAlphabets.map((letter, index) => (
-              <Styled.LetterCircle
-                onClick={() => handleButtonClick(letter)}
-                key={index}
-              >
-                {letter}
-              </Styled.LetterCircle>
-            ))}
-          </Styled.LetterRow>
-          <Styled.LineBetweenLetters />
-          <Styled.LetterRow>
-            {fourthRowAlphabets.map((letter, index) => (
-              <Styled.LetterCircle
-                onClick={() => handleButtonClick(letter)}
-                key={index}
-              >
-                {letter}
-              </Styled.LetterCircle>
-            ))}
-          </Styled.LetterRow>
-        </Styled.LetterSelection>
-
-        {/* <div style={{ marginBottom: "76px" }}>
-          <Advertisement />
-        </div> */}
-      </Styled.ChooseTheFirstLetter>
-      <DictionaryFilter alphabets={alphabets} selectedCharacter={selectedLetter} handleButtonClick={handleButtonClick}/>
-      {showListOfSymbols && (
-        <Styled.ListOfSymbolsForLetterSection ref={listOfSymbolsRef}>
-          <Styled.SectionHeader>
-            List of Symbols for Letter
+    <I18nextProvider i18n={i18n}>
+      <div>
+        <Styled.ChooseTheFirstLetter>
+          <Styled.SectionHeader ref={targetSectionRefDesktop}>
+            Choose the first letter
           </Styled.SectionHeader>
-          <Styled.SelectedLetterSection>
-            <Styled.SelectedLetterMedal>
-              {selectedLetter}
-            </Styled.SelectedLetterMedal>
+          <ArabesqueIcon />
+          <Styled.LetterSelection>
+            <Styled.LetterRow>
+              {firstRowAlphabets.map((letter, index) => (
+                <Styled.LetterCircle
+                  onClick={() => handleButtonClick(letter)}
+                  key={index}
+                >
+                  {letter}
+                </Styled.LetterCircle>
+              ))}
+            </Styled.LetterRow>
             <Styled.LineBetweenLetters />
-          </Styled.SelectedLetterSection>
-          <Styled.LettersList>{renderLettersListSymbols()}</Styled.LettersList>
-          <Styled.BackToLettersButton onClick={handleBackToLettersButtonClick}>
-            Back To Letters
-          </Styled.BackToLettersButton>
+            <Styled.LetterRow>
+              {secondRowAlphabets.map((letter, index) => (
+                <Styled.LetterCircle
+                  onClick={() => handleButtonClick(letter)}
+                  key={index}
+                >
+                  {letter}
+                </Styled.LetterCircle>
+              ))}
+            </Styled.LetterRow>
+            <Styled.LineBetweenLetters />
+            <Styled.LetterRow>
+              {thirdRowAlphabets.map((letter, index) => (
+                <Styled.LetterCircle
+                  onClick={() => handleButtonClick(letter)}
+                  key={index}
+                >
+                  {letter}
+                </Styled.LetterCircle>
+              ))}
+            </Styled.LetterRow>
+            <Styled.LineBetweenLetters />
+            <Styled.LetterRow>
+              {fourthRowAlphabets.map((letter, index) => (
+                <Styled.LetterCircle
+                  onClick={() => handleButtonClick(letter)}
+                  key={index}
+                >
+                  {letter}
+                </Styled.LetterCircle>
+              ))}
+            </Styled.LetterRow>
+          </Styled.LetterSelection>
 
           {/* <div style={{ marginBottom: "76px" }}>
             <Advertisement />
           </div> */}
-        </Styled.ListOfSymbolsForLetterSection>
-      )}
-    </div>
+        </Styled.ChooseTheFirstLetter>
+        <DictionaryFilter alphabets={alphabets} selectedCharacter={selectedLetter} handleButtonClick={handleButtonClick}/>
+        {showListOfSymbols && (
+          <Styled.ListOfSymbolsForLetterSection ref={listOfSymbolsRef}>
+            <Styled.SectionHeader>
+              List of Symbols for Letter
+            </Styled.SectionHeader>
+            <Styled.SelectedLetterSection>
+              <Styled.SelectedLetterMedal>
+                {selectedLetter}
+              </Styled.SelectedLetterMedal>
+              <Styled.LineBetweenLetters />
+            </Styled.SelectedLetterSection>
+            <Styled.LettersList>{renderLettersListSymbols()}</Styled.LettersList>
+            <Styled.BackToLettersButton onClick={handleBackToLettersButtonClick}>
+              Back To Letters
+            </Styled.BackToLettersButton>
+
+            {/* <div style={{ marginBottom: "76px" }}>
+              <Advertisement />
+            </div> */}
+          </Styled.ListOfSymbolsForLetterSection>
+        )}
+      </div>
+    </I18nextProvider>
   );
 }

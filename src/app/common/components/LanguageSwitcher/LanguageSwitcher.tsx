@@ -5,7 +5,7 @@ import ReactFlagsSelect from "react-flags-select";
 import { useEffect, useState } from "react";
 
 const LanguageSwitcher = () => {
-  const [language, setLanguage] = useState("US");
+  const [language, setLanguage] = useState("");
   const { i18n } = useTranslation();
 
   const changeLanguage = (language: string) => {
@@ -19,15 +19,26 @@ const LanguageSwitcher = () => {
 
   useEffect(() => {
     if (localStorage) {
-      localStorage.setItem('lang', language?.toLowerCase() || 'us');
+      localStorage.setItem('lang', language?.toLowerCase() || 'US');
     }
   }, [language]);
+
+  useEffect(() => {
+    if (!language){
+      if (localStorage) {
+        setLanguage(localStorage.getItem('lang') || 'US');
+      }
+      else {
+        setLanguage('US');
+      }
+    }
+  }, []);
 
   return (
     <div>
       <ReactFlagsSelect
         className="border-transparent mt-2"
-        selected={language || 'us'}
+        selected={language || 'US'}
         countries={["US", "SA", "FR"]}
         customLabels={{
           US: "English",

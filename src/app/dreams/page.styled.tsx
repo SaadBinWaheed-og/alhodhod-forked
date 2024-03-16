@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import { breakpoint } from "../common/ui";
 import Image from "next/image";
+import Link from "next/link";
 
 export const ListOfDreamsForSymbol = styled.div`
   display: flex;
@@ -236,7 +237,7 @@ export const DreamInterpretationSubText = styled.div`
   }
 `;
 
-export const BackToLettersButton = styled.a`
+export const BackToLettersButton = styled(Link)`
   display: none;
   ${breakpoint.md} {
     margin: 0 auto;
