@@ -39,7 +39,7 @@ export const Header: React.FC = () => {
     <>
       {path === "/" && (
         <>
-          {t("BEACAUSE YOUR")} <span style={{ color: "#C1FF0B" }}>{t("DREAMS")}</span>
+          {t("BEACAUSE YOUR")} <span style={{ color: "#C1FF0B" }}>{t("DREAMS")}&nbsp;</span>
           <Styled.BreakTag />
           {t("ARE")} <span style={{ color: "#C1FF0B" }}>{t("MEANINGFUL")}!</span>{" "}
         </>

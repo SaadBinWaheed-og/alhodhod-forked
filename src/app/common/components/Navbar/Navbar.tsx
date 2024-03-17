@@ -5,31 +5,33 @@ import Link from "next/link";
 import * as Styled from "./Navbar.styled";
 import { MobileNavbar } from "./MobileNavbar/MobileNavbar";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   path: string;
 };
 
 export const Navbar: React.FC<Props> = ({ path }) => {
+  const { t } = useTranslation();
   return (
     <>
       <Styled.NavBarList>
         <Styled.NavbarListItem $active={path === "/"}>
-          <Link href={"/"}>Home</Link>{" "}
+          <Link href={"/"}>{t("Home")}</Link>{" "}
         </Styled.NavbarListItem>
         <Styled.NavbarListItem $active={path === "/dictionary"}>
-          <Link href="/dictionary">Dictionary of Dreams</Link>
+          <Link href="/dictionary">{t("Dictionary of Dreams")}</Link>
         </Styled.NavbarListItem>
         <Styled.NavbarListItem $active={path === "/blog"}>
           <Link href="/blog" style={{ color: "#fff" }}>
-            Blog
+            {t("Blog")}
           </Link>
         </Styled.NavbarListItem>
         <Styled.NavbarListItem $active={path === "/videos"}>
-          <Link href="/videos">Videos</Link>
+          <Link href="/videos">{t("Videos")}</Link>
         </Styled.NavbarListItem>
         <Styled.NavbarListItem $active={path === "/about"}>
-          <Link href="about">About</Link>
+          <Link href="about">{t("About")}</Link>
         </Styled.NavbarListItem>
         <Styled.LanguageSwitcherContainer>
           <LanguageSwitcher />
