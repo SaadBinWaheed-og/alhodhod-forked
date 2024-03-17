@@ -4,6 +4,7 @@ import React from "react";
 import * as Styled from "./Footer.styled";
 import { Row, Col, Space } from "antd";
 import logo from "../../../../../public/images/logo.png";
+import { useTranslation } from "react-i18next";
 import {
   FacebookFilled,
   TwitterCircleFilled,
@@ -15,6 +16,7 @@ import {
 //icons to be replaces from customIcons once Khubaib provides the icons
 
 export const Footer: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <>
       <Styled.FooterWrapper>
@@ -22,11 +24,11 @@ export const Footer: React.FC = () => {
           <Row justify="space-between">
             <Col>
               <Styled.UiList>
-                <Styled.UiLink href="/">Home</Styled.UiLink>
-                <Styled.UiLink href="/services">Services</Styled.UiLink>
-                <Styled.UiLink href="/products">Products</Styled.UiLink>
-                <Styled.UiLink href="/contact">Contact Us</Styled.UiLink>
-                <Styled.UiLink href="/about">About Us</Styled.UiLink>
+                <Styled.UiLink href="/">{t("Home")}</Styled.UiLink>
+                <Styled.UiLink href="/services">{t("Services")}</Styled.UiLink>
+                <Styled.UiLink href="/products">{t("Products")}</Styled.UiLink>
+                <Styled.UiLink href="/contact">{t("Contact Us")}</Styled.UiLink>
+                <Styled.UiLink href="/about">{t("About Us")}</Styled.UiLink>
               </Styled.UiList>
             </Col>
             <Col>
@@ -54,7 +56,7 @@ export const Footer: React.FC = () => {
               <Space size={4}>
                 <Styled.CRIcon>©</Styled.CRIcon>
                 <Styled.CopyRight>
-                  Copyright Alhodhod 2023. All Right reserved
+                  {t("Copyrights")}
                 </Styled.CopyRight>
               </Space>
             </Col>

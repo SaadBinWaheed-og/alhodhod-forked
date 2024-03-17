@@ -5,10 +5,12 @@ import React, { useEffect, useState } from "react";
 import { Navbar } from "../Navbar/Navbar";
 import home from "../../../../../public/images/homeBg.webp";
 import logo from "../../../../../public/images/logo.png";
-
+import { useTranslation } from "react-i18next";
 import * as Styled from "./Header.styled";
+import Link from "next/link";
 
 export const Header: React.FC = () => {
+  const { t } = useTranslation();
   const pathName = usePathname();
   const [path, setPath] = useState<string>("/");
 
@@ -24,12 +26,12 @@ export const Header: React.FC = () => {
     <>
       {path === "/" && (
         <>
-          <span style={{ color: "#C1FF0B" }}>ISLAMIC </span>DREAMS
-          INTERPRETATION{" "}
+          <span style={{ color: "#C1FF0B" }}>{t("ISLAMIC")} </span>{t("DREAMS")}&nbsp;
+          {t("INTERPRETATION")}{" "}
         </>
       )}
-      {path === "/dictionary" && <>Choose the first letter of the</>}
-      {path === "/dreams" && <>Choose the relevant dream</>}
+      {path === "/dictionary" && <>{t("ChooseTheFirstLetterOfThe")}</>}
+      {path === "/dreams" && <>{t("ChooseTheRelevantDream")}</>}
     </>
   );
 
@@ -37,35 +39,35 @@ export const Header: React.FC = () => {
     <>
       {path === "/" && (
         <>
-          BECAUSE YOUR <span style={{ color: "#C1FF0B" }}>DREAMS</span>
+          {t("BEACAUSE YOUR")} <span style={{ color: "#C1FF0B" }}>{t("DREAMS")}&nbsp;</span>
           <Styled.BreakTag />
-          {" ARE"} <span style={{ color: "#C1FF0B" }}>MEANINGFUL!</span>{" "}
+          {t("ARE")} <span style={{ color: "#C1FF0B" }}>{t("MEANINGFUL")}!</span>{" "}
         </>
       )}
       {path === "/dictionary" && (
         <>
-          Main <span style={{ color: "#C1FF0B" }}>Symbol</span>
+          {t("Main")} <span style={{ color: "#C1FF0B" }}>{t("Symbol")}</span>
           <br />
-          in your <span style={{ color: "#C1FF0B" }}>Dream</span>{" "}
+          {t("in your")} <span style={{ color: "#C1FF0B" }}>{t("Dream")}</span>{" "}
         </>
       )}
       {path === "/dreams" && (
         <>
-          List of <span style={{ color: "#C1FF0B" }}>Dreams</span> for
+          {t("List of")} <span style={{ color: "#C1FF0B" }}>{t("Dream")}</span> {t("for")}
           <br />
-          <span style={{ color: "#C1FF0B" }}>Symbol</span>{" "}
+          <span style={{ color: "#C1FF0B" }}>{t("Symbol")}</span>{" "}
         </>
       )}
       {path === "/videos" && (
         <>
-          Welcome to our
+          {t("Welcome to our")}
           <br />
-          <span style={{ color: "#C1FF0B" }}>Videos</span>{" "}
+          <span style={{ color: "#C1FF0B" }}>{t("Videos")}</span>{" "}
         </>
       )}
       {path === "/about" && (
         <>
-          <span style={{ color: "#C1FF0B" }}>About</span> Us{" "}
+          <span style={{ color: "#C1FF0B" }}>{t("About")}</span> {t("Us")}{" "}
         </>
       )}
     </>
@@ -75,8 +77,7 @@ export const Header: React.FC = () => {
     <>
       {path === "/about" && (
         <>
-          Alhodhod.com is dedicated since 2001 to the islamic interpretation of
-          dreams to help Muslims understanding the meanings of their dreams.
+          {t("HeaderDescriptionContent")}
         </>
       )}
     </>
@@ -127,9 +128,11 @@ export const Header: React.FC = () => {
             </Styled.HeaderDescription>
             <Styled.ButtonWrapper>
               {isHomePage && (
-                <Styled.HeaderButton href="/dictionary" type="primary">
-                  Dictionary of Dreams
-                </Styled.HeaderButton>
+                <Link href="/dictionary">
+                  <Styled.HeaderButton type="primary">
+                  {t("Dictionary Of Dreams")}
+                  </Styled.HeaderButton>
+                </Link>
               )}
             </Styled.ButtonWrapper>
           </Styled.HeaderTextContainer>

@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import type { MenuProps } from "antd";
 import {
@@ -5,20 +6,23 @@ import {
   CloseOutlined,
   HomeOutlined,
   HomeFilled,
+  GlobalOutlined,
   QuestionCircleOutlined,
   QuestionCircleFilled,
 } from "@ant-design/icons";
 import Link from "next/link";
 import { Space } from "antd";
 import Image from "next/image";
-
+import { useTranslation } from "react-i18next";
 import * as Styled from "./MobileNavbar.styled";
+import LanguageSwitcher from "../../LanguageSwitcher/LanguageSwitcher";
 
 type Props = {
   path: string;
 };
 
 export const MobileNavbar: React.FC<Props> = ({ path }) => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -56,7 +60,7 @@ export const MobileNavbar: React.FC<Props> = ({ path }) => {
                     style={{ fontSize: "16px", color: "#CBCBCB" }}
                   />
                 )}
-                <span>Home</span>
+                <span>{t("Home")}</span>
               </Space>
             </Link>
           </Styled.NavbarListItem>
@@ -72,7 +76,7 @@ export const MobileNavbar: React.FC<Props> = ({ path }) => {
                   height={13.38}
                   style={{ paddingTop: "5px" }}
                 />
-                <span>Dictionary of Dreams</span>
+                <span>{t("Dictionary of Dreams")}</span>
               </Space>
             </Link>
           </Styled.NavbarListItem>
@@ -87,7 +91,7 @@ export const MobileNavbar: React.FC<Props> = ({ path }) => {
                   height={18.4}
                   style={{ paddingTop: "5px", color: "black" }}
                 />
-                <span>Blogs</span>
+                <span>{t("Blogs")}</span>
               </Space>
             </Link>
           </Styled.NavbarListItem>
@@ -102,7 +106,7 @@ export const MobileNavbar: React.FC<Props> = ({ path }) => {
                   height={18.4}
                   style={{ paddingTop: "5px", color: "black" }}
                 />
-                <span>Videos</span>
+                <span>{t("Videos")}</span>
               </Space>
             </Link>
           </Styled.NavbarListItem>
@@ -118,9 +122,18 @@ export const MobileNavbar: React.FC<Props> = ({ path }) => {
                     style={{ fontSize: "16px", color: "#CBCBCB" }}
                   />
                 )}
-                <span>About</span>
+                <span>{t("About")}</span>
               </Space>
             </Link>
+          </Styled.NavbarListItem>
+          <Styled.NavbarListItem $active={false}>
+            <Space size={12}>
+              <GlobalOutlined
+                style={{ fontSize: "16px", color: "#CBCBCB" }}
+              />
+              <span>{t("Language")}</span>
+              <LanguageSwitcher />
+            </Space>
           </Styled.NavbarListItem>
         </Styled.NavBarList>
       </Styled.Drawer>

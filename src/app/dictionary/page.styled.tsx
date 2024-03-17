@@ -2,6 +2,7 @@
 import { styled } from "styled-components";
 import Image from "next/image";
 import { breakpoint } from "../common/ui";
+import Link from "next/link";
 // Component for section headers
 export const SectionHeader = styled.p`
   display: none;
@@ -118,7 +119,7 @@ export const SelectedLetterMedal = styled.div`
   text-align: center;
 `;
 
-export const LettersListItem = styled.a`
+export const LettersListItem = styled(Link)`
   width: 100%;
   border-radius: 17.84px;
   margin-top: 32px;
@@ -204,6 +205,7 @@ export const BackToLettersButton = styled.a`
   display: none;
   ${breakpoint.md} {
     margin-top: 20px;
+    margin-bottom: 20px;
     width: 276px;
     height: 83px;
     border: 1px solid;

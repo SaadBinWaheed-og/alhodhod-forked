@@ -4,6 +4,8 @@ export const NavBarList = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 41.4px 0px 0px 0px;
+  display: flex;
+  align-items: center;
   li {
     margin-right: 57.7px;
   }
@@ -15,7 +17,7 @@ export const NavBarList = styled.ul`
 export const NavbarListItem = styled.li<{
   $active?: boolean;
 }>`
-  display: inline;
+  display: inline-block;
   position: relative;
   background: transparent;
   color: ${({ $active }) => ($active ? "#c1ff0b" : "#fff")};
@@ -41,4 +43,8 @@ export const NavbarListItem = styled.li<{
     border-radius: 100%;
     left: calc(50%);
   }
+`;
+
+export const LanguageSwitcherContainer = styled.div`
+  padding-right: 24px;
 `;

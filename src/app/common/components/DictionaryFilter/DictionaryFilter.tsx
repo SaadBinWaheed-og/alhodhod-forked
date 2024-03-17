@@ -3,6 +3,7 @@ import React, { useMemo, useState } from "react";
 import * as Styled from "./DictionaryFilter.styled";
 import { CaretDownIconGray } from "../../customIcons";
 import { sliceInChunks } from "../../utils/utility";
+import { useTranslation } from "react-i18next";
 type Props = {
   alphabets: string[];
   selectedCharacter: string;
@@ -10,6 +11,7 @@ type Props = {
 };
 
 const DictionaryFilter = (props: Props) => {
+  const { t } = useTranslation();
   const { alphabets, selectedCharacter, handleButtonClick } = props;
   const slicedAlphabets = useMemo(
     () => sliceInChunks(alphabets, 9),
@@ -31,7 +33,7 @@ const DictionaryFilter = (props: Props) => {
         ) : (
           <Styled.NoSelectedCharacter />
         )}
-        <Styled.HeaderText>{"Choose the first letter"}</Styled.HeaderText>
+        <Styled.HeaderText>{t("ChooseTheFirstLetter")}</Styled.HeaderText>
         <Styled.AccordionDropDown onClick={handleToggleAccordion}>
           <CaretDownIconGray />
         </Styled.AccordionDropDown>

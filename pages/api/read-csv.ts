@@ -14,13 +14,23 @@ export interface CsvRow {
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const { attribute } = req.query;
-    const filePath = path.resolve('public/csvs/glir_db_eng.csv');
+    let langSeparator = ";";
+    const { attribute, lang } = req.query;
+    let languageDb = "";
+    if (lang == "fr") {
+      langSeparator = ",";
+      languageDb = "public/csvs/glir_db.csv";
+    } else if (lang == "sa") {
+      languageDb = "public/csvs/glir_db_eng.csv";
+    } else {
+      languageDb = "public/csvs/glir_db_eng.csv";
+    }
+    const filePath = path.resolve(languageDb);
 
     const csvData: CsvRow[] = [];
     
     fs.createReadStream(filePath)
-      .pipe(csv({ separator: ';' }))
+      .pipe(csv({ separator: langSeparator }))
       .on('data', (row) => {
         csvData.push(row);
       })
