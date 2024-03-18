@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import csv from 'csv-parser';
 
-export interface CsvRow {
+interface CsvRow {
   id: string;
   lettre: string;
   mot: string;
@@ -15,12 +15,12 @@ export interface CsvRow {
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { attribute } = req.query;
-    const filePath = path.resolve('public/csvs/glir_db_eng.csv');
+    const filePath = path.resolve('public/csvs/glir_db.csv');
 
     const csvData: CsvRow[] = [];
     
     fs.createReadStream(filePath)
-      .pipe(csv({ separator: ';' }))
+      .pipe(csv({ separator: ',' }))
       .on('data', (row) => {
         csvData.push(row);
       })
