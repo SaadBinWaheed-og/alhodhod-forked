@@ -204,25 +204,29 @@ export const LettersListItemArrowIcon = styled(Image)`
 `;
 
 export const BackToLettersButton = styled.a`
-  display: none;
+  margin-top: 20px;
+  margin-bottom: 76px;
+  width: 180px;
+  height: 50px;
+  border: 1px solid;
+  border-color: #878787;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+  font-weight: 500;
+  line-height: 37px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
   ${breakpoint.md} {
-    margin-top: 20px;
-    margin-bottom: 76px;
     width: 276px;
     height: 83px;
-    border: 1px solid;
-    border-color: #878787;
-    border-radius: 13px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 30px;
     font-weight: 500;
     line-height: 37px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
   }
 `;
