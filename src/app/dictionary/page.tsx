@@ -12,7 +12,6 @@ import i18n from "@/i18n";
 export default function Dictionary() {
   const { t } = useTranslation();
   const listOfSymbolsRef = useRef<HTMLDivElement | null>(null);
-  const targetSectionRef = useRef<HTMLDivElement | null>(null);
   const targetSectionRefDesktop = useRef<HTMLDivElement | null>(null);
   const firstRowAlphabets = ["A", "B", "C", "D", "E", "F", "G", "H"];
   const secondRowAlphabets = ["I", "J", "K", "L", "M", "N", "O"];
@@ -63,10 +62,8 @@ export default function Dictionary() {
   };
 
   const handleBackToLettersButtonClick = () => {
-    if (targetSectionRef.current) {
-      targetSectionRef.current.scrollIntoView({ behavior: "smooth" });
-    }
     if (targetSectionRefDesktop.current) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       targetSectionRefDesktop.current.scrollIntoView({ behavior: "smooth" });
     }
   };
@@ -185,7 +182,7 @@ export default function Dictionary() {
             <Advertisement />
           </div> */}
         </Styled.ChooseTheFirstLetter>
-        <DictionaryFilter alphabets={alphabets} selectedCharacter={selectedLetter} handleButtonClick={handleButtonClick} ref={targetSectionRef}/>
+        <DictionaryFilter alphabets={alphabets} selectedCharacter={selectedLetter} handleButtonClick={handleButtonClick}/>
         {showListOfSymbols && (
           <Styled.ListOfSymbolsForLetterSection ref={listOfSymbolsRef}>
             <Styled.SectionHeader>
