@@ -6,7 +6,7 @@ export const NavBarList = styled.ul`
   padding: 41.4px 0px 0px 0px;
   display: flex;
   align-items: center;
-  li {
+  > li {
     margin-right: 57.7px;
   }
   @media screen and (max-width: 1200px) {
