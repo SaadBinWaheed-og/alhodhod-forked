@@ -7,19 +7,23 @@ type Props = {
 };
 
 export const AdSenseComponent = ({ adClient, adSlot, adFormat }: Props) => {
-  // useEffect(() => {
-  //   ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
-  // }, []);
+  useEffect(() => {
+    try {
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+    } catch (err) {
+      console.error(err);
+    }
+  }, []);
 
-  // return (
-  //   <ins
-  //     className="adsbygoogle"
-  //     style={{ display: "block" }}
-  //     data-ad-client={adClient}
-  //     data-ad-slot={adSlot}
-  //     data-ad-format={adFormat}
-  //     data-full-width-responsive="true"
-  //   ></ins>
-  // );
+  return (
+    <ins
+      className="adsbygoogle"
+      style={{ display: "block" }}
+      data-ad-client={adClient}
+      data-ad-slot={adSlot}
+      data-ad-format={adFormat}
+      data-full-width-responsive="true"
+    ></ins>
+  );
 };
 
