@@ -31,7 +31,7 @@ export default function Dictionary() {
     try {
       const lang = localStorage?.getItem?.('lang') || 'US';
 
-      const response = await fetch(`/api/read-csv?attribute=lettre&lang=us`);
+      const response = await fetch(`/api/read-csv?attribute=lettre&lang=${lang}`);
       if (response.ok) {
         const data = await response.json();
         const nameSortedData = data["data"];
