@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+      {/* <head>
         <Script
           id="adsense-script"
           async
@@ -35,7 +35,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         >
         </Script>
-      </head>
+      </head> */}
       <body className={montserrat.variable}>
         <StyledComponentsRegistry>
           <Header />
