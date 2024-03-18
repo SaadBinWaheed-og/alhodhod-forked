@@ -115,7 +115,7 @@ export default function Dictionary() {
                 {groupedData[symbolSortedData[i]].length} {t("Dream")}(s) {t("found")}
               </Styled.LettersListItemTextTwo>
             </Styled.LettersListItemTextGroup>
-            <Styled.LettersListItemArrowIcon src={ArrowIcon} alt="< >" />
+            <Styled.LettersListItemArrowIcon src={ArrowIcon} height={100} width={100} alt="< >" />
           </Styled.LettersListItem>
         );
       }

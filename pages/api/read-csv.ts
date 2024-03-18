@@ -14,12 +14,12 @@ export interface CsvRow {
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    let langSeparator = ";";
+    let langSeparator = ';';
     const { attribute, lang } = req.query;
-    let languageDb = "public/csvs/glir_db_eng.csv";
-    if (lang == "fr") {
-      langSeparator = ",";
-      languageDb = "public/csvs/glir_db.csv";
+    let languageDb = 'public/csvs/glir_db_eng.csv';
+    if (lang == 'fr') {
+      langSeparator = ',';
+      languageDb = 'public/csvs/glir_db.csv';
     }
     const filePath = path.resolve(languageDb);
 
@@ -38,6 +38,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
+    throw error;
   }
 };
 
