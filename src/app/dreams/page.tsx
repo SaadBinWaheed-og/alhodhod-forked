@@ -36,12 +36,13 @@ export default function Dreams() {
 
   const fetchData = async () => {
     try {
-      const url = new URL("/api/read-csv", window.location.origin);
-      url.searchParams.append('attribute', 'mot');
-      url.searchParams.append('lang', localStorage.getItem('lang') || 'US');
+      const lang = localStorage?.getItem?.('lang') || 'US';
+      let api_url = '/api/read-csv?attribute=mot';
+      if (lang === 'fr') {
+        api_url = '/api/read-csv-fr?attribute=mot';
+      }
 
-      const response = await fetch(url.toString());
-      // const response = await fetch("/api/read-csv?attribute=mot");
+      const response = await fetch(api_url);
       if (response.ok) {
         const data = await response.json();
         const nameSortedData = data["data"];

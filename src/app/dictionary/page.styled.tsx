@@ -28,6 +28,7 @@ export const ChooseTheFirstLetter = styled.div`
     align-items: center;
     flex-direction: column;
     padding: 0 4.58vw;
+    margin-top: 130px;
   }
 `;
 
@@ -36,6 +37,7 @@ export const LetterSelection = styled.div`
   background: #ffffff;
   border-radius: 21.3906px;
   padding: 2.96vh 0;
+  margin-bottom: 130px;
 `;
 export const LetterRow = styled.div`
   display: flex;
@@ -202,25 +204,29 @@ export const LettersListItemArrowIcon = styled(Image)`
 `;
 
 export const BackToLettersButton = styled.a`
-  display: none;
+  margin-top: 20px;
+  margin-bottom: 76px;
+  width: 180px;
+  height: 50px;
+  border: 1px solid;
+  border-color: #878787;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+  font-weight: 500;
+  line-height: 37px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
   ${breakpoint.md} {
-    margin-top: 20px;
-    margin-bottom: 20px;
     width: 276px;
     height: 83px;
-    border: 1px solid;
-    border-color: #878787;
-    border-radius: 13px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 30px;
     font-weight: 500;
     line-height: 37px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
   }
 `;

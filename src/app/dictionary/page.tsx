@@ -12,7 +12,6 @@ import i18n from "@/i18n";
 export default function Dictionary() {
   const { t } = useTranslation();
   const listOfSymbolsRef = useRef<HTMLDivElement | null>(null);
-  const targetSectionRef = useRef<HTMLDivElement | null>(null);
   const targetSectionRefDesktop = useRef<HTMLDivElement | null>(null);
   const firstRowAlphabets = ["A", "B", "C", "D", "E", "F", "G", "H"];
   const secondRowAlphabets = ["I", "J", "K", "L", "M", "N", "O"];
@@ -30,12 +29,13 @@ export default function Dictionary() {
 
   const fetchData = async () => {
     try {
-      const url = new URL("/api/read-csv", window.location.origin);
-      url.searchParams.append('attribute', 'lettre');
-      url.searchParams.append('lang', localStorage?.getItem?.('lang') || 'US');
+      const lang = localStorage?.getItem?.('lang') || 'US';
+      let api_url = '/api/read-csv?attribute=lettre';
+      if (lang === 'fr') {
+        api_url = '/api/read-csv-fr?attribute=lettre';
+      }
 
-      const response = await fetch(url.toString());
-      // const response = await fetch("/api/read-csv?attribute=lettre");
+      const response = await fetch(api_url);
       if (response.ok) {
         const data = await response.json();
         const nameSortedData = data["data"];
@@ -63,10 +63,8 @@ export default function Dictionary() {
   };
 
   const handleBackToLettersButtonClick = () => {
-    if (targetSectionRef.current) {
-      targetSectionRef.current.scrollIntoView({ behavior: "smooth" });
-    }
     if (targetSectionRefDesktop.current) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       targetSectionRefDesktop.current.scrollIntoView({ behavior: "smooth" });
     }
   };
@@ -78,51 +76,53 @@ export default function Dictionary() {
   }, [showListOfSymbols]);
 
   const renderLettersListSymbols = () => {
-    const itemsToRender = csvData[selectedLetter as any] || [];
+    const itemsToRender = csvData?.[selectedLetter as any] || [];
     const items = [];
-    const groupedData: { [key: string]: CsvRow[] } = {};
-    if (Array.isArray(itemsToRender)) {
-      itemsToRender.forEach((row) => {
-        const value = row["mot"];
-        if (!groupedData[value]) {
-          groupedData[value] = [];
-        }
-        groupedData[value].push(row);
-      });
-    }
-
-    const symbolSortedData = Object.keys(groupedData);
-
-    for (let i = 0; i < symbolSortedData.length; i++) {
-      items.push(
-        <Styled.LettersListItem
-          onClick={() =>
-            localStorage.setItem("selectedSymbol", `${symbolSortedData[i]}`)
+    if (itemsToRender) {
+      const groupedData: { [key: string]: CsvRow[] } = {};
+      if (Array.isArray(itemsToRender)) {
+        itemsToRender.forEach((row) => {
+          const value = row["mot"];
+          if (!groupedData[value]) {
+            groupedData[value] = [];
           }
-          href={`/dreams?symbol=${symbolSortedData[i]}`}
-          key={i}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "row",
-            }}
+          groupedData[value].push(row);
+        });
+      }
+
+      const symbolSortedData = Object.keys(groupedData);
+
+      for (let i = 0; i < symbolSortedData.length; i++) {
+        items.push(
+          <Styled.LettersListItem
+            onClick={() =>
+              localStorage.setItem("selectedSymbol", `${symbolSortedData[i]}`)
+            }
+            href={`/dreams?symbol=${symbolSortedData[i]}`}
+            key={i}
           >
-            <Styled.LetterListItemCircle>{i + 1}</Styled.LetterListItemCircle>
-          </div>
-          <Styled.LettersListItemTextGroup>
-            <Styled.LettersListItemTextOne>
-              {symbolSortedData[i]}
-            </Styled.LettersListItemTextOne>
-            <Styled.LettersListItemTextTwo>
-              {groupedData[symbolSortedData[i]].length} {t("Dream")}(s) {t("found")}
-            </Styled.LettersListItemTextTwo>
-          </Styled.LettersListItemTextGroup>
-          <Styled.LettersListItemArrowIcon src={ArrowIcon} alt="< >" />
-        </Styled.LettersListItem>
-      );
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "row",
+              }}
+            >
+              <Styled.LetterListItemCircle>{i + 1}</Styled.LetterListItemCircle>
+            </div>
+            <Styled.LettersListItemTextGroup>
+              <Styled.LettersListItemTextOne>
+                {symbolSortedData[i]}
+              </Styled.LettersListItemTextOne>
+              <Styled.LettersListItemTextTwo>
+                {groupedData[symbolSortedData[i]].length} {t("Dream")}(s) {t("found")}
+              </Styled.LettersListItemTextTwo>
+            </Styled.LettersListItemTextGroup>
+            <Styled.LettersListItemArrowIcon src={ArrowIcon} height={100} width={100} alt="< >" />
+          </Styled.LettersListItem>
+        );
+      }
     }
     return items;
   };

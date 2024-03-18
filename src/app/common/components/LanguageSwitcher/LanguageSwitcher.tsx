@@ -47,7 +47,7 @@ const LanguageSwitcher = () => {
         onSelect={(countryCode) => handleLanguageChange(countryCode)}
         showOptionLabel={false}
         showSelectedLabel={false}
-        fullWidth={false}
+        fullWidth={true}
         selectButtonClassName="bg-inherit border-transparent"
       />
     </div>
