@@ -29,7 +29,7 @@ export default function Dictionary() {
 
   const fetchData = async () => {
     try {
-      // const lang = localStorage?.getItem?.('lang') || 'US';
+      const lang = localStorage?.getItem?.('lang') || 'US';
 
       const response = await fetch(`/api/read-csv?attribute=lettre&lang=us`);
       if (response.ok) {

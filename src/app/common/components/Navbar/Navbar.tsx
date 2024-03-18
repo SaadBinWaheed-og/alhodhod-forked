@@ -33,9 +33,9 @@ export const Navbar: React.FC<Props> = ({ path }) => {
         <Styled.NavbarListItem $active={path === "/about"}>
           <Link href="about">{t("About")}</Link>
         </Styled.NavbarListItem>
-        <Styled.LanguageSwitcherContainer>
+        {/* <Styled.LanguageSwitcherContainer>
           <LanguageSwitcher />
-        </Styled.LanguageSwitcherContainer>
+        </Styled.LanguageSwitcherContainer> */}
       </Styled.NavBarList>
 
       <div
