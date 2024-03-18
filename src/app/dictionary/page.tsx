@@ -29,18 +29,15 @@ export default function Dictionary() {
 
   const fetchData = async () => {
     try {
-      const url = new URL("/api/read-csv", window.location.origin);
-      url.searchParams.append('attribute', 'lettre');
-      url.searchParams.append('lang', localStorage?.getItem?.('lang') || 'US');
+      const lang = localStorage?.getItem?.('lang') || 'US';
 
-      const response = await fetch(url.toString());
-      // const response = await fetch("/api/read-csv?attribute=lettre");
+      const response = await fetch(`/api/read-csv?attribute=lettre&lang=${lang}`);
       if (response.ok) {
         const data = await response.json();
         const nameSortedData = data["data"];
         return nameSortedData;
       } else {
-        console.error("Failed to fetch data", response.body);
+        console.error("Failed to fetch data");
       }
     } catch (error) {
       console.error(error);
