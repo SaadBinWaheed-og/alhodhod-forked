@@ -27,15 +27,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* <head>
-        <Script
-          id="adsense-script"
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4511775489420895"
-          crossOrigin="anonymous"
-        >
-        </Script>
-      </head> */}
       <body className={montserrat.variable}>
         <StyledComponentsRegistry>
           <Header />
