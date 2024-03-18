@@ -40,7 +40,7 @@ export default function Dictionary() {
         const nameSortedData = data["data"];
         return nameSortedData;
       } else {
-        console.error("Failed to fetch data");
+        console.error("Failed to fetch data", response);
       }
     } catch (error) {
       console.error(error);
