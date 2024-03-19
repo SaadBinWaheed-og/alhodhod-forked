@@ -3,8 +3,11 @@
 import { useTranslation } from "react-i18next";
 import ReactFlagsSelect from "react-flags-select";
 import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 const LanguageSwitcher = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [language, setLanguage] = useState("");
   const { i18n } = useTranslation();
 
@@ -20,13 +23,26 @@ const LanguageSwitcher = () => {
   useEffect(() => {
     if (localStorage && language) {
       localStorage.setItem('lang', language?.toLowerCase());
+      if (language == "US" || language == "us") {
+        router.push(`${pathname}?lang=en`);
+      }
+      else {
+        router.push(`${pathname}?lang=${language?.toLocaleLowerCase()}`);
+      }
     }
   }, [language]);
 
   useEffect(() => {
     if (!language){
-      if (localStorage) {
-        handleLanguageChange(localStorage.getItem('lang')?.toLocaleUpperCase() || 'US');
+      const urlParams = new URLSearchParams(window.location.search);
+      const langFromUrl = urlParams.get('lang');
+      if (langFromUrl) {
+        if (langFromUrl == "EN" || langFromUrl == "en") {
+          handleLanguageChange('US');
+        }
+        else{
+          handleLanguageChange(langFromUrl?.toLocaleUpperCase());
+        }
       }
       else {
         handleLanguageChange('US');

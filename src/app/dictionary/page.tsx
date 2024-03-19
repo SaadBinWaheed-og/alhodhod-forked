@@ -29,11 +29,13 @@ export default function Dictionary() {
   const [csvData, setCsvData] = useState<CsvRow[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchData = async () => {
+  const fetchData = async (language: string) => {
     try {
-      const lang = localStorage?.getItem?.('lang') || 'US';
+      if (!language) {
+        language = localStorage?.getItem?.('lang') || 'US';
+      }
       let api_url = '/api/read-csv?attribute=lettre';
-      if (lang === 'fr') {
+      if (language === 'fr') {
         api_url = '/api/read-csv-fr?attribute=lettre';
       }
 
@@ -51,7 +53,7 @@ export default function Dictionary() {
   };
 
   useEffect(() => {
-    fetchData().then((data) => {
+    fetchData('').then((data) => {
       setCsvData(data);
       setLoading(false);
     });
@@ -62,7 +64,7 @@ export default function Dictionary() {
       setLoading(true);
       setSelectedLetter("");
       setShowListOfSymbols(false);
-      fetchData().then((data) => {
+      fetchData(i18n.language).then((data) => {
         setCsvData(data);
         setLoading(false);
       });
