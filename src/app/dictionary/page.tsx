@@ -2,10 +2,11 @@
 import * as Styled from "./page.styled";
 import { ArabesqueIcon } from "../common/customIcons";
 import ArrowIcon from "../../../public/images/arrow-vector.svg";
-import { Advertisement } from "../common/components/Advertisement";
+import { Advertisement, AdvertisementContained } from "../common/components/Advertisement";
 import { useState, useRef, useEffect } from "react";
 import { CsvRow } from "../../../pages/api/read-csv";
 import DictionaryFilter from "../common/components/DictionaryFilter/DictionaryFilter";
+import LoadingSpinner from "../common/components/LoadingSpinner/LoadingSpinner";
 import { I18nextProvider, useTranslation } from "react-i18next";
 import i18n from "@/i18n";
 
@@ -26,6 +27,7 @@ export default function Dictionary() {
   const [showListOfSymbols, setShowListOfSymbols] = useState(false);
   const [selectedLetter, setSelectedLetter] = useState("");
   const [csvData, setCsvData] = useState<CsvRow[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
     try {
@@ -51,8 +53,33 @@ export default function Dictionary() {
   useEffect(() => {
     fetchData().then((data) => {
       setCsvData(data);
+      setLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setLoading(true);
+      setSelectedLetter("");
+      setShowListOfSymbols(false);
+      fetchData().then((data) => {
+        setCsvData(data);
+        setLoading(false);
+      });
+    };
+
+    // Subscribe to language change event
+    i18n.on('languageChanged', handleLanguageChange);
+
+    // Unsubscribe from language change event on component unmount
+    return () => {
+      i18n.off('languageChanged', handleLanguageChange);
+    };
+  }, [i18n]);
+
+
+  useEffect(() => {
+  }, [csvData]);
 
   const handleButtonClick = (letter: string) => {
     setSelectedLetter(letter);
@@ -127,7 +154,7 @@ export default function Dictionary() {
     return items;
   };
 
-  return (
+  return ( loading ? <LoadingSpinner/> : 
     <I18nextProvider i18n={i18n}>
       <div>
         <Styled.ChooseTheFirstLetter>
@@ -181,9 +208,9 @@ export default function Dictionary() {
             </Styled.LetterRow>
           </Styled.LetterSelection>
 
-          {/* <div style={{ marginBottom: "76px" }}>
-            <Advertisement />
-          </div> */}
+          <div style={{ marginBottom: "76px" }}>
+            <AdvertisementContained />
+          </div>
         </Styled.ChooseTheFirstLetter>
         <DictionaryFilter alphabets={alphabets} selectedCharacter={selectedLetter} handleButtonClick={handleButtonClick}/>
         {showListOfSymbols && (
@@ -202,9 +229,9 @@ export default function Dictionary() {
               {t("Back To Letters")}
             </Styled.BackToLettersButton>
 
-            {/* <div style={{ marginBottom: "76px" }}>
-              <Advertisement />
-            </div> */}
+            <div style={{ marginBottom: "76px" }}>
+              <AdvertisementContained />
+            </div>
           </Styled.ListOfSymbolsForLetterSection>
         )}
       </div>

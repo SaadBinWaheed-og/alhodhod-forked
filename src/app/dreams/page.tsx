@@ -34,6 +34,24 @@ export default function Dreams() {
     });
   }, []);
 
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setLoading(true);
+      fetchData().then((data) => {
+        setCsvData(data);
+        setLoading(false);
+      });
+    };
+
+    // Subscribe to language change event
+    i18n.on('languageChanged', handleLanguageChange);
+
+    // Unsubscribe from language change event on component unmount
+    return () => {
+      i18n.off('languageChanged', handleLanguageChange);
+    };
+  }, [i18n]);
+
   const fetchData = async () => {
     try {
       const lang = localStorage?.getItem?.('lang') || 'US';
