@@ -55,7 +55,7 @@ export const LetterCircle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 6.5vh;
+  margin: 0 5vh;
   font-size: 28px;
   font-weight: 700;
   line-height: 35px;
