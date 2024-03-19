@@ -82,4 +82,9 @@ export const BlogCard = styled(Card)<{ $width: number; $height: number }>`
       margin: 0px !important;
     }
   }
+
+  .ant-card-body {
+    padding: 0;
+    font-size: 20px;
+  }
 `;
