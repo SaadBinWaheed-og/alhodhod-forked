@@ -33,6 +33,18 @@ const LanguageSwitcher = () => {
   }, [language]);
 
   useEffect(() => {
+    if (localStorage && language) {
+      localStorage.setItem('lang', language?.toLowerCase());
+      if (language == "US" || language == "us") {
+        router.push(`${pathname}?lang=en`);
+      }
+      else {
+        router.push(`${pathname}?lang=${language?.toLocaleLowerCase()}`);
+      }
+    }
+  }, [pathname]);
+
+  useEffect(() => {
     if (!language){
       const urlParams = new URLSearchParams(window.location.search);
       const langFromUrl = urlParams.get('lang');
@@ -45,7 +57,12 @@ const LanguageSwitcher = () => {
         }
       }
       else {
-        handleLanguageChange('US');
+        if (localStorage) {
+          const langFromLocalStorage = localStorage.getItem('lang');
+          handleLanguageChange(langFromLocalStorage?.toLocaleUpperCase() || 'US');
+        } else {
+          handleLanguageChange('US');
+        }
       }
     }
   }, []);
