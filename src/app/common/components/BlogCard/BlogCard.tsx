@@ -46,10 +46,6 @@ export const BlogCard: React.FC<Props> = ({
           </Styled.ViewDetailsButton>
         </div>,
       ]}
-      bodyStyle={{
-        padding: "0px",
-        fontSize: "20px",
-      }}
     >
       <Meta key="meta" title={title} description={description} />
     </Styled.BlogCard>
