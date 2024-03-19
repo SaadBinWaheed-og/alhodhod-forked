@@ -28,16 +28,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
-        <Script
-          id="adsense-script"
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4511775489420895"
-          strategy="lazyOnload"
-          crossOrigin="anonymous"
-        >
-        </Script>
-      </Head>
+      <Script
+        id="adsense-script"
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4511775489420895"
+        strategy="lazyOnload"
+        crossOrigin="anonymous"
+      >
+      </Script>
       <body className={montserrat.variable}>
         <StyledComponentsRegistry>
           <Header />
