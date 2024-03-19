@@ -2,7 +2,7 @@
 import { Row, Col, Space } from "antd";
 import { ArabesqueIcon } from "../common/customIcons";
 import * as Styled from "./HomePageContent.styled";
-import { Advertisement } from "../common/components/Advertisement";
+import { Advertisement, AdvertisementContained } from "../common/components/Advertisement";
 
 import fdree from "../../../public/images/fdree.jpg";
 import head from "../../../public/images/head.webp";
@@ -94,7 +94,7 @@ export const HomePageContent: React.FC = () => {
 
           <Row>
             <Col>
-              <Advertisement />
+              <AdvertisementContained />
             </Col>
           </Row>
 
@@ -220,7 +220,7 @@ export const HomePageContent: React.FC = () => {
 
           <Row style={{ marginBottom: "76px" }}>
             <Col>
-              <Advertisement />
+              <AdvertisementContained />
             </Col>
           </Row>
         </Styled.HomePageContainer>

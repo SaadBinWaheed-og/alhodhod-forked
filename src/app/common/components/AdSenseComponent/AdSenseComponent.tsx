@@ -18,12 +18,15 @@ export const AdSenseComponent = ({ adClient, adSlot, adFormat }: Props) => {
   return (
     <ins
       className="adsbygoogle"
-      style={{ display: "block" }}
+      style={{
+        display: 'block',
+        overflow: 'hidden',
+      }}
       data-ad-client={adClient}
       data-ad-slot={adSlot}
       data-ad-format={adFormat}
       data-full-width-responsive="true"
-    ></ins>
+    />
   );
 };
 

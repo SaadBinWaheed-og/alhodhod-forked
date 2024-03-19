@@ -2,7 +2,7 @@
 import * as Styled from "./page.styled";
 import { ArabesqueIcon } from "../common/customIcons";
 import ArrowIcon from "../../../public/images/arrow-vector.svg";
-import { Advertisement } from "../common/components/Advertisement";
+import { Advertisement, AdvertisementContained } from "../common/components/Advertisement";
 import { useState, useRef, useEffect } from "react";
 import { CsvRow } from "../../../pages/api/read-csv";
 import DictionaryFilter from "../common/components/DictionaryFilter/DictionaryFilter";
@@ -181,9 +181,9 @@ export default function Dictionary() {
             </Styled.LetterRow>
           </Styled.LetterSelection>
 
-          {/* <div style={{ marginBottom: "76px" }}>
-            <Advertisement />
-          </div> */}
+          <div style={{ marginBottom: "76px" }}>
+            <AdvertisementContained />
+          </div>
         </Styled.ChooseTheFirstLetter>
         <DictionaryFilter alphabets={alphabets} selectedCharacter={selectedLetter} handleButtonClick={handleButtonClick}/>
         {showListOfSymbols && (
@@ -202,9 +202,9 @@ export default function Dictionary() {
               {t("Back To Letters")}
             </Styled.BackToLettersButton>
 
-            {/* <div style={{ marginBottom: "76px" }}>
-              <Advertisement />
-            </div> */}
+            <div style={{ marginBottom: "76px" }}>
+              <AdvertisementContained />
+            </div>
           </Styled.ListOfSymbolsForLetterSection>
         )}
       </div>

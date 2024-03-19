@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 import { Header, Footer } from "./common/components";
 import Script from "next/script";
+import Head from "next/head";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -27,15 +28,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+      <Head>
         <Script
           id="adsense-script"
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4511775489420895"
+          strategy="lazyOnload"
           crossOrigin="anonymous"
         >
         </Script>
-      </head>
+      </Head>
       <body className={montserrat.variable}>
         <StyledComponentsRegistry>
           <Header />
