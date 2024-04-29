@@ -58,6 +58,8 @@ export default function Dreams() {
       let api_url = '/api/read-csv?attribute=mot';
       if (lang === 'fr') {
         api_url = '/api/read-csv-fr?attribute=mot';
+      } else if (lang === 'sa') {
+        api_url = '/api/read-csv-ar?attribute=mot';
       }
 
       const response = await fetch(api_url);

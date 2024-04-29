@@ -72,7 +72,7 @@ const LanguageSwitcher = () => {
       <ReactFlagsSelect
         className="border-transparent mt-2"
         selected={language || 'US'}
-        countries={["US", "FR"]}
+        countries={["US", "FR", "SA"]}
         customLabels={{
           US: "English",
           FR: "French",

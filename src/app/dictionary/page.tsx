@@ -37,6 +37,8 @@ export default function Dictionary() {
       let api_url = '/api/read-csv?attribute=lettre';
       if (language === 'fr') {
         api_url = '/api/read-csv-fr?attribute=lettre';
+      } else if (language === 'sa') {
+        api_url = '/api/read-csv-ar?attribute=lettre';
       }
 
       const response = await fetch(api_url);
