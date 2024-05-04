@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import { breakpoint } from "../common/ui";
 import Image from "next/image";
 import Link from "next/link";
+import { lateef } from "../fonts";
 
 export const ListOfDreamsForSymbol = styled.div`
   display: flex;
@@ -28,7 +29,7 @@ export const SectionHeader = styled.div`
     line-height: 54px;
     margin-bottom: 83px;
   }
-  ${(props) => props.lang == "sa" && `font-family: var(--font-lateef);`}
+  ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
 `;
 
 export const ArabesqueIcon = styled(Image)`
@@ -64,7 +65,7 @@ export const RightSideText = styled.div`
     line-height: 35px;
     margin: 8.25vh 3.25vw 8.25vh 0;
   }
-  ${(props) => props.lang == "sa" && `font-family: var(--font-lateef);`}
+  ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
 `;
 
 export const DreamList = styled.div`
@@ -129,7 +130,7 @@ export const DreamItemCircle = styled.div`
     line-height: 37.95px;
     margin: 25px 50px;
   }
-  ${(props) => props.lang == "sa" && `font-family: var(--font-lateef);`}
+  ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
 `;
 
 export const DreamItemText = styled.div`
@@ -143,7 +144,7 @@ export const DreamItemText = styled.div`
     font-size: 29px;
     line-height: 38px;
   }
-  ${(props) => props.lang == "sa" && `font-family: var(--font-lateef);`}
+  ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
 `;
 
 export const MeaningText = styled.div`
@@ -157,7 +158,7 @@ export const MeaningText = styled.div`
     text-align: right;
     color: #5e5e5e;
   }
-  ${(props) => props.lang == "sa" && `font-family: var(--font-lateef);`}
+  ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
 `;
 
 export const DropDownCircle = styled.div`
@@ -215,7 +216,7 @@ export const DreamInterpretationHeader = styled.div`
     line-height: 39px;
     margin: 6vh 0;
   }
-  ${(props) => props.lang == "sa" && `font-family: var(--font-lateef);`}
+  ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
 `;
 
 export const DreamInterpretationLine = styled.div`
@@ -241,7 +242,7 @@ export const DreamInterpretationSubText = styled.div`
     font-style: normal;
     line-height: 38px;
   }
-  ${(props) => props.lang == "sa" && `font-family: var(--font-lateef);`}
+  ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
 `;
 
 export const BackToLettersButton = styled(Link)`
@@ -270,5 +271,5 @@ export const BackToLettersButton = styled(Link)`
     font-weight: 500;
     line-height: 37px;
   }
-  ${(props) => props.lang == "sa" && `font-family: var(--font-lateef);`}
+  ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
 `;

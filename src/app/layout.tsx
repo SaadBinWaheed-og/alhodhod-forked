@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Lateef, Montserrat, Reem_Kufi } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import StyledComponentsRegistry from "./lib/registry";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
@@ -8,26 +8,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Header, Footer } from "./common/components";
 import Script from "next/script";
 import Head from "next/head";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-montserrat",
-});
-
-const lateef = Lateef({
-  subsets: ["arabic"],
-  display: "swap",
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
-  variable: "--font-lateef",
-});
-const reemKufi = Reem_Kufi({
-  subsets: ["arabic"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-reemkufi",
-});
+import { montserrat } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Al-Hodhod",
@@ -49,7 +30,7 @@ export default function RootLayout({
         crossOrigin="anonymous"
       ></Script>
       <body
-        className={montserrat.variable && lateef.variable && reemKufi.variable}
+        className={montserrat.variable}
       >
         <StyledComponentsRegistry>
           <Header />
