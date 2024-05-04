@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Lateef, Montserrat, Reem_Kufi } from "next/font/google";
 import StyledComponentsRegistry from "./lib/registry";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
@@ -14,6 +14,19 @@ const montserrat = Montserrat({
   display: "swap",
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-montserrat",
+});
+
+const lateef = Lateef({
+  subsets: ["arabic"],
+  display: "swap",
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  variable: "--font-lateef",
+});
+const reemKufi = Reem_Kufi({
+  subsets: ["arabic"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-reemkufi",
 });
 
 export const metadata: Metadata = {
@@ -34,9 +47,10 @@ export default function RootLayout({
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4511775489420895"
         strategy="lazyOnload"
         crossOrigin="anonymous"
+      ></Script>
+      <body
+        className={montserrat.variable && lateef.variable && reemKufi.variable}
       >
-      </Script>
-      <body className={montserrat.variable}>
         <StyledComponentsRegistry>
           <Header />
           {children}

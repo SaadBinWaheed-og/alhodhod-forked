@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import Image from "next/image";
 import { breakpoint } from "../common/ui";
 import Link from "next/link";
+
 // Component for section headers
 export const SectionHeader = styled.p`
   display: none;
@@ -14,6 +15,13 @@ export const SectionHeader = styled.p`
     line-height: 54px;
     color: #23262f;
   }
+  ${(props) =>
+    props.lang == "sa" &&
+    `
+    ${breakpoint.md} {
+      font-family: var(--font-lateef);
+    }
+  `}
 `;
 
 export const LetterFilterMobile = styled.div`
@@ -63,6 +71,7 @@ export const LetterCircle = styled.div`
   text-align: center;
   border: 0.891274px solid #979797;
   cursor: pointer;
+  ${(props) => props.lang == "sa" && `font-family: var(--font-lateef);`}
 `;
 
 export const LineBetweenLetters = styled.div`
@@ -119,6 +128,7 @@ export const SelectedLetterMedal = styled.div`
   line-height: 203px;
   letter-spacing: 0em;
   text-align: center;
+  ${(props) => props.lang == "sa" && `font-family: var(--font-lateef);`}
 `;
 
 export const LettersListItem = styled(Link)`
@@ -169,6 +179,7 @@ export const LettersListItemTextOne = styled.div`
   font-weight: 600;
   letter-spacing: 0em;
   text-align: left;
+  ${(props) => props.lang == "sa" && `font-family: var(--font-lateef);`}
 `;
 
 export const LettersListItemTextTwo = styled.div`
@@ -229,4 +240,5 @@ export const BackToLettersButton = styled.a`
     font-weight: 500;
     line-height: 37px;
   }
+  ${(props) => props.lang == "sa" && `font-family: var(--font-lateef);`}
 `;
