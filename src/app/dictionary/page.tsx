@@ -143,7 +143,7 @@ export default function Dictionary() {
               <Styled.LetterListItemCircle>{i + 1}</Styled.LetterListItemCircle>
             </div>
             <Styled.LettersListItemTextGroup>
-              <Styled.LettersListItemTextOne>
+              <Styled.LettersListItemTextOne lang={i18n.language}>
                 {symbolSortedData[i]}
               </Styled.LettersListItemTextOne>
               <Styled.LettersListItemTextTwo>
@@ -158,12 +158,17 @@ export default function Dictionary() {
     return items;
   };
 
-  return ( loading ? <LoadingSpinner/> : 
+  return loading ? (
+    <LoadingSpinner />
+  ) : (
     <I18nextProvider i18n={i18n}>
       <div>
         <Styled.ChooseTheFirstLetter>
-          <Styled.SectionHeader ref={targetSectionRefDesktop}>
-          {t("ChooseTheFirstLetter")}
+          <Styled.SectionHeader
+            ref={targetSectionRefDesktop}
+            lang={i18n.language}
+          >
+            {t("ChooseTheFirstLetter")}
           </Styled.SectionHeader>
           <ArabesqueIcon />
           <Styled.LetterSelection>
@@ -172,6 +177,7 @@ export default function Dictionary() {
                 <Styled.LetterCircle
                   onClick={() => handleButtonClick(letter)}
                   key={index}
+                  lang={i18n.language}
                 >
                   {letter}
                 </Styled.LetterCircle>
@@ -183,6 +189,7 @@ export default function Dictionary() {
                 <Styled.LetterCircle
                   onClick={() => handleButtonClick(letter)}
                   key={index}
+                  lang={i18n.language}
                 >
                   {letter}
                 </Styled.LetterCircle>
@@ -194,6 +201,7 @@ export default function Dictionary() {
                 <Styled.LetterCircle
                   onClick={() => handleButtonClick(letter)}
                   key={index}
+                  lang={i18n.language}
                 >
                   {letter}
                 </Styled.LetterCircle>
@@ -205,6 +213,7 @@ export default function Dictionary() {
                 <Styled.LetterCircle
                   onClick={() => handleButtonClick(letter)}
                   key={index}
+                  lang={i18n.language}
                 >
                   {letter}
                 </Styled.LetterCircle>
@@ -216,20 +225,29 @@ export default function Dictionary() {
             <AdvertisementContained />
           </div>
         </Styled.ChooseTheFirstLetter>
-        <DictionaryFilter alphabets={alphabets} selectedCharacter={selectedLetter} handleButtonClick={handleButtonClick}/>
+        <DictionaryFilter
+          alphabets={alphabets}
+          selectedCharacter={selectedLetter}
+          handleButtonClick={handleButtonClick}
+        />
         {showListOfSymbols && (
           <Styled.ListOfSymbolsForLetterSection ref={listOfSymbolsRef}>
             <Styled.SectionHeader>
               {t("List of Symbols for Letter")}
             </Styled.SectionHeader>
             <Styled.SelectedLetterSection>
-              <Styled.SelectedLetterMedal>
+              <Styled.SelectedLetterMedal lang={i18n.language}>
                 {selectedLetter}
               </Styled.SelectedLetterMedal>
               <Styled.LineBetweenLetters />
             </Styled.SelectedLetterSection>
-            <Styled.LettersList>{renderLettersListSymbols()}</Styled.LettersList>
-            <Styled.BackToLettersButton onClick={handleBackToLettersButtonClick}>
+            <Styled.LettersList>
+              {renderLettersListSymbols()}
+            </Styled.LettersList>
+            <Styled.BackToLettersButton
+              onClick={handleBackToLettersButtonClick}
+              lang={i18n.language}
+            >
               {t("Back To Letters")}
             </Styled.BackToLettersButton>
 
