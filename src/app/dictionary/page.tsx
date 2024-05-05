@@ -18,10 +18,10 @@ export default function Dictionary() {
   const secondRowAlphabets = ["I", "J", "K", "L", "M", "N", "O"];
   const thirdRowAlphabets = ["P", "Q", "R", "S", "T", "U", "V", "W"];
   const fourthRowAlphabets = ["X", "Y", "Z"];
-  const firstRowAlphabetsArabic = ["د", "خ", "ح", "ج", "ث", "ت", "ب", "الف "];
-  const secondRowAlphabetsArabic = ["ض", "ص", "ش", "س", "ز", "ر", "ذ"];
-  const thirdRowAlphabetsArabic = ["ل", "ك", "ق", "ف", "غ", "ع", "ظ", "ط"];
-  const fourthRowAlphabetsArabic = ["ؤ", "ئ", "ي", "و", "ه", "ن", "م"];
+  const firstRowAlphabetsArabic = ["دال ", "خاء ", "حاء ", "جيم ", "ثاء ", "تاء ", "باء ", "الف "];
+  const secondRowAlphabetsArabic = ["ضاد ", "صاد ", "شين ", "سين ", "زاي ", "راء ", "ذال "];
+  const thirdRowAlphabetsArabic = ["لام ", "كاف ", "قاف ", "فاء ", "غين ", "عين ", "ظاء ", "طاء "];
+  const fourthRowAlphabetsArabic = ["ياء ", "واو ", "هاء ", "نون ", "ميم "];
 
   const alphabets = [
     ...firstRowAlphabets,
