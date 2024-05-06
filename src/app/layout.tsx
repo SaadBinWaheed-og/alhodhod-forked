@@ -8,13 +8,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Header, Footer } from "./common/components";
 import Script from "next/script";
 import Head from "next/head";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-montserrat",
-});
+import { montserrat } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Al-Hodhod",
@@ -34,9 +28,10 @@ export default function RootLayout({
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4511775489420895"
         strategy="lazyOnload"
         crossOrigin="anonymous"
+      ></Script>
+      <body
+        className={montserrat.variable}
       >
-      </Script>
-      <body className={montserrat.variable}>
         <StyledComponentsRegistry>
           <Header />
           {children}

@@ -58,6 +58,8 @@ export default function Dreams() {
       let api_url = '/api/read-csv?attribute=mot';
       if (lang === 'fr') {
         api_url = '/api/read-csv-fr?attribute=mot';
+      } else if (lang === 'sa') {
+        api_url = '/api/read-csv-ar?attribute=mot';
       }
 
       const response = await fetch(api_url);
@@ -100,9 +102,11 @@ export default function Dreams() {
                     flexDirection: "row",
                   }}
                 >
-                  <Styled.DreamItemCircle>{i + 1}</Styled.DreamItemCircle>
+                  <Styled.DreamItemCircle lang={i18n.language}>
+                    {i + 1}
+                  </Styled.DreamItemCircle>
                 </div>
-                <Styled.DreamItemText>
+                <Styled.DreamItemText lang={i18n.language}>
                   {itemsToRender[i].enonce}
                 </Styled.DreamItemText>
               </Styled.DreamItemCircleTextContainer>
@@ -115,7 +119,9 @@ export default function Dreams() {
                   marginLeft: "18px",
                 }}
               >
-                <Styled.MeaningText>{t("Meaning")}</Styled.MeaningText>
+                <Styled.MeaningText lang={i18n.language}>
+                  {t("Meaning")}
+                </Styled.MeaningText>
                 <Styled.DropDownCircle onClick={() => handleItemClick(i)}>
                   <CaretDownIconGray />
                 </Styled.DropDownCircle>
@@ -123,15 +129,15 @@ export default function Dreams() {
             </Styled.DreamItem>
             {isInterpretationVisible === i && (
               <Styled.DreamInterpretationDiv>
-                <Styled.DreamInterpretationHeader>
+                <Styled.DreamInterpretationHeader lang={i18n.language}>
                   {t("Dream Interpretation")}
                 </Styled.DreamInterpretationHeader>
                 <Styled.DreamInterpretationLine />
-                <Styled.DreamInterpretationSubText>
+                <Styled.DreamInterpretationSubText lang={i18n.language}>
                   {itemsToRender[i].interp}
                 </Styled.DreamInterpretationSubText>
                 <AdvertisementContained />
-                <div className="temp" style={{marginTop: "55px"}}/>
+                <div className="temp" style={{ marginTop: "55px" }} />
               </Styled.DreamInterpretationDiv>
             )}
           </div>
@@ -142,21 +148,23 @@ export default function Dreams() {
     return items;
   };
 
-  return ( loading ? <LoadingSpinner/> : 
+  return loading ? (
+    <LoadingSpinner />
+  ) : (
     <I18nextProvider i18n={i18n}>
       <div>
         <Styled.ListOfDreamsForSymbol>
           <Styled.ArabesqueIcon src={Arabesque} alt="arabesque" />
-          <Styled.SectionHeader>
+          <Styled.SectionHeader lang={i18n.language}>
             {t("List of dreams for symbol")} {symbol}
           </Styled.SectionHeader>
           <Styled.DreamsListDiv>
-            <Styled.RightSideText>
+            <Styled.RightSideText lang={i18n.language}>
               {getItemsCount()} {t("Dream")}(s) {t("found")}
             </Styled.RightSideText>
             <Styled.DreamList>{displayDreamItems()}</Styled.DreamList>
           </Styled.DreamsListDiv>
-          <Styled.BackToLettersButton href={`/dictionary`}>
+          <Styled.BackToLettersButton href={`/dictionary`} lang={i18n.language}>
             {t("Back To Letters")}
           </Styled.BackToLettersButton>
         </Styled.ListOfDreamsForSymbol>

@@ -18,12 +18,25 @@ export default function Dictionary() {
   const secondRowAlphabets = ["I", "J", "K", "L", "M", "N", "O"];
   const thirdRowAlphabets = ["P", "Q", "R", "S", "T", "U", "V", "W"];
   const fourthRowAlphabets = ["X", "Y", "Z"];
+  const firstRowAlphabetsArabic = ["دال ", "خاء ", "حاء ", "جيم ", "ثاء ", "تاء ", "باء ", "الف "];
+  const secondRowAlphabetsArabic = ["ضاد ", "صاد ", "شين ", "سين ", "زاي ", "راء ", "ذال "];
+  const thirdRowAlphabetsArabic = ["لام ", "كاف ", "قاف ", "فاء ", "غين ", "عين ", "ظاء ", "طاء "];
+  const fourthRowAlphabetsArabic = ["ياء ", "واو ", "هاء ", "نون ", "ميم "];
+
   const alphabets = [
     ...firstRowAlphabets,
     ...secondRowAlphabets,
     ...thirdRowAlphabets,
     ...fourthRowAlphabets,
   ];
+
+  const arabicAlphabets = [
+    ...firstRowAlphabetsArabic,
+    ...secondRowAlphabetsArabic,
+    ...thirdRowAlphabetsArabic,
+    ...fourthRowAlphabetsArabic,
+  ];
+
   const [showListOfSymbols, setShowListOfSymbols] = useState(false);
   const [selectedLetter, setSelectedLetter] = useState("");
   const [csvData, setCsvData] = useState<CsvRow[]>([]);
@@ -37,6 +50,8 @@ export default function Dictionary() {
       let api_url = '/api/read-csv?attribute=lettre';
       if (language === 'fr') {
         api_url = '/api/read-csv-fr?attribute=lettre';
+      } else if (language === 'sa') {
+        api_url = '/api/read-csv-ar?attribute=lettre';
       }
 
       const response = await fetch(api_url);
@@ -141,7 +156,7 @@ export default function Dictionary() {
               <Styled.LetterListItemCircle>{i + 1}</Styled.LetterListItemCircle>
             </div>
             <Styled.LettersListItemTextGroup>
-              <Styled.LettersListItemTextOne>
+              <Styled.LettersListItemTextOne lang={i18n.language}>
                 {symbolSortedData[i]}
               </Styled.LettersListItemTextOne>
               <Styled.LettersListItemTextTwo>
@@ -156,78 +171,149 @@ export default function Dictionary() {
     return items;
   };
 
-  return ( loading ? <LoadingSpinner/> : 
+  return loading ? (
+    <LoadingSpinner />
+  ) : (
     <I18nextProvider i18n={i18n}>
       <div>
         <Styled.ChooseTheFirstLetter>
-          <Styled.SectionHeader ref={targetSectionRefDesktop}>
-          {t("ChooseTheFirstLetter")}
+          <Styled.SectionHeader
+            ref={targetSectionRefDesktop}
+            lang={i18n.language}
+          >
+            {t("ChooseTheFirstLetter")}
           </Styled.SectionHeader>
           <ArabesqueIcon />
-          <Styled.LetterSelection>
-            <Styled.LetterRow>
-              {firstRowAlphabets.map((letter, index) => (
-                <Styled.LetterCircle
-                  onClick={() => handleButtonClick(letter)}
-                  key={index}
-                >
-                  {letter}
-                </Styled.LetterCircle>
-              ))}
-            </Styled.LetterRow>
-            <Styled.LineBetweenLetters />
-            <Styled.LetterRow>
-              {secondRowAlphabets.map((letter, index) => (
-                <Styled.LetterCircle
-                  onClick={() => handleButtonClick(letter)}
-                  key={index}
-                >
-                  {letter}
-                </Styled.LetterCircle>
-              ))}
-            </Styled.LetterRow>
-            <Styled.LineBetweenLetters />
-            <Styled.LetterRow>
-              {thirdRowAlphabets.map((letter, index) => (
-                <Styled.LetterCircle
-                  onClick={() => handleButtonClick(letter)}
-                  key={index}
-                >
-                  {letter}
-                </Styled.LetterCircle>
-              ))}
-            </Styled.LetterRow>
-            <Styled.LineBetweenLetters />
-            <Styled.LetterRow>
-              {fourthRowAlphabets.map((letter, index) => (
-                <Styled.LetterCircle
-                  onClick={() => handleButtonClick(letter)}
-                  key={index}
-                >
-                  {letter}
-                </Styled.LetterCircle>
-              ))}
-            </Styled.LetterRow>
-          </Styled.LetterSelection>
+          { i18n.language == "sa" ? (
+            <Styled.LetterSelection>
+              <Styled.LetterRow>
+                {firstRowAlphabetsArabic.map((letter, index) => (
+                  <Styled.LetterCircle
+                    onClick={() => handleButtonClick(letter)}
+                    key={index}
+                    lang={i18n.language}
+                  >
+                    {letter}
+                  </Styled.LetterCircle>
+                ))}
+              </Styled.LetterRow>
+              <Styled.LineBetweenLetters />
+              <Styled.LetterRow>
+                {secondRowAlphabetsArabic.map((letter, index) => (
+                  <Styled.LetterCircle
+                    onClick={() => handleButtonClick(letter)}
+                    key={index}
+                    lang={i18n.language}
+                  >
+                    {letter}
+                  </Styled.LetterCircle>
+                ))}
+              </Styled.LetterRow>
+              <Styled.LineBetweenLetters />
+              <Styled.LetterRow>
+                {thirdRowAlphabetsArabic.map((letter, index) => (
+                  <Styled.LetterCircle
+                    onClick={() => handleButtonClick(letter)}
+                    key={index}
+                    lang={i18n.language}
+                  >
+                    {letter}
+                  </Styled.LetterCircle>
+                ))}
+              </Styled.LetterRow>
+              <Styled.LineBetweenLetters />
+              <Styled.LetterRow>
+                {fourthRowAlphabetsArabic.map((letter, index) => (
+                  <Styled.LetterCircle
+                    onClick={() => handleButtonClick(letter)}
+                    key={index}
+                    lang={i18n.language}
+                  >
+                    {letter}
+                  </Styled.LetterCircle>
+                ))}
+              </Styled.LetterRow>
+            </Styled.LetterSelection>
+          ) : (
+            <Styled.LetterSelection>
+              <Styled.LetterRow>
+                {firstRowAlphabets.map((letter, index) => (
+                  <Styled.LetterCircle
+                    onClick={() => handleButtonClick(letter)}
+                    key={index}
+                    lang={i18n.language}
+                  >
+                    {letter}
+                  </Styled.LetterCircle>
+                ))}
+              </Styled.LetterRow>
+              <Styled.LineBetweenLetters />
+              <Styled.LetterRow>
+                {secondRowAlphabets.map((letter, index) => (
+                  <Styled.LetterCircle
+                    onClick={() => handleButtonClick(letter)}
+                    key={index}
+                    lang={i18n.language}
+                  >
+                    {letter}
+                  </Styled.LetterCircle>
+                ))}
+              </Styled.LetterRow>
+              <Styled.LineBetweenLetters />
+              <Styled.LetterRow>
+                {thirdRowAlphabets.map((letter, index) => (
+                  <Styled.LetterCircle
+                    onClick={() => handleButtonClick(letter)}
+                    key={index}
+                    lang={i18n.language}
+                  >
+                    {letter}
+                  </Styled.LetterCircle>
+                ))}
+              </Styled.LetterRow>
+              <Styled.LineBetweenLetters />
+              <Styled.LetterRow>
+                {fourthRowAlphabets.map((letter, index) => (
+                  <Styled.LetterCircle
+                    onClick={() => handleButtonClick(letter)}
+                    key={index}
+                    lang={i18n.language}
+                  >
+                    {letter}
+                  </Styled.LetterCircle>
+                ))}
+              </Styled.LetterRow>
+            </Styled.LetterSelection>
+          )
+          }
 
           <div style={{ marginBottom: "76px" }}>
             <AdvertisementContained />
           </div>
         </Styled.ChooseTheFirstLetter>
-        <DictionaryFilter alphabets={alphabets} selectedCharacter={selectedLetter} handleButtonClick={handleButtonClick}/>
+        <DictionaryFilter
+          alphabets={i18n.language == "sa" ? arabicAlphabets : alphabets}
+          selectedCharacter={selectedLetter}
+          handleButtonClick={handleButtonClick}
+        />
         {showListOfSymbols && (
           <Styled.ListOfSymbolsForLetterSection ref={listOfSymbolsRef}>
             <Styled.SectionHeader>
               {t("List of Symbols for Letter")}
             </Styled.SectionHeader>
             <Styled.SelectedLetterSection>
-              <Styled.SelectedLetterMedal>
+              <Styled.SelectedLetterMedal lang={i18n.language}>
                 {selectedLetter}
               </Styled.SelectedLetterMedal>
               <Styled.LineBetweenLetters />
             </Styled.SelectedLetterSection>
-            <Styled.LettersList>{renderLettersListSymbols()}</Styled.LettersList>
-            <Styled.BackToLettersButton onClick={handleBackToLettersButtonClick}>
+            <Styled.LettersList>
+              {renderLettersListSymbols()}
+            </Styled.LettersList>
+            <Styled.BackToLettersButton
+              onClick={handleBackToLettersButtonClick}
+              lang={i18n.language}
+            >
               {t("Back To Letters")}
             </Styled.BackToLettersButton>
 

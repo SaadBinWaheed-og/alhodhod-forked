@@ -39,7 +39,7 @@ export const Header: React.FC = () => {
     <>
       {path === "/" && (
         <>
-          {t("BEACAUSE YOUR")} <span style={{ color: "#C1FF0B" }}>{t("DREAMS")}&nbsp;</span>
+          {t("BECAUSE YOUR")} <span style={{ color: "#C1FF0B" }}>{t("DREAMS")}&nbsp;</span>
           <Styled.BreakTag />
           {t("ARE")} <span style={{ color: "#C1FF0B" }}>{t("MEANINGFUL")}!</span>{" "}
         </>
@@ -130,7 +130,7 @@ export const Header: React.FC = () => {
               {isHomePage && (
                 <Link href="/dictionary">
                   <Styled.HeaderButton type="primary">
-                  {t("Dictionary Of Dreams")}
+                  {t("Dictionary of Dreams")}
                   </Styled.HeaderButton>
                 </Link>
               )}
