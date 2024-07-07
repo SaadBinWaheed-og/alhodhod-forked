@@ -136,7 +136,6 @@ export const DreamItemCircle = styled.div`
 export const DreamItemText = styled.div`
   font-size: 11px;
   font-weight: 600;
-  line-height: 15px;
   letter-spacing: 0em;
   text-align: left;
   color: #23262f;
@@ -145,6 +144,8 @@ export const DreamItemText = styled.div`
     line-height: 38px;
   }
   ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
+  ${(props) => props.lang == "sa" && "text-align: right;"}
+  ${(props) => props.lang != "sa" && "line-height: 15px;"}
 `;
 
 export const MeaningText = styled.div`
