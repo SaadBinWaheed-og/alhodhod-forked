@@ -72,6 +72,16 @@ export default function Dictionary() {
       setCsvData(data);
       setLoading(false);
     });
+
+    if (localStorage){
+      if (localStorage.getItem('displayLetter') == '1'){
+        const tempLetter = localStorage.getItem('selectedLetter');
+        if (tempLetter != ''){
+          handleButtonClick(tempLetter || '');
+          localStorage.setItem('displayLetter', '0')
+        }
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -139,8 +149,10 @@ export default function Dictionary() {
       for (let i = 0; i < symbolSortedData.length; i++) {
         items.push(
           <Styled.LettersListItem
-            onClick={() =>
+            onClick={() => {
               localStorage.setItem("selectedSymbol", `${symbolSortedData[i]}`)
+              localStorage.setItem("selectedLetter", `${selectedLetter}`)
+            }
             }
             href={`/dreams?symbol=${symbolSortedData[i]}`}
             key={i}

@@ -246,6 +246,18 @@ export const DreamInterpretationSubText = styled.div`
   ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
 `;
 
+export const BackToLettersButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justfiy-content: space-between;
+   > *:not(:last-child) {
+    margin-right: 1rem;
+    ${breakpoint.md} {
+      margin-right: 2rem;
+    }
+  }
+`;
+
 export const BackToLettersButton = styled(Link)`
   margin-top: 20px;
   margin-bottom: 76px;
