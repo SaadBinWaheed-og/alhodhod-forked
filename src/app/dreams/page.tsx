@@ -167,8 +167,8 @@ export default function Dreams() {
             <Styled.DreamList>{displayDreamItems()}</Styled.DreamList>
           </Styled.DreamsListDiv>
           <Styled.BackToLettersButtonContainer>
-            <Styled.BackToLettersButton href={`/dictionary`} lang={i18n.language} onClick={() => localStorage.setItem('displayLetter', '1')}>
-              {t("Back To Letters")} '{letter}'
+            <Styled.BackToLettersButton href={`/dictionary`} lang={i18n.language} onClick={() => localStorage && localStorage.setItem('displayLetter', '1')}>
+              {t("Back To Letter")} {letter}
             </Styled.BackToLettersButton>
             <Styled.BackToLettersButton href={`/dictionary`} lang={i18n.language}>
               {t("Back To Letters")}
