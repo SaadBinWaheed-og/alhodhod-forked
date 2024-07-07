@@ -25,9 +25,9 @@ export const Footer: React.FC = () => {
             <Col>
               <Styled.UiList>
                 <Styled.UiLink href="/">{t("Home")}</Styled.UiLink>
-                <Styled.UiLink href="/services">{t("Services")}</Styled.UiLink>
-                <Styled.UiLink href="/products">{t("Products")}</Styled.UiLink>
-                <Styled.UiLink href="/contact">{t("Contact Us")}</Styled.UiLink>
+                <Styled.UiLink href="/dictionary">{t("Dictionary of Dreams")}</Styled.UiLink>
+                <Styled.UiLink href="/blog">{t("Blog")}</Styled.UiLink>
+                <Styled.UiLink href="/videos">{t("Videos")}</Styled.UiLink>
                 <Styled.UiLink href="/about">{t("About Us")}</Styled.UiLink>
               </Styled.UiList>
             </Col>

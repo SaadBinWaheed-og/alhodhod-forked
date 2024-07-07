@@ -36,6 +36,7 @@ export const VideoWrapper = styled.div`
   position: relative;
   width: 352px;
   overflow: hidden;
+  ${(props) => props.lang == "sa" && "text-align: right;"}
 
   ${breakpoint.md} {
     width: 432px;

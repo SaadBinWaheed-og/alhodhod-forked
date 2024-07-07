@@ -86,6 +86,7 @@ export const HeaderTextContainer = styled.div<{
     text-align: left !important;
     padding-top: ${({ $isHomePage }) => ($isHomePage ? "96px" : "calc(18vh)")};
     padding-left: 24px;
+    ${(props) => props.lang == "sa" && "padding-right: 24px;"}
     padding-bottom: 0px;
   }
 `;
@@ -100,6 +101,7 @@ export const HeaderText = styled.div`
     font-size: 14px;
     font-weight: 400;
     text-align: left;
+    ${(props) => props.lang == "sa" && "text-align: right;"}
   }
 `;
 
@@ -133,6 +135,7 @@ export const HeaderSubText = styled.div`
     font-size: 31px;
     font-weight: 700;
     text-align: left;
+    ${(props) => props.lang == "sa" && "text-align: right;"}
     width: -webkit-fill-available;
   }
 `;

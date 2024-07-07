@@ -14,6 +14,7 @@ export default function Dreams() {
   const [isInterpretationVisible, setInterpretationVisible] = useState(9999);
   const [csvData, setCsvData] = useState<CsvRow[]>([]);
   const [symbol, setSymbol] = useState<string>();
+  const [letter, setLetter] = useState<string>();
   const [loading, setLoading] = useState(true);
 
   const handleItemClick = (index: number) => {
@@ -27,6 +28,7 @@ export default function Dreams() {
   useEffect(() => {
     if (localStorage) {
       setSymbol(localStorage.getItem("selectedSymbol") || "");
+      setLetter(localStorage.getItem("selectedLetter") || "");
     }
     fetchData().then((data) => {
       setLoading(false);
@@ -164,9 +166,14 @@ export default function Dreams() {
             </Styled.RightSideText>
             <Styled.DreamList>{displayDreamItems()}</Styled.DreamList>
           </Styled.DreamsListDiv>
-          <Styled.BackToLettersButton href={`/dictionary`} lang={i18n.language}>
-            {t("Back To Letters")}
-          </Styled.BackToLettersButton>
+          <Styled.BackToLettersButtonContainer>
+            <Styled.BackToLettersButton href={`/dictionary`} lang={i18n.language} onClick={() => localStorage && localStorage.setItem('displayLetter', '1')}>
+              {t("Back To Letter")} {letter}
+            </Styled.BackToLettersButton>
+            <Styled.BackToLettersButton href={`/dictionary`} lang={i18n.language}>
+              {t("Back To Letters")}
+            </Styled.BackToLettersButton>
+          </Styled.BackToLettersButtonContainer>
         </Styled.ListOfDreamsForSymbol>
       </div>
     </I18nextProvider>

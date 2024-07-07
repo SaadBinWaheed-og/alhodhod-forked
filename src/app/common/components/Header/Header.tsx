@@ -8,6 +8,7 @@ import logo from "../../../../../public/images/logo.png";
 import { useTranslation } from "react-i18next";
 import * as Styled from "./Header.styled";
 import Link from "next/link";
+import i18n from "@/i18n";
 
 export const Header: React.FC = () => {
   const { t } = useTranslation();
@@ -120,9 +121,9 @@ export const Header: React.FC = () => {
           <Styled.NavBarContainer>
             <Navbar path={path} />
           </Styled.NavBarContainer>
-          <Styled.HeaderTextContainer $isHomePage={isHomePage}>
-            <Styled.HeaderText>{headerTextContent}</Styled.HeaderText>
-            <Styled.HeaderSubText>{headerSubTextContent}</Styled.HeaderSubText>
+          <Styled.HeaderTextContainer $isHomePage={isHomePage} lang={i18n.language}>
+            <Styled.HeaderText lang={i18n.language}>{headerTextContent}</Styled.HeaderText>
+            <Styled.HeaderSubText lang={i18n.language}>{headerSubTextContent}</Styled.HeaderSubText>
             <Styled.HeaderDescription>
               {headerDescriptionContent}
             </Styled.HeaderDescription>

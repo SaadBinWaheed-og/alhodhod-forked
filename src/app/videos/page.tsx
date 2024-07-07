@@ -3,6 +3,7 @@
 import React from "react";
 import * as Styled from "./page.styled";
 import { Video } from "./Video";
+import i18n from "@/i18n";
 
 export default function Videos() {
   const videos = [
@@ -21,7 +22,7 @@ export default function Videos() {
       <Styled.VideoSection>
         {videos.map((video) => {
           return (
-            <Styled.VideoWrapper key={video.id}>
+            <Styled.VideoWrapper lang={i18n.language} key={video.id}>
               <Video id={video.id} />
             </Styled.VideoWrapper>
           );
