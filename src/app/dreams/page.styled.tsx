@@ -103,6 +103,7 @@ export const DreamItemCircleTextContainer = styled.div`
   display: flex;
   justify-content: left;
   align-items: center;
+  ${(props) => props.lang == "sa" && "width: 100%"}
 `;
 
 export const DreamItemCircle = styled.div`
@@ -146,6 +147,8 @@ export const DreamItemText = styled.div`
   ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
   ${(props) => props.lang == "sa" && "text-align: right;"}
   ${(props) => props.lang != "sa" && "line-height: 15px;"}
+  ${(props) => props.lang == "sa" && "width: 100%;  "}
+  ${(props) => props.lang == "sa" && "margin-right: 10px;"}
 `;
 
 export const MeaningText = styled.div`

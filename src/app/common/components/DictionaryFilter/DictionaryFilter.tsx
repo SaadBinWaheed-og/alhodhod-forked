@@ -14,7 +14,7 @@ const DictionaryFilter = (props: Props) => {
   const { t } = useTranslation();
   const { alphabets, selectedCharacter, handleButtonClick } = props;
   const slicedAlphabets = useMemo(
-    () => sliceInChunks(alphabets, 9),
+    () => sliceInChunks(alphabets, 8),
     [alphabets]
   );
   const [openAccordion, setOpenAccordion] = useState(false);
