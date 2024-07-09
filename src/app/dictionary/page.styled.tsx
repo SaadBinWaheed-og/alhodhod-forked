@@ -169,6 +169,7 @@ export const LetterListItemCircle = styled.div`
 
 export const LettersListItemTextGroup = styled.div`
   margin: auto 0;
+  ${(props) => props.lang == "sa" && "width: 100%"}
 `;
 
 export const LettersListItemTextOne = styled.div`
@@ -181,6 +182,8 @@ export const LettersListItemTextOne = styled.div`
   letter-spacing: 0em;
   text-align: left;
   ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
+  ${(props) => props.lang == "sa" && "text-align: right;"}
+  ${(props) => props.lang == "sa" && "margin-right: 10px;"}
 `;
 
 export const LettersListItemTextTwo = styled.div`
@@ -192,6 +195,8 @@ export const LettersListItemTextTwo = styled.div`
   line-height: 38px;
   letter-spacing: 0em;
   text-align: left;
+  ${(props) => props.lang == "sa" && "text-align: right;"}
+  ${(props) => props.lang == "sa" && "margin-right: 10px;"}
 `;
 
 export const test = styled.div`
