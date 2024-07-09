@@ -167,11 +167,11 @@ export default function Dictionary() {
             >
               <Styled.LetterListItemCircle>{i + 1}</Styled.LetterListItemCircle>
             </div>
-            <Styled.LettersListItemTextGroup>
+            <Styled.LettersListItemTextGroup lang={i18n.language}>
               <Styled.LettersListItemTextOne lang={i18n.language}>
                 {symbolSortedData[i]}
               </Styled.LettersListItemTextOne>
-              <Styled.LettersListItemTextTwo>
+              <Styled.LettersListItemTextTwo lang={i18n.language}>
                 {groupedData[symbolSortedData[i]].length} {t("Dream")}(s) {t("found")}
               </Styled.LettersListItemTextTwo>
             </Styled.LettersListItemTextGroup>
