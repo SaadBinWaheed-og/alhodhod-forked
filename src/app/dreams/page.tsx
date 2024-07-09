@@ -95,7 +95,7 @@ export default function Dreams() {
         items.push(
           <div key={i}>
             <Styled.DreamItem>
-              <Styled.DreamItemCircleTextContainer>
+              <Styled.DreamItemCircleTextContainer lang={i18n.language}>
                 <div
                   style={{
                     display: "flex",
