@@ -17,7 +17,7 @@ const DictionaryFilter = (props: Props) => {
     () => sliceInChunks(alphabets, 8),
     [alphabets]
   );
-  const [openAccordion, setOpenAccordion] = useState(false);
+  const [openAccordion, setOpenAccordion] = useState(true);
 
   const handleToggleAccordion = () => {
     setOpenAccordion(!openAccordion);
@@ -25,7 +25,7 @@ const DictionaryFilter = (props: Props) => {
 
   return (
     <Styled.Container>
-      <Styled.Header>
+      <Styled.Header onClick={handleToggleAccordion}>
         {!!selectedCharacter ? (
           <Styled.SelectedCharacter>
             {selectedCharacter}
