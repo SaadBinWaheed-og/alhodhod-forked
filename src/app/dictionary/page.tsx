@@ -119,6 +119,7 @@ export default function Dictionary() {
   const handleBackToLettersButtonClick = () => {
     if (targetSectionRefDesktop.current) {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      setSelectedLetter("");
       targetSectionRefDesktop.current.scrollIntoView({ behavior: "smooth" });
     }
   };
@@ -309,7 +310,7 @@ export default function Dictionary() {
           handleButtonClick={handleButtonClick}
         />
         {showListOfSymbols && (
-          <Styled.ListOfSymbolsForLetterSection ref={listOfSymbolsRef}>
+          <Styled.ListOfSymbolsForLetterSection lang={i18n.language} ref={listOfSymbolsRef}>
             <Styled.SectionHeader>
               {t("List of Symbols for Letter")}
             </Styled.SectionHeader>
