@@ -94,7 +94,7 @@ export default function Dreams() {
       for (let i = 0; i < itemsToRender.length; i++) {
         items.push(
           <div key={i}>
-            <Styled.DreamItem>
+            <Styled.DreamItem lang={i18n.language} onClick={() => handleItemClick(i)}>
               <Styled.DreamItemCircleTextContainer lang={i18n.language}>
                 <div
                   style={{
@@ -117,14 +117,14 @@ export default function Dreams() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  flexDirection: "row",
+                  flexDirection: `${i18n.language == 'sa' ? "row-reverse" : "row"}`,
                   marginLeft: "18px",
                 }}
               >
                 <Styled.MeaningText lang={i18n.language}>
                   {t("Meaning")}
                 </Styled.MeaningText>
-                <Styled.DropDownCircle onClick={() => handleItemClick(i)}>
+                <Styled.DropDownCircle onClick={() => handleItemClick(i)} lang={i18n.language}>
                   <CaretDownIconGray />
                 </Styled.DropDownCircle>
               </div>

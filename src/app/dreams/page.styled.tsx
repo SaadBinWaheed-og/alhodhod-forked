@@ -19,14 +19,14 @@ export const ListOfDreamsForSymbol = styled.div`
 export const SectionHeader = styled.div`
   font-style: normal;
   font-weight: 600;
-  font-size: 11px;
-  line-height: 13.41px;
+  font-size: 13px;
+  ${(props) => props.lang != "sa" && `line-height: 13.41px;`}
   margin-bottom: 37px;
   text-align: center;
   color: #23262f;
   ${breakpoint.md} {
     font-size: 44.47px;
-    line-height: 54px;
+    ${(props) => props.lang != "sa" && `line-height: 54px;`}
     margin-bottom: 83px;
   }
   ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
@@ -54,7 +54,7 @@ export const DreamsListDiv = styled.div`
 export const RightSideText = styled.div`
   font-size: 7px;
   font-weight: 500;
-  line-height: 9px;
+  ${(props) => props.lang != "sa" && `line-height: 9px;`}
   letter-spacing: 0em;
   text-align: right;
   color: #5e5e5e;
@@ -62,7 +62,7 @@ export const RightSideText = styled.div`
   ${breakpoint.md} {
     font-size: 28px;
     font-weight: 400;
-    line-height: 35px;
+    ${(props) => props.lang != "sa" && `line-height: 35px;`}
     margin: 8.25vh 3.25vw 8.25vh 0;
   }
   ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
@@ -86,6 +86,7 @@ export const DreamItem = styled.div`
   border: 0.9px solid white;
   border-radius: 5px;
   background: white;
+  ${(props) => props.lang == "sa" && `flex-direction: row-reverse;`}
 
   ${breakpoint.md} {
     width: 1200px;
@@ -103,6 +104,7 @@ export const DreamItemCircleTextContainer = styled.div`
   display: flex;
   justify-content: left;
   align-items: center;
+  ${(props) => props.lang == "sa" && `flex-direction: row-reverse;`}
   ${(props) => props.lang == "sa" && "width: 100%"}
 `;
 
@@ -116,7 +118,7 @@ export const DreamItemCircle = styled.div`
   align-items: center;
   margin: 11px 10px;
   font-size: 9.5px;
-  line-height: 12px;
+  ${(props) => props.lang != "sa" && `line-height: 12px;`}
   font-weight: 600;
   letter-spacing: 0em;
   text-align: center;
@@ -128,21 +130,21 @@ export const DreamItemCircle = styled.div`
     width: 57.6px;
     height: 57.6px;
     font-size: 29.07px;
-    line-height: 37.95px;
+    ${(props) => props.lang != "sa" && `line-height: 37.95px;`}
     margin: 25px 50px;
   }
   ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
 `;
 
 export const DreamItemText = styled.div`
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0em;
   text-align: left;
   color: #23262f;
   ${breakpoint.md} {
     font-size: 29px;
-    line-height: 38px;
+    ${(props) => props.lang != "sa" && `line-height: 38px;`}
   }
   ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
   ${(props) => props.lang == "sa" && "text-align: right;"}
@@ -157,7 +159,7 @@ export const MeaningText = styled.div`
     display: block;
     font-size: 28px;
     font-weight: 400;
-    line-height: 35px;
+    ${(props) => props.lang != "sa" && `line-height: 35px;`}
     letter-spacing: 0em;
     text-align: right;
     color: #5e5e5e;
@@ -174,6 +176,7 @@ export const DropDownCircle = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 2.5vw 0 0.5vw;
+  ${(props) => props.lang == "sa" && `margin: 0 0.5vw 0 0.5vw;`}
   text-align: center;
   &:hover {
     background: linear-gradient(93.5deg, #a2da00 26.2%, #93c600 99.21%);
@@ -212,12 +215,12 @@ export const DreamInterpretationHeader = styled.div`
   margin: 1.5vh 0;
   font-size: 11px;
   font-weight: 600;
-  line-height: 15px;
+  ${(props) => props.lang != "sa" && `line-height: 15px;`}
   letter-spacing: 0em;
   text-align: center;
   ${breakpoint.md} {
     font-size: 32px;
-    line-height: 39px;
+    ${(props) => props.lang != "sa" && `line-height: 39px;`}
     margin: 6vh 0;
   }
   ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
@@ -235,16 +238,16 @@ export const DreamInterpretationLine = styled.div`
 
 export const DreamInterpretationSubText = styled.div`
   margin: 5vh 35px 0 35px;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 400;
   font-style: italic;
-  line-height: 14px;
+  ${(props) => props.lang != "sa" && `line-height: 14px;`}
   letter-spacing: 0em;
   text-align: center;
   ${breakpoint.md} {
     font-size: 29px;
     font-style: normal;
-    line-height: 38px;
+    ${(props) => props.lang != "sa" && `line-height: 38px;`}
   }
   ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
 `;
@@ -274,7 +277,7 @@ export const BackToLettersButton = styled(Link)`
   justify-content: center;
   font-size: large;
   font-weight: 500;
-  line-height: 37px;
+  ${(props) => props.lang != "sa" && `line-height: 37px;`}
   letter-spacing: 0em;
   text-align: center;
   color: inherit;
@@ -285,7 +288,7 @@ export const BackToLettersButton = styled(Link)`
     height: 83px;
     font-size: 30px;
     font-weight: 500;
-    line-height: 37px;
+    ${(props) => props.lang != "sa" && `line-height: 37px;`}
   }
   ${(props) => props.lang == "sa" && `font-family: ${lateef.variable};`}
 `;

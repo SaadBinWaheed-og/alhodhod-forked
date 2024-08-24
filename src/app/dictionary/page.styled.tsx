@@ -86,7 +86,10 @@ export const ListOfSymbolsForLetterSection = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 8.54vh;
+  margin-top: 0px;
+  ${breakpoint.md} {
+    margin-top: 8.54vh;
+  }
 `;
 
 export const LettersList = styled.div`
