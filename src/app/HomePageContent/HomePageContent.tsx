@@ -2,7 +2,7 @@
 import { Row, Col, Space } from "antd";
 import { ArabesqueIcon } from "../common/customIcons";
 import * as Styled from "./HomePageContent.styled";
-import { Advertisement, AdvertisementContained } from "../common/components/Advertisement";
+import { AdvertisementContained } from "../common/components/Advertisement";
 
 import fdree from "../../../public/images/fdree.jpg";
 import head from "../../../public/images/head.webp";
@@ -83,7 +83,7 @@ export const HomePageContent: React.FC = () => {
             <Col span={24}>
               <Styled.HadeesSection>
                 <Styled.HadeesSectionTitle>
-                {t("HadeesTitle")}
+                  {t("HadeesTitle")}
                 </Styled.HadeesSectionTitle>
                 <Styled.HadeesSectionDescription>
                   {t("HadeesDescription")}
@@ -109,13 +109,18 @@ export const HomePageContent: React.FC = () => {
             >
               <Space direction="vertical" size={4}>
                 <Space direction="vertical" size={8}>
-                  <Styled.DreamTitle> {t("What are Dreams?")}</Styled.DreamTitle>
+                  <Styled.DreamTitle>
+                    {" "}
+                    {t("What are Dreams?")}
+                  </Styled.DreamTitle>
                   <Styled.DreamsDescription>
                     {t("DreamsDescription")}
                   </Styled.DreamsDescription>
                 </Space>
                 <Styled.ButtonContainer>
-                  <Styled.DreamsButton>{t("Interpret My Dream")}</Styled.DreamsButton>
+                  <Styled.DreamsButton>
+                    {t("Interpret My Dream")}
+                  </Styled.DreamsButton>
                 </Styled.ButtonContainer>
               </Space>
             </Styled.SecondSectionContainer>

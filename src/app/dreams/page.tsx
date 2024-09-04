@@ -1,9 +1,9 @@
 "use client";
-import * as Styled from './page.styled';
+import * as Styled from "./page.styled";
 import { useState, useEffect } from "react";
 import { ArabesqueIcon, CaretDownIconGray } from "../common/customIcons";
 import { AdvertisementContained } from "../common/components/Advertisement";
-import { CsvRow } from '../../../pages/api/read-csv';
+import { CsvRow } from "../../../pages/api/read-csv";
 import Arabesque from "public/images/arabesque.svg";
 import LoadingSpinner from "../common/components/LoadingSpinner/LoadingSpinner";
 import { I18nextProvider, useTranslation } from "react-i18next";
@@ -11,7 +11,8 @@ import i18n from "@/i18n";
 
 export default function Dreams() {
   const { t } = useTranslation();
-  const [isInterpretationVisible, setInterpretationVisible] = useState(9999);
+  const [isInterpretationVisible, setIsInterpretationVisible] =
+    useState<number>(9999);
   const [csvData, setCsvData] = useState<CsvRow[]>([]);
   const [symbol, setSymbol] = useState<string>();
   const [letter, setLetter] = useState<string>();
@@ -19,9 +20,9 @@ export default function Dreams() {
 
   const handleItemClick = (index: number) => {
     if (index == isInterpretationVisible) {
-      setInterpretationVisible(-1);
+      setIsInterpretationVisible(-1);
     } else {
-      setInterpretationVisible(index);
+      setIsInterpretationVisible(index);
     }
   };
 
@@ -46,22 +47,22 @@ export default function Dreams() {
     };
 
     // Subscribe to language change event
-    i18n.on('languageChanged', handleLanguageChange);
+    i18n.on("languageChanged", handleLanguageChange);
 
     // Unsubscribe from language change event on component unmount
     return () => {
-      i18n.off('languageChanged', handleLanguageChange);
+      i18n.off("languageChanged", handleLanguageChange);
     };
   }, [i18n]);
 
   const fetchData = async () => {
     try {
-      const lang = localStorage?.getItem?.('lang') || 'US';
-      let api_url = '/api/read-csv?attribute=mot';
-      if (lang === 'fr') {
-        api_url = '/api/read-csv-fr?attribute=mot';
-      } else if (lang === 'sa') {
-        api_url = '/api/read-csv-ar?attribute=mot';
+      const lang = localStorage?.getItem?.("lang") || "US";
+      let api_url = "/api/read-csv?attribute=mot";
+      if (lang === "fr") {
+        api_url = "/api/read-csv-fr?attribute=mot";
+      } else if (lang === "sa") {
+        api_url = "/api/read-csv-ar?attribute=mot";
       }
 
       const response = await fetch(api_url);
@@ -94,7 +95,10 @@ export default function Dreams() {
       for (let i = 0; i < itemsToRender.length; i++) {
         items.push(
           <div key={i}>
-            <Styled.DreamItem lang={i18n.language} onClick={() => handleItemClick(i)}>
+            <Styled.DreamItem
+              lang={i18n.language}
+              onClick={() => handleItemClick(i)}
+            >
               <Styled.DreamItemCircleTextContainer lang={i18n.language}>
                 <div
                   style={{
@@ -117,14 +121,19 @@ export default function Dreams() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  flexDirection: `${i18n.language == 'sa' ? "row-reverse" : "row"}`,
+                  flexDirection: `${
+                    i18n.language == "sa" ? "row-reverse" : "row"
+                  }`,
                   marginLeft: "18px",
                 }}
               >
                 <Styled.MeaningText lang={i18n.language}>
                   {t("Meaning")}
                 </Styled.MeaningText>
-                <Styled.DropDownCircle onClick={() => handleItemClick(i)} lang={i18n.language}>
+                <Styled.DropDownCircle
+                  onClick={() => handleItemClick(i)}
+                  lang={i18n.language}
+                >
                   <CaretDownIconGray />
                 </Styled.DropDownCircle>
               </div>
@@ -138,6 +147,16 @@ export default function Dreams() {
                 <Styled.DreamInterpretationSubText lang={i18n.language}>
                   {itemsToRender[i].interp}
                 </Styled.DreamInterpretationSubText>
+                <div
+                  style={{
+                    color: "red",
+                    fontSize: "20px",
+                    textAlign: "center",
+                    marginTop: "20px",
+                  }}
+                >
+                  Here
+                </div>
                 <AdvertisementContained />
                 <div className="temp" style={{ marginTop: "55px" }} />
               </Styled.DreamInterpretationDiv>
@@ -167,10 +186,19 @@ export default function Dreams() {
             <Styled.DreamList>{displayDreamItems()}</Styled.DreamList>
           </Styled.DreamsListDiv>
           <Styled.BackToLettersButtonContainer>
-            <Styled.BackToLettersButton href={`/dictionary`} lang={i18n.language} onClick={() => localStorage && localStorage.setItem('displayLetter', '1')}>
+            <Styled.BackToLettersButton
+              href={`/dictionary`}
+              lang={i18n.language}
+              onClick={() =>
+                localStorage && localStorage.setItem("displayLetter", "1")
+              }
+            >
               {t("Back To Letter")} {letter}
             </Styled.BackToLettersButton>
-            <Styled.BackToLettersButton href={`/dictionary`} lang={i18n.language}>
+            <Styled.BackToLettersButton
+              href={`/dictionary`}
+              lang={i18n.language}
+            >
               {t("Back To Letters")}
             </Styled.BackToLettersButton>
           </Styled.BackToLettersButtonContainer>

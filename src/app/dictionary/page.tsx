@@ -2,7 +2,7 @@
 import * as Styled from "./page.styled";
 import { ArabesqueIcon } from "../common/customIcons";
 import ArrowIcon from "../../../public/images/arrow-vector.svg";
-import { Advertisement, AdvertisementContained } from "../common/components/Advertisement";
+import { AdvertisementContained } from "../common/components/Advertisement";
 import { useState, useRef, useEffect } from "react";
 import { CsvRow } from "../../../pages/api/read-csv";
 import DictionaryFilter from "../common/components/DictionaryFilter/DictionaryFilter";
@@ -18,9 +18,35 @@ export default function Dictionary() {
   const secondRowAlphabets = ["I", "J", "K", "L", "M", "N", "O"];
   const thirdRowAlphabets = ["P", "Q", "R", "S", "T", "U", "V", "W"];
   const fourthRowAlphabets = ["X", "Y", "Z"];
-  const firstRowAlphabetsArabic = ["دال ", "خاء ", "حاء ", "جيم ", "ثاء ", "تاء ", "باء ", "الف "];
-  const secondRowAlphabetsArabic = ["ضاد ", "صاد ", "شين ", "سين ", "زاي ", "راء ", "ذال "];
-  const thirdRowAlphabetsArabic = ["لام ", "كاف ", "قاف ", "فاء ", "غين ", "عين ", "ظاء ", "طاء "];
+  const firstRowAlphabetsArabic = [
+    "دال ",
+    "خاء ",
+    "حاء ",
+    "جيم ",
+    "ثاء ",
+    "تاء ",
+    "باء ",
+    "الف ",
+  ];
+  const secondRowAlphabetsArabic = [
+    "ضاد ",
+    "صاد ",
+    "شين ",
+    "سين ",
+    "زاي ",
+    "راء ",
+    "ذال ",
+  ];
+  const thirdRowAlphabetsArabic = [
+    "لام ",
+    "كاف ",
+    "قاف ",
+    "فاء ",
+    "غين ",
+    "عين ",
+    "ظاء ",
+    "طاء ",
+  ];
   const fourthRowAlphabetsArabic = ["ياء ", "واو ", "هاء ", "نون ", "ميم "];
 
   const alphabets = [
@@ -45,13 +71,13 @@ export default function Dictionary() {
   const fetchData = async (language: string) => {
     try {
       if (!language) {
-        language = localStorage?.getItem?.('lang') || 'US';
+        language = localStorage?.getItem?.("lang") || "US";
       }
-      let api_url = '/api/read-csv?attribute=lettre';
-      if (language === 'fr') {
-        api_url = '/api/read-csv-fr?attribute=lettre';
-      } else if (language === 'sa') {
-        api_url = '/api/read-csv-ar?attribute=lettre';
+      let api_url = "/api/read-csv?attribute=lettre";
+      if (language === "fr") {
+        api_url = "/api/read-csv-fr?attribute=lettre";
+      } else if (language === "sa") {
+        api_url = "/api/read-csv-ar?attribute=lettre";
       }
 
       const response = await fetch(api_url);
@@ -68,17 +94,17 @@ export default function Dictionary() {
   };
 
   useEffect(() => {
-    fetchData('').then((data) => {
+    fetchData("").then((data) => {
       setCsvData(data);
       setLoading(false);
     });
 
-    if (localStorage){
-      if (localStorage.getItem('displayLetter') == '1'){
-        const tempLetter = localStorage.getItem('selectedLetter');
-        if (tempLetter != ''){
-          handleButtonClick(tempLetter || '');
-          localStorage.setItem('displayLetter', '0')
+    if (localStorage) {
+      if (localStorage.getItem("displayLetter") == "1") {
+        const tempLetter = localStorage.getItem("selectedLetter");
+        if (tempLetter != "") {
+          handleButtonClick(tempLetter || "");
+          localStorage.setItem("displayLetter", "0");
         }
       }
     }
@@ -96,17 +122,15 @@ export default function Dictionary() {
     };
 
     // Subscribe to language change event
-    i18n.on('languageChanged', handleLanguageChange);
+    i18n.on("languageChanged", handleLanguageChange);
 
     // Unsubscribe from language change event on component unmount
     return () => {
-      i18n.off('languageChanged', handleLanguageChange);
+      i18n.off("languageChanged", handleLanguageChange);
     };
   }, [i18n]);
 
-
-  useEffect(() => {
-  }, [csvData]);
+  useEffect(() => {}, [csvData]);
 
   const handleButtonClick = (letter: string) => {
     setSelectedLetter(letter);
@@ -151,10 +175,9 @@ export default function Dictionary() {
         items.push(
           <Styled.LettersListItem
             onClick={() => {
-              localStorage.setItem("selectedSymbol", `${symbolSortedData[i]}`)
-              localStorage.setItem("selectedLetter", `${selectedLetter}`)
-            }
-            }
+              localStorage.setItem("selectedSymbol", `${symbolSortedData[i]}`);
+              localStorage.setItem("selectedLetter", `${selectedLetter}`);
+            }}
             href={`/dreams?symbol=${symbolSortedData[i]}`}
             key={i}
           >
@@ -173,10 +196,16 @@ export default function Dictionary() {
                 {symbolSortedData[i]}
               </Styled.LettersListItemTextOne>
               <Styled.LettersListItemTextTwo lang={i18n.language}>
-                {groupedData[symbolSortedData[i]].length} {t("Dream")}(s) {t("found")}
+                {groupedData[symbolSortedData[i]].length} {t("Dream")}(s){" "}
+                {t("found")}
               </Styled.LettersListItemTextTwo>
             </Styled.LettersListItemTextGroup>
-            <Styled.LettersListItemArrowIcon src={ArrowIcon} height={100} width={100} alt="< >" />
+            <Styled.LettersListItemArrowIcon
+              src={ArrowIcon}
+              height={100}
+              width={100}
+              alt="< >"
+            />
           </Styled.LettersListItem>
         );
       }
@@ -197,7 +226,7 @@ export default function Dictionary() {
             {t("ChooseTheFirstLetter")}
           </Styled.SectionHeader>
           <ArabesqueIcon />
-          { i18n.language == "sa" ? (
+          {i18n.language == "sa" ? (
             <Styled.LetterSelection>
               <Styled.LetterRow>
                 {firstRowAlphabetsArabic.map((letter, index) => (
@@ -297,8 +326,7 @@ export default function Dictionary() {
                 ))}
               </Styled.LetterRow>
             </Styled.LetterSelection>
-          )
-          }
+          )}
 
           <div style={{ marginBottom: "76px" }}>
             <AdvertisementContained />
@@ -310,7 +338,10 @@ export default function Dictionary() {
           handleButtonClick={handleButtonClick}
         />
         {showListOfSymbols && (
-          <Styled.ListOfSymbolsForLetterSection lang={i18n.language} ref={listOfSymbolsRef}>
+          <Styled.ListOfSymbolsForLetterSection
+            lang={i18n.language}
+            ref={listOfSymbolsRef}
+          >
             <Styled.SectionHeader>
               {t("List of Symbols for Letter")}
             </Styled.SectionHeader>
