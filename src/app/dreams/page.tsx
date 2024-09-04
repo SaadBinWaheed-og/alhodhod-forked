@@ -147,16 +147,6 @@ export default function Dreams() {
                 <Styled.DreamInterpretationSubText lang={i18n.language}>
                   {itemsToRender[i].interp}
                 </Styled.DreamInterpretationSubText>
-                <div
-                  style={{
-                    color: "red",
-                    fontSize: "20px",
-                    textAlign: "center",
-                    marginTop: "20px",
-                  }}
-                >
-                  Here
-                </div>
                 <AdvertisementContained />
                 <div className="temp" style={{ marginTop: "55px" }} />
               </Styled.DreamInterpretationDiv>
