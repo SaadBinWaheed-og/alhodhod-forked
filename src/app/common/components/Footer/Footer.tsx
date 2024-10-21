@@ -22,38 +22,6 @@ export const Footer: React.FC = () => {
       <Styled.FooterContainer>
         <Row justify="space-between">
           <Col>
-            <Styled.UiList>
-              <Styled.UiLink href="/">{t("Home")}</Styled.UiLink>
-              <Styled.UiLink href="/dictionary">
-                {t("Dictionary of Dreams")}
-              </Styled.UiLink>
-              <Styled.UiLink href="/blog">{t("Blog")}</Styled.UiLink>
-              <Styled.UiLink href="/videos">{t("Videos")}</Styled.UiLink>
-              <Styled.UiLink href="/about">{t("About Us")}</Styled.UiLink>
-            </Styled.UiList>
-          </Col>
-          <Col>
-            <Styled.LogoContainer>
-              <Styled.DesignImageDesktop
-                src={logo}
-                alt="Al-hodhod logo"
-                quality={100}
-              />
-              <Styled.DesignImageMobile
-                src={"/images/footerDesign.svg"}
-                alt="Al-hodhod logo"
-                width={90}
-                height={130}
-                quality={100}
-              />
-              <Styled.WebsiteAddress>Alhodhod.com</Styled.WebsiteAddress>
-              <Styled.WebsiteSince>EST 2001</Styled.WebsiteSince>
-            </Styled.LogoContainer>
-          </Col>
-        </Row>
-        <Styled.Divider style={{ backgroundColor: "#545D79" }} />
-        <Row justify="space-between">
-          <Col>
             <Space size={4}>
               <Styled.CRIcon>©</Styled.CRIcon>
               <Styled.CopyRight>{t("Copyrights")}</Styled.CopyRight>
