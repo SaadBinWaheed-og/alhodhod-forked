@@ -16,23 +16,23 @@ export const Navbar: React.FC<Props> = ({ path }) => {
   return (
     <>
       <Styled.NavBarList>
-        <Styled.NavbarListItem $active={path === "/"}>
+        {/* <Styled.NavbarListItem $active={path === "/"}>
           <Link href={"/"}>{t("Home")}</Link>{" "}
-        </Styled.NavbarListItem>
+        </Styled.NavbarListItem> */}
         <Styled.NavbarListItem $active={path === "/dictionary"}>
           <Link href="/dictionary">{t("Dictionary of Dreams")}</Link>
         </Styled.NavbarListItem>
-        <Styled.NavbarListItem $active={path === "/blog"}>
+        {/* <Styled.NavbarListItem $active={path === "/blog"}>
           <Link href="/blog" style={{ color: "#fff" }}>
             {t("Blog")}
           </Link>
-        </Styled.NavbarListItem>
-        <Styled.NavbarListItem $active={path === "/videos"}>
+        </Styled.NavbarListItem> */}
+        {/* <Styled.NavbarListItem $active={path === "/videos"}>
           <Link href="/videos">{t("Videos")}</Link>
-        </Styled.NavbarListItem>
-        <Styled.NavbarListItem $active={path === "/about"}>
+        </Styled.NavbarListItem> */}
+        {/* <Styled.NavbarListItem $active={path === "/about"}>
           <Link href="about">{t("About")}</Link>
-        </Styled.NavbarListItem>
+        </Styled.NavbarListItem> */}
         <Styled.LanguageSwitcherContainer>
           <LanguageSwitcher />
         </Styled.LanguageSwitcherContainer>
